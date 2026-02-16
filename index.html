@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tests de Repaso - PGFPCOM01</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+  button { font-family: inherit; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useCallback, useMemo } = React;
+
+
+
+// ═══════════════════════════════════════════════════════════
+// QUESTION BANKS - ~25 questions per topic (300+ total)
+// ═══════════════════════════════════════════════════════════
+
+const questionBanks = {
+  "UA1_T1": {
+    title: "Pubertad: desarrollo físico y sexual",
+    ua: 1,
+    questions: [
+      { q: "¿Entre qué edades se sitúa generalmente la adolescencia?", o: ["11-19/20 años", "8-15 años", "14-21 años"], c: 0 },
+      { q: "¿Qué diferencia principal existe entre adolescencia y pubertad?", o: ["La adolescencia es un constructo social; la pubertad es un hecho universal biológico", "Son sinónimos utilizados en distintos contextos", "La pubertad abarca un periodo más largo que la adolescencia"], c: 0 },
+      { q: "¿Qué caracteriza a la adolescencia temprana (11-14 años)?", o: ["Estabilidad emocional y relaciones de pareja", "Inicio de cambios puberales, búsqueda de autonomía y sensibilidad emocional", "Consolidación de la identidad y metas claras"], c: 1 },
+      { q: "¿Qué eje hormonal se activa al inicio de la pubertad?", o: ["Eje hipotálamo-hipófisis-gónadas (HHG)", "Eje hipotálamo-hipófisis-tiroides", "Eje hipotálamo-hipófisis-suprarrenal"], c: 0 },
+      { q: "¿Qué hormona estimula la producción de esperma en los chicos?", o: ["Estrógenos", "Testosterona", "Prolactina"], c: 1 },
+      { q: "¿Cuáles son los cambios sexuales primarios?", o: ["Los relacionados con la diferenciación física externa", "Los que implican la maduración de los órganos reproductores", "Los cambios en la masa muscular y la voz"], c: 1 },
+      { q: "¿Qué cambio hormonal se asocia con alteraciones en el sueño adolescente?", o: ["Aumento de testosterona", "Disminución de melatonina", "Aumento de GnRH"], c: 1 },
+      { q: "¿Qué es la identidad de género?", o: ["Las características físicas del sexo biológico", "La percepción interna y subjetiva que una persona tiene de su propio género", "La atracción emocional hacia otras personas"], c: 1 },
+      { q: "¿Qué es la orientación sexual?", o: ["La construcción social de roles de género", "Los cromosomas sexuales de una persona", "La atracción emocional, romántica y/o sexual hacia otras personas"], c: 2 },
+      { q: "¿Cuántas horas de sueño necesitan los adolescentes?", o: ["5-6 horas", "8-10 horas", "12-14 horas"], c: 1 },
+      { q: "¿Qué hormona favorece el desarrollo de las glándulas mamarias?", o: ["Testosterona", "Melatonina", "Prolactina"], c: 2 },
+      { q: "La adolescencia media (14-16 años) se caracteriza por:", o: ["El inicio de la pubertad y la sensibilidad emocional", "Consolidación de cambios físicos, mayor independencia y relaciones profundas con pares", "Madurez completa y planificación a largo plazo"], c: 1 },
+      { q: "¿Qué siglas designan las hormonas luteinizante y foliculoestimulante?", o: ["GH y GnRH", "LH y FSH", "TSH y ACTH"], c: 1 },
+      { q: "¿Qué aspecto NO justifica la educación sexual integral (ESI)?", o: ["Prevención de embarazos no planificados", "Promoción de abstinencia como único método", "Desarrollo de una identidad sexual saludable"], c: 1 },
+      { q: "¿Qué se entiende por 'género' en el contexto del desarrollo adolescente?", o: ["Las características cromosómicas", "Las construcciones sociales, culturales y psicológicas asociadas al sexo biológico", "La orientación sexual de la persona"], c: 1 },
+      { q: "El estirón puberal se caracteriza por:", o: ["Un crecimiento acelerado de estatura y peso, primero en extremidades y luego en tronco", "Un crecimiento uniforme de todo el cuerpo simultáneamente", "Un crecimiento exclusivo de la masa muscular"], c: 0 },
+      { q: "¿Qué hormona se encarga del estirón puberal?", o: ["Hormona del crecimiento (GH)", "Prolactina", "Melatonina"], c: 0 },
+      { q: "¿Qué trastornos pueden asociarse a una imagen corporal negativa en la adolescencia?", o: ["Trastornos del sueño exclusivamente", "Anorexia, bulimia y trastorno por atracón", "Trastornos de ansiedad generalizada únicamente"], c: 1 },
+      { q: "La adolescencia tardía (16-20 años) se caracteriza por:", o: ["Inicio de los cambios puberales", "Rebeldía y conflictos constantes con los pares", "Estabilidad emocional, metas claras y consolidación de la identidad"], c: 2 },
+      { q: "¿Qué papel juega la educación sexual respecto al consumo de pornografía?", o: ["Fomenta su consumo como recurso educativo", "Previene ideas distorsionadas desmontando mitos sobre relaciones y consentimiento", "No tiene relación con el consumo de pornografía"], c: 1 },
+      { q: "¿Qué es la GnRH?", o: ["Hormona liberadora de gonadotropinas, secretada por el hipotálamo", "Hormona del crecimiento secretada por la hipófisis", "Hormona sexual producida por los ovarios"], c: 0 },
+      { q: "Los cambios sexuales secundarios incluyen:", o: ["Maduración de ovarios y testículos", "Desarrollo de senos, vello facial, ensanchamiento de caderas", "Producción de esperma y menstruación"], c: 1 },
+      { q: "Se dice que la adolescencia es un constructo social porque:", o: ["Los cambios biológicos varían según la cultura", "La edad de paso a la adultez depende del contexto sociocultural", "No existe consenso científico sobre su existencia"], c: 1 },
+      { q: "¿Qué autor se cita como referencia al hablar de la adolescencia como constructo social?", o: ["Piaget", "Mead", "Erikson"], c: 1 },
+      { q: "La privación de sueño en adolescentes afecta a:", o: ["Solo al estado de ánimo", "Atención, memoria, regulación emocional y rendimiento académico", "Exclusivamente al crecimiento físico"], c: 1 },
+    ]
+  },
+  "UA1_T2": {
+    title: "Desarrollo cognitivo en la adolescencia",
+    ua: 1,
+    questions: [
+      { q: "¿Qué es la poda sináptica?", o: ["Creación de nuevas conexiones neuronales", "Eliminación de conexiones neuronales poco utilizadas para mayor eficiencia", "Aumento del tamaño del cerebro"], c: 1 },
+      { q: "¿Qué función tiene la mielina?", o: ["Crear nuevas neuronas", "Recubrir axones para que la información viaje más rápido", "Eliminar neurotransmisores sobrantes"], c: 1 },
+      { q: "¿Cuál es la última región cerebral en madurar?", o: ["El cerebelo", "El córtex prefrontal", "El lóbulo occipital"], c: 1 },
+      { q: "¿Hasta qué edad puede seguir madurando el córtex prefrontal?", o: ["Hasta los 16 años", "Hasta los 25 años aproximadamente", "Hasta los 18 años"], c: 1 },
+      { q: "El desfase límbico-prefrontal explica:", o: ["La mejora del razonamiento abstracto", "La impulsividad adolescente, ya que el sistema emocional madura antes que el de control", "La mejora de la memoria a largo plazo"], c: 1 },
+      { q: "¿Qué tipo de pensamiento se desarrolla en la adolescencia según Piaget?", o: ["Pensamiento preoperacional", "Pensamiento operacional formal (abstracto e hipotético-deductivo)", "Pensamiento sensoriomotor"], c: 1 },
+      { q: "¿Qué es la metacognición?", o: ["La capacidad de memorizar grandes cantidades de información", "La capacidad de pensar sobre el propio pensamiento y supervisar el aprendizaje", "La habilidad para resolver problemas matemáticos"], c: 1 },
+      { q: "¿Por qué el sistema dopaminérgico es relevante en la adolescencia?", o: ["Porque está inactivo y necesita estimulación educativa", "Porque es hiperactivo, aumentando la búsqueda de recompensas y sensaciones intensas", "Porque disminuye su actividad, generando apatía"], c: 1 },
+      { q: "La especialización hemisférica implica:", o: ["Que ambos hemisferios funcionan de forma idéntica", "Una lateralización progresiva de funciones cerebrales", "Que solo se usa un hemisferio durante la adolescencia"], c: 1 },
+      { q: "¿Qué efecto puede tener el uso intensivo de pantallas en adolescentes?", o: ["Mejora siempre la atención sostenida", "Puede afectar la atención sostenida, la memoria de trabajo y el sueño", "No tiene ningún efecto comprobado"], c: 1 },
+      { q: "La poda sináptica es especialmente intensa en:", o: ["El lóbulo occipital", "La corteza prefrontal", "El cerebelo"], c: 1 },
+      { q: "¿Qué permite la mielinización en el cerebro adolescente?", o: ["Mayor velocidad, precisión y coordinación de funciones", "Menor número de conexiones neuronales", "Reducción del tamaño cerebral"], c: 0 },
+      { q: "¿Qué habilidad lingüística mejora notablemente en la adolescencia?", o: ["La pronunciación de fonemas básicos", "La capacidad para la ironía, la metáfora y la argumentación", "El balbuceo y la imitación fonética"], c: 1 },
+      { q: "En contextos emocionales, ¿qué tiende a prevalecer en la toma de decisiones adolescente?", o: ["El córtex prefrontal (racional)", "El sistema límbico (emocional)", "El cerebelo (motor)"], c: 1 },
+      { q: "¿Qué proceso cerebral se compara con 'podar un árbol'?", o: ["La mielinización", "La poda sináptica", "La neurogénesis"], c: 1 },
+      { q: "¿Qué función ejecutiva permite cambiar de perspectiva mental?", o: ["Memoria de trabajo", "Inhibición", "Flexibilidad cognitiva"], c: 2 },
+      { q: "La búsqueda de novedad y asunción de riesgos en adolescentes se relaciona con:", o: ["La madurez completa del prefrontal", "La hiperactividad del sistema dopaminérgico", "La disminución de la actividad cerebral general"], c: 1 },
+      { q: "¿Qué cambio funcional NO es propio del cerebro adolescente?", o: ["Mayor conectividad entre redes neuronales", "Reducción del volumen cerebral total", "Especialización hemisférica progresiva"], c: 1 },
+      { q: "La impulsividad adolescente debe entenderse como:", o: ["Un trastorno que requiere intervención clínica", "Parte de un proceso evolutivo normal y necesario", "Resultado de una mala educación familiar"], c: 1 },
+      { q: "¿Qué área cerebral es responsable de la planificación, inhibición de impulsos y decisiones éticas?", o: ["Lóbulo temporal", "Córtex prefrontal", "Amígdala"], c: 1 },
+      { q: "El pensamiento hipotético-deductivo permite:", o: ["Solo resolver problemas concretos", "Manipular variables y considerar múltiples perspectivas de forma abstracta", "Memorizar hechos históricos"], c: 1 },
+      { q: "La tecnología bien utilizada puede:", o: ["Sustituir completamente la enseñanza presencial", "Potenciar el aprendizaje interactivo y el acceso a recursos", "Eliminar la necesidad de metacognición"], c: 1 },
+      { q: "¿Qué autor/es son referencia en el tema del desarrollo cerebral adolescente?", o: ["Sales et al. (2025)", "Pavlov y Skinner", "Maslow y Rogers"], c: 0 },
+      { q: "Las áreas sensoriales del cerebro maduran:", o: ["Al mismo tiempo que el prefrontal", "Después del prefrontal", "Antes que el prefrontal"], c: 2 },
+    ]
+  },
+  "UA1_T3": {
+    title: "Desarrollo afectivo-social y moral",
+    ua: 1,
+    questions: [
+      { q: "Según Erikson, ¿cuál es la crisis central de la adolescencia?", o: ["Laboriosidad vs. inferioridad", "Identidad vs. confusión de roles", "Intimidad vs. aislamiento"], c: 1 },
+      { q: "¿Cuántos estados de identidad propone Marcia?", o: ["Tres", "Cuatro", "Cinco"], c: 1 },
+      { q: "El estado de 'moratoria' de Marcia se caracteriza por:", o: ["Compromiso sin exploración previa", "Exploración activa sin compromiso definido aún", "Ni exploración ni compromiso"], c: 1 },
+      { q: "El estado de 'logro de identidad' implica:", o: ["Exploración completada y compromiso asumido", "Aceptación pasiva de valores impuestos", "Ausencia de interés por la identidad"], c: 0 },
+      { q: "Según Goleman, la inteligencia emocional incluye:", o: ["Solo habilidades cognitivas", "Autoconciencia, autorregulación, motivación, empatía y habilidades sociales", "Exclusivamente la capacidad de memorización emocional"], c: 1 },
+      { q: "¿Qué nivel de razonamiento moral de Kohlberg predomina en la adolescencia?", o: ["Preconvencional", "Convencional", "Posconvencional"], c: 1 },
+      { q: "El nivel preconvencional de Kohlberg se basa en:", o: ["Normas sociales y aprobación del grupo", "Consecuencias: castigo y recompensa", "Principios éticos universales"], c: 1 },
+      { q: "¿Qué autores formularon el modelo original de inteligencia emocional?", o: ["Goleman y Bandura", "Salovey y Mayer", "Erikson y Marcia"], c: 1 },
+      { q: "La 'difusión de identidad' de Marcia se caracteriza por:", o: ["Sin exploración ni compromiso", "Exploración activa con compromiso", "Compromiso firme sin exploración"], c: 0 },
+      { q: "El estado de 'exclusión/hipoteca' de Marcia implica:", o: ["Exploración sin compromiso", "Compromiso asumido sin exploración previa (valores impuestos)", "Logro pleno de la identidad"], c: 1 },
+      { q: "¿Qué competencia emocional incluye la empatía y el manejo de conflictos?", o: ["Competencias cognitivas", "Competencias sociales", "Competencias para la vida"], c: 1 },
+      { q: "El nivel posconvencional de Kohlberg se basa en:", o: ["Evitar el castigo", "Cumplir las normas sociales", "Principios éticos universales y contrato social"], c: 2 },
+      { q: "¿Qué factores influyen en la formación de la identidad?", o: ["Solo los individuales (temperamento)", "Individuales, familiares, sociales y culturales", "Exclusivamente los genéticos"], c: 1 },
+      { q: "La regulación emocional incluye estrategias como:", o: ["Solo el control de la respiración", "Relajación y reestructuración cognitiva, entre otras", "Exclusivamente la evitación de situaciones estresantes"], c: 1 },
+      { q: "¿Qué teórico propone que la identidad se forma en interacción con múltiples sistemas?", o: ["Bronfenbrenner", "Skinner", "Maslow"], c: 0 },
+      { q: "La resiliencia forma parte de las competencias:", o: ["Cognitivas", "Sociales", "Para la vida y el bienestar"], c: 2 },
+      { q: "¿Qué autor es referente en psicología del desarrollo respecto a la identidad adolescente?", o: ["Pavlov", "Erikson", "Ausubel"], c: 1 },
+      { q: "La inteligencia emocional es clave para:", o: ["Solo el rendimiento académico", "El bienestar personal y el rendimiento académico", "Solo las relaciones sociales"], c: 1 },
+      { q: "La identificación emocional consiste en:", o: ["Evitar las emociones negativas", "Reconocer emociones propias y ajenas", "Reprimir las emociones para concentrarse"], c: 1 },
+      { q: "Según Erikson, si la búsqueda de identidad se ve obstaculizada puede surgir:", o: ["Mayor creatividad", "Confusión, inseguridad o identidades poco definidas", "Aceleración del desarrollo moral"], c: 1 },
+      { q: "¿Qué obra de referencia se cita en desarrollo afectivo adolescente?", o: ["Papalia (2021)", "Bandura (1977)", "Skinner (1953)"], c: 0 },
+      { q: "La asertividad es una competencia:", o: ["Cognitiva", "Social", "Exclusivamente moral"], c: 1 },
+      { q: "Las competencias para la vida incluyen:", o: ["Solo habilidades académicas", "Resiliencia, toma de decisiones responsable y pensamiento crítico", "Exclusivamente habilidades laborales"], c: 1 },
+    ]
+  },
+  "UA2_T1": {
+    title: "Teorías del aprendizaje",
+    ua: 2,
+    questions: [
+      { q: "El conductismo considera que la persona es:", o: ["Un agente activo que construye conocimiento", "Una tabula rasa donde se enseña desde cero", "Un ser autorrealizado por naturaleza"], c: 1 },
+      { q: "¿Quién desarrolló el condicionamiento clásico?", o: ["Skinner", "Bandura", "Pavlov"], c: 2 },
+      { q: "El condicionamiento clásico se basa en:", o: ["Las consecuencias de la conducta", "La asociación de un estímulo neutro con otro que provoca respuesta automática", "La observación de modelos"], c: 1 },
+      { q: "¿Qué es el refuerzo positivo según Skinner?", o: ["Retirar algo molesto para aumentar una conducta", "Añadir algo agradable para aumentar una conducta", "Añadir algo molesto para reducir una conducta"], c: 1 },
+      { q: "¿Qué es el castigo negativo?", o: ["Añadir algo molesto para reducir una conducta", "Retirar algo agradable para reducir una conducta", "Retirar algo molesto para aumentar una conducta"], c: 1 },
+      { q: "¿Quién formuló la teoría del aprendizaje social?", o: ["Piaget", "Bandura", "Rogers"], c: 1 },
+      { q: "Los cuatro procesos del aprendizaje vicario son:", o: ["Análisis, síntesis, evaluación y aplicación", "Atención, retención, reproducción y motivación", "Observación, imitación, práctica y generalización"], c: 1 },
+      { q: "El aprendizaje significativo de Ausubel plantea que:", o: ["El aprendizaje es mejor cuando se memoriza sin contexto", "El nuevo conocimiento se construye sobre lo que el alumno ya sabe", "Solo se aprende mediante refuerzos externos"], c: 1 },
+      { q: "¿Qué concepto de Vygotsky designa lo que el alumno puede hacer con ayuda pero no solo?", o: ["Aprendizaje significativo", "Zona de desarrollo próximo", "Descubrimiento guiado"], c: 1 },
+      { q: "El descubrimiento guiado fue propuesto por:", o: ["Ausubel", "Bruner", "Maslow"], c: 1 },
+      { q: "El modelo ecológico de Bronfenbrenner incluye:", o: ["Tres sistemas: micro, meso y macro", "Cinco sistemas: micro, meso, exo, macro y cronosistema", "Dos sistemas: individuo y entorno"], c: 1 },
+      { q: "¿Qué es el microsistema según Bronfenbrenner?", o: ["Los medios de comunicación y las políticas", "Los entornos inmediatos: familia, aula, grupo de pares", "Los valores culturales y normas sociales"], c: 1 },
+      { q: "Según Maslow, la autorrealización solo es posible cuando:", o: ["Se tiene un alto cociente intelectual", "Las necesidades básicas están suficientemente satisfechas", "El alumno es extrovertido"], c: 1 },
+      { q: "Rogers propone una educación:", o: ["Centrada en los contenidos", "Centrada en la persona, con el docente como facilitador", "Centrada en la evaluación sumativa"], c: 1 },
+      { q: "El aprendizaje experiencial valora:", o: ["La memorización de contenidos teóricos", "La vivencia directa, la reflexión y el vínculo emoción-conocimiento", "Solo los resultados de exámenes"], c: 1 },
+      { q: "¿Qué es el refuerzo negativo?", o: ["Un castigo que se aplica al alumno", "Retirar algo molesto para aumentar una conducta", "Añadir algo desagradable para eliminar una conducta"], c: 1 },
+      { q: "El castigo positivo consiste en:", o: ["Premiar una buena conducta", "Añadir algo molesto para reducir una conducta", "Retirar un privilegio"], c: 1 },
+      { q: "El mesosistema de Bronfenbrenner se refiere a:", o: ["La relación entre diferentes microsistemas (ej: familia-escuela)", "Las políticas educativas nacionales", "Los cambios a lo largo del tiempo"], c: 0 },
+      { q: "¿Qué técnica conductista consiste en obtener fichas canjeables por recompensas?", o: ["Aprendizaje cooperativo", "Economía de fichas", "Aprendizaje por descubrimiento"], c: 1 },
+      { q: "El cognitivismo considera que los alumnos son:", o: ["Receptores pasivos de información", "Agentes activos que interpretan, organizan y transforman la información", "Sujetos condicionados por estímulos y respuestas"], c: 1 },
+      { q: "El andamiaje educativo consiste en:", o: ["Dar al alumno todo el trabajo resuelto", "Proporcionar apoyos temporales que se retiran progresivamente", "Evaluar solo al final del proceso"], c: 1 },
+      { q: "El exosistema incluye:", o: ["La familia y la escuela", "Medios de comunicación, políticas y redes sociales", "El temperamento del alumno"], c: 1 },
+      { q: "¿Qué corriente reaccionó contra el conductismo al poner el foco en emociones y motivación?", o: ["Cognitivismo", "Humanismo", "Ecologismo"], c: 1 },
+      { q: "El cronosistema se refiere a:", o: ["Los cambios y transiciones a lo largo del tiempo", "El entorno cultural amplio", "Las relaciones entre microsistemas"], c: 0 },
+      { q: "¿Qué autor del conductismo introdujo los conceptos de refuerzo y castigo?", o: ["Watson", "Skinner", "Pavlov"], c: 1 },
+    ]
+  },
+  "UA2_T2": {
+    title: "Procesos y estrategias de aprendizaje",
+    ua: 2,
+    questions: [
+      { q: "Las estrategias cognitivas incluyen:", o: ["Planificación y supervisión del aprendizaje", "Repetición, elaboración (resúmenes) y organización (mapas conceptuales)", "Gestión del tiempo y del espacio"], c: 1 },
+      { q: "Las estrategias metacognitivas se refieren a:", o: ["Técnicas de memorización", "Planificación, supervisión y evaluación del propio aprendizaje", "Trabajo en grupo y cooperación"], c: 1 },
+      { q: "¿Quién propuso el ciclo de aprendizaje autorregulado?", o: ["Ausubel", "Zimmerman", "Bandura"], c: 1 },
+      { q: "Las tres fases del ciclo autorregulado son:", o: ["Inicio, desarrollo y cierre", "Planificación, ejecución y autorreflexión", "Motivación, acción y evaluación"], c: 1 },
+      { q: "¿Qué función ejecutiva permite mantener información mientras se trabaja con ella?", o: ["Inhibición", "Memoria de trabajo", "Flexibilidad cognitiva"], c: 1 },
+      { q: "La evaluación formativa se realiza:", o: ["Solo al final del proceso", "Durante el proceso, para ajustar la enseñanza con retroalimentación continua", "Solo al inicio para conocer conocimientos previos"], c: 1 },
+      { q: "La evaluación diagnóstica sirve para:", o: ["Calificar al alumno al final del curso", "Conocer los conocimientos previos al inicio", "Que los alumnos se evalúen entre sí"], c: 1 },
+      { q: "La coevaluación consiste en:", o: ["Que el profesor evalúe al alumno", "Que los alumnos se evalúen entre sí", "Que el alumno se evalúe a sí mismo"], c: 1 },
+      { q: "La autoevaluación promueve:", o: ["La dependencia del profesor", "Reflexión, autonomía y responsabilidad", "La competitividad entre alumnos"], c: 1 },
+      { q: "La inhibición como función ejecutiva permite:", o: ["Memorizar más información", "Controlar impulsos y resistir distracciones", "Cambiar de perspectiva mental"], c: 1 },
+      { q: "Las estrategias de gestión de recursos incluyen:", o: ["Resúmenes y esquemas", "Organización del tiempo, del espacio y búsqueda de ayuda", "Repetición y elaboración"], c: 1 },
+      { q: "Las estrategias motivacionales incluyen:", o: ["Mapas conceptuales y cuadros comparativos", "Establecimiento de metas, autoeficacia y control emocional", "Evaluación sumativa y calificaciones"], c: 1 },
+      { q: "En la fase de planificación del ciclo autorregulado se realiza:", o: ["Evaluación de resultados", "Análisis de la tarea, establecimiento de metas y selección de estrategias", "Uso de autoinstrucciones"], c: 1 },
+      { q: "En la fase de autorreflexión se realiza:", o: ["Establecimiento de metas", "Evaluación de resultados, atribución causal y ajuste de estrategias", "Foco atencional y uso de estrategias"], c: 1 },
+      { q: "La evaluación sumativa tiene como objetivo:", o: ["Ajustar la enseñanza durante el proceso", "Verificar los logros al final del proceso", "Conocer los conocimientos previos"], c: 1 },
+      { q: "Las funciones ejecutivas maduran:", o: ["En la primera infancia", "Durante la adolescencia", "En la edad adulta tardía"], c: 1 },
+      { q: "Un mapa conceptual es una estrategia de tipo:", o: ["Metacognitiva", "Cognitiva de organización", "Motivacional"], c: 1 },
+      { q: "La retroalimentación continua es propia de la evaluación:", o: ["Diagnóstica", "Formativa", "Sumativa"], c: 1 },
+      { q: "La flexibilidad cognitiva permite:", o: ["Mantener información en la mente", "Cambiar de perspectiva o tarea mentalmente", "Reprimir impulsos automáticos"], c: 1 },
+      { q: "¿Qué relación existe entre autorregulación, motivación y rendimiento?", o: ["No tienen relación significativa", "La autorregulación y la motivación intrínseca favorecen un mayor rendimiento", "Solo la motivación extrínseca influye en el rendimiento"], c: 1 },
+      { q: "Un diario de aprendizaje es una herramienta para fomentar:", o: ["La memorización", "La metacognición y la reflexión", "El condicionamiento operante"], c: 1 },
+      { q: "Las rúbricas de autoevaluación facilitan:", o: ["La calificación numérica exclusivamente", "Que el alumno valore y reflexione sobre su propio proceso", "La comparación competitiva entre alumnos"], c: 1 },
+    ]
+  },
+  "UA2_T3": {
+    title: "El papel del docente en el aprendizaje",
+    ua: 2,
+    questions: [
+      { q: "La teoría de la autodeterminación (Deci y Ryan) identifica tres necesidades básicas:", o: ["Seguridad, pertenencia y autoestima", "Autonomía, competencia y relación", "Cognición, emoción y conducta"], c: 1 },
+      { q: "La autoeficacia de Bandura se refiere a:", o: ["La capacidad real de una persona", "La creencia en la propia capacidad para lograr objetivos", "El rendimiento académico objetivo"], c: 1 },
+      { q: "Las metas de dominio se orientan a:", o: ["Demostrar capacidad ante los demás", "Aprender y mejorar las competencias propias", "Obtener la mejor nota de la clase"], c: 1 },
+      { q: "Un docente creativo se caracteriza por:", o: ["Seguir el libro de texto al pie de la letra", "Ser flexible, curioso y tolerante con el error", "Evitar cualquier metodología innovadora"], c: 1 },
+      { q: "¿Cuál de estas NO es una metodología activa?", o: ["Aprendizaje basado en problemas (ABP)", "Clase magistral tradicional", "Gamificación"], c: 1 },
+      { q: "El flipped classroom consiste en:", o: ["El profesor imparte toda la clase de forma magistral", "Los alumnos estudian el contenido en casa y el aula se dedica a actividades prácticas", "Los alumnos dan clase al profesor"], c: 1 },
+      { q: "La teoría expectativa-valor (Eccles y Wigfield) sostiene que la motivación depende de:", o: ["Solo la dificultad de la tarea", "Cuánto espera poder hacerlo el alumno y cuánto valor da a la tarea", "Solo las calificaciones obtenidas anteriormente"], c: 1 },
+      { q: "La enseñanza centrada en el estudiante supone:", o: ["Que el docente tome todas las decisiones", "Que el alumno sea protagonista activo y el docente facilite y acompañe", "Que el alumno trabaje siempre de forma individual"], c: 1 },
+      { q: "Las competencias emocionales del docente incluyen:", o: ["Solo conocimientos técnicos de la materia", "Autoconocimiento emocional, autorregulación, empatía, habilidades sociales y resiliencia", "Exclusivamente habilidades de evaluación"], c: 1 },
+      { q: "El bienestar emocional del docente impacta:", o: ["Solo en su vida personal", "Directamente en el clima de aula y en el aprendizaje del alumnado", "Solo en su relación con otros profesores"], c: 1 },
+      { q: "El Design Thinking en educación se relaciona con:", o: ["La memorización de contenidos", "La creatividad y la resolución de problemas", "La evaluación sumativa"], c: 1 },
+      { q: "El brainstorming es una técnica de:", o: ["Evaluación formativa", "Pensamiento divergente y generación de ideas", "Condicionamiento clásico"], c: 1 },
+      { q: "Para fomentar la motivación intrínseca es importante:", o: ["Basarse exclusivamente en premios materiales", "Dar opciones, conectar con la vida real y ofrecer retroalimentación orientadora", "Aplicar castigos frecuentes"], c: 1 },
+      { q: "El aprendizaje-servicio combina:", o: ["Teoría y examen", "Aprendizaje académico con servicio a la comunidad", "Memorización y repetición"], c: 1 },
+      { q: "¿Qué factor NO influye positivamente en la motivación del adolescente?", o: ["Relevancia del contenido para su vida", "Clima de aula negativo y autoritario", "Autonomía percibida y feedback constructivo"], c: 1 },
+      { q: "La gamificación consiste en:", o: ["Jugar videojuegos en clase sin objetivos educativos", "Aplicar mecánicas de juego a contextos educativos para motivar", "Sustituir las clases por juegos de mesa"], c: 1 },
+      { q: "Satisfacer las necesidades de autonomía, competencia y relación fomenta:", o: ["La motivación extrínseca exclusivamente", "La motivación intrínseca", "La apatía y el desinterés"], c: 1 },
+      { q: "Las metas de rendimiento se orientan a:", o: ["Aprender y mejorar", "Demostrar capacidad o evitar parecer incompetente ante los demás", "Desarrollar la creatividad"], c: 1 },
+      { q: "Un clima facilitador del aprendizaje incluye:", o: ["Alta presión competitiva y evaluación constante", "Seguridad emocional, respeto, confianza y participación", "Ausencia total de normas"], c: 1 },
+      { q: "La retroalimentación orientadora se centra en:", o: ["Solo señalar errores", "Indicar al alumno cómo mejorar su proceso de aprendizaje", "Comparar al alumno con sus compañeros"], c: 1 },
+      { q: "Los proyectos interdisciplinarios permiten:", o: ["Trabajar una sola asignatura aisladamente", "Conectar conocimientos de varias áreas en un mismo proyecto", "Evaluar exclusivamente contenidos teóricos"], c: 1 },
+    ]
+  },
+  "UA3_T1": {
+    title: "Rasgos de personalidad y aprendizaje",
+    ua: 3,
+    questions: [
+      { q: "¿Cuántas dimensiones tiene el modelo Big Five?", o: ["Tres", "Cinco", "Siete"], c: 1 },
+      { q: "¿Cuál es el mejor predictor del rendimiento académico según el Big Five?", o: ["Extroversión", "Responsabilidad", "Apertura a la experiencia"], c: 1 },
+      { q: "El rasgo de apertura a la experiencia se relaciona con:", o: ["Organización y autodisciplina", "Curiosidad, creatividad y receptividad a lo nuevo", "Estabilidad emocional"], c: 1 },
+      { q: "Un adolescente con alto neuroticismo tiende a:", o: ["Ser muy organizado y responsable", "Experimentar ansiedad, sensibilidad al estrés y baja tolerancia a la frustración", "Ser muy sociable y participativo"], c: 1 },
+      { q: "La amabilidad se relaciona con:", o: ["Búsqueda de sensaciones intensas", "Empatía, cooperación y confianza en los demás", "Inestabilidad emocional"], c: 1 },
+      { q: "La extroversión facilita en el aula:", o: ["El trabajo individual y solitario", "La participación activa y el trabajo colaborativo", "La reflexión silenciosa"], c: 1 },
+      { q: "¿Qué perfil de personalidad puede asociarse más a conductas de riesgo?", o: ["Alta responsabilidad y baja apertura", "Baja responsabilidad, alto neuroticismo y alta búsqueda de sensaciones", "Alta amabilidad y baja extroversión"], c: 1 },
+      { q: "Los rasgos del Big Five son:", o: ["Categorías rígidas y excluyentes", "Dimensiones continuas donde cada persona se sitúa en mayor o menor medida", "Diagnósticos clínicos"], c: 1 },
+      { q: "La responsabilidad como rasgo incluye:", o: ["Curiosidad y creatividad", "Organización, perseverancia y autodisciplina", "Sociabilidad y energía"], c: 1 },
+      { q: "Un alumno introvertido probablemente prefiera:", o: ["Ser portavoz del grupo en exposiciones orales", "Actividades individuales o en pequeño grupo, evitando exponerse", "Liderar debates ante toda la clase"], c: 1 },
+      { q: "¿Qué estrategia docente es adecuada ante la diversidad de personalidades?", o: ["Aplicar la misma metodología para todos", "Diversificar metodologías y ofrecer canales variados de participación", "Ignorar las diferencias de personalidad"], c: 1 },
+      { q: "¿Qué autor desarrolló el modelo Big Five?", o: ["Erikson", "Caprara y otros (estudios factoriales)", "Piaget"], c: 1 },
+      { q: "Alto neuroticismo se asocia a:", o: ["Mejor rendimiento en exámenes", "Mayor ansiedad ante exámenes y menor rendimiento", "Mayor motivación intrínseca"], c: 1 },
+      { q: "La apertura a la experiencia correlaciona con:", o: ["Resistencia al cambio metodológico", "Motivación intrínseca e interés por actividades creativas", "Baja tolerancia a la frustración"], c: 1 },
+      { q: "Las conductas de riesgo en la adolescencia pueden incluir:", o: ["Solo el fracaso escolar", "Consumo de sustancias, conductas sexuales de riesgo, ciberacoso y autolesiones", "Solo problemas de alimentación"], c: 1 },
+      { q: "Un alumno con alta responsabilidad típicamente:", o: ["Pospone tareas y olvida fechas", "Planifica su tiempo, estudia con regularidad y cumple con sus tareas", "Evita asumir responsabilidades"], c: 1 },
+      { q: "La amabilidad alta favorece:", o: ["La competitividad individual", "El clima social positivo, la resolución de conflictos y el aprendizaje cooperativo", "El aislamiento social"], c: 1 },
+      { q: "El Big Five es útil para los docentes porque:", o: ["Permite diagnosticar trastornos mentales", "Proporciona herramientas para entender diferencias individuales y adaptar la intervención", "Clasifica a los alumnos en categorías fijas"], c: 1 },
+      { q: "Un alumno con alta extroversión y baja responsabilidad podría:", o: ["Ser muy organizado pero callado", "Participar mucho pero tener dificultad para mantener el orden y la concentración", "Preferir siempre trabajar solo"], c: 1 },
+      { q: "La detección de señales de alerta en conductas de riesgo es responsabilidad:", o: ["Solo del orientador", "Del equipo docente en su conjunto", "Solo de la familia"], c: 1 },
+    ]
+  },
+  "UA3_T2": {
+    title: "Diferencias individuales en el aprendizaje",
+    ua: 3,
+    questions: [
+      { q: "¿Qué modelo clasifica los estilos de aprendizaje en Visual, Auditivo, Lectura/Escritura y Kinestésico?", o: ["Modelo de Kolb", "Modelo VARK de Fleming y Mills", "Modelo de Gardner"], c: 1 },
+      { q: "Un estilo cognitivo 'dependiente del campo' se caracteriza por:", o: ["Analizar información de forma aislada del contexto", "Percibir la información de forma global, apoyándose en el contexto", "Responder rápidamente con frecuentes errores"], c: 1 },
+      { q: "Un alumno con estilo cognitivo reflexivo:", o: ["Responde rápidamente pero con errores", "Toma decisiones tras considerar múltiples alternativas; más lento pero preciso", "Solo aprende mediante la manipulación de objetos"], c: 1 },
+      { q: "La teoría de las inteligencias múltiples fue propuesta por:", o: ["Sternberg", "Gardner", "Ausubel"], c: 1 },
+      { q: "¿Cuántas inteligencias propone Gardner?", o: ["Cinco", "Ocho", "Tres"], c: 1 },
+      { q: "La ansiedad ante la evaluación puede:", o: ["Mejorar siempre el rendimiento", "Bloquear el aprendizaje y el rendimiento", "No tener ningún efecto"], c: 1 },
+      { q: "El absentismo escolar es:", o: ["Solo una causa del bajo rendimiento", "Tanto causa como consecuencia del bajo rendimiento", "Irrelevante para el aprendizaje"], c: 1 },
+      { q: "El trabajo cooperativo en el aula fomenta:", o: ["La competitividad individual", "Inclusión, aprendizaje entre iguales y habilidades sociales", "El aislamiento de los alumnos con dificultades"], c: 1 },
+      { q: "La flexibilidad de tiempos consiste en:", o: ["Que todos los alumnos terminen al mismo tiempo", "Adaptar los ritmos para respetar la diversidad de aprendizaje", "Acelerar el ritmo para cubrir más contenido"], c: 1 },
+      { q: "Un alumno kinestésico aprende mejor:", o: ["Escuchando explicaciones orales largas", "Haciendo, tocando y moviéndose: experimentación práctica", "Leyendo y reescribiendo apuntes"], c: 1 },
+      { q: "Los estilos cognitivos son:", o: ["Muy flexibles y cambian constantemente", "Relativamente estables y vinculados a la personalidad", "Exclusivamente genéticos e inmutables"], c: 1 },
+      { q: "Los estilos de aprendizaje son:", o: ["Idénticos a los estilos cognitivos", "Más flexibles que los estilos cognitivos y pueden adaptarse", "Diagnósticos clínicos"], c: 1 },
+      { q: "La implicación del equipo docente implica:", o: ["Que cada profesor trabaje de forma aislada", "Coordinación, coherencia metodológica y compromiso personal", "Solo la labor del tutor"], c: 1 },
+      { q: "Diversificar los tipos de contenidos (visuales, auditivos, manipulativos) permite:", o: ["Complicar innecesariamente la planificación", "Llegar a todos los alumnos según sus fortalezas", "Solo beneficiar a los alumnos con dificultades"], c: 1 },
+      { q: "Un alumno visual recordará mejor:", o: ["Una explicación oral extensa", "Un esquema, infografía o mapa conceptual", "Una actividad de manipulación de objetos"], c: 1 },
+      { q: "Un alumno auditivo prefiere:", o: ["Diagramas y mapas mentales", "Escuchar explicaciones o participar en debates", "Reescribir apuntes varias veces"], c: 1 },
+      { q: "El fracaso escolar previo condiciona:", o: ["Solo las calificaciones", "La autopercepción, la motivación y el progreso educativo", "Exclusivamente la relación con los padres"], c: 1 },
+      { q: "Un alumno 'independiente del campo' prefiere:", o: ["Datos estructurados y análisis lógico sin necesidad de ejemplos contextualizados", "Información enmarcada en historias o situaciones reales", "Actividades exclusivamente grupales"], c: 0 },
+      { q: "La inteligencia interpersonal de Gardner se refiere a:", o: ["La capacidad de entenderse a uno mismo", "La capacidad de entender y relacionarse con los demás", "La habilidad para el razonamiento lógico-matemático"], c: 1 },
+      { q: "La inteligencia intrapersonal se refiere a:", o: ["La habilidad musical", "La capacidad de autoconocimiento y reflexión sobre uno mismo", "La habilidad para relacionarse con otros"], c: 1 },
+      { q: "Un estilo cognitivo impulsivo se caracteriza por:", o: ["Lentitud y alta precisión", "Respuestas rápidas, a menudo con errores", "Reflexión profunda antes de responder"], c: 1 },
+    ]
+  },
+  "UA3_T3": {
+    title: "Diseño Universal para el Aprendizaje (DUA)",
+    ua: 3,
+    questions: [
+      { q: "¿Qué organización desarrolló el DUA?", o: ["UNESCO", "CAST (Center for Applied Special Technology)", "OMS"], c: 1 },
+      { q: "¿En qué década se desarrolló el DUA?", o: ["Años 70", "Años 90", "Años 2010"], c: 1 },
+      { q: "¿Cuántos principios tiene el DUA?", o: ["Dos", "Tres", "Cinco"], c: 1 },
+      { q: "El Principio I del DUA se refiere a:", o: ["Múltiples formas de acción y expresión", "Múltiples formas de representación (cómo se presenta la información)", "Múltiples formas de implicación"], c: 1 },
+      { q: "El Principio II del DUA se refiere a:", o: ["Múltiples formas de representación", "Múltiples formas de acción y expresión (cómo demuestran lo aprendido)", "Múltiples formas de implicación"], c: 1 },
+      { q: "El Principio III del DUA busca:", o: ["Presentar la información de distintas formas", "Motivar y comprometer a los estudiantes (múltiples formas de implicación)", "Evaluar solo mediante exámenes escritos"], c: 1 },
+      { q: "El DUA se inspira en:", o: ["El modelo médico de la discapacidad", "El diseño universal en arquitectura (crear entornos accesibles desde el inicio)", "El conductismo de Skinner"], c: 1 },
+      { q: "¿Cuál es la filosofía central del DUA?", o: ["Adaptar después de identificar barreras", "Diseñar desde el inicio para que sea accesible a todos, minimizando barreras", "Crear itinerarios separados para alumnos con dificultades"], c: 1 },
+      { q: "Un ejemplo de aplicación del Principio I sería:", o: ["Ofrecer solo texto escrito como fuente de información", "Usar recursos visuales, auditivos, kinestésicos y tecnologías adaptativas", "Permitir solo presentaciones orales"], c: 1 },
+      { q: "Un ejemplo de aplicación del Principio II sería:", o: ["Exigir solo exámenes escritos", "Ofrecer opciones: ensayo, vídeo, exposición oral o presentación digital", "Que todos los alumnos entreguen el mismo formato de trabajo"], c: 1 },
+      { q: "La evaluación formativa y personalizada en el DUA incluye:", o: ["Solo exámenes tipo test", "Rúbricas claras, retroalimentación continua y múltiples formatos", "Calificación exclusivamente numérica"], c: 1 },
+      { q: "La organización del aula según el DUA debe incluir:", o: ["Pupitres fijos en filas", "Espacios flexibles, zonas de trabajo individual y grupal, materiales accesibles", "Separación del alumnado con dificultades"], c: 1 },
+      { q: "El DUA se fundamenta en investigaciones de:", o: ["Psicoanálisis", "Neurociencia", "Conductismo clásico"], c: 1 },
+      { q: "¿Qué reto supone la implementación del DUA?", o: ["No tiene ningún reto", "Formación docente, disponibilidad de recursos, tiempo de planificación y resistencia al cambio", "Solo la falta de presupuesto"], c: 1 },
+      { q: "Las tecnologías adaptativas en el DUA permiten:", o: ["Solo entretener al alumnado", "Ajustar tamaño de letra, contraste, velocidad, subtítulos y traducciones", "Sustituir completamente al docente"], c: 1 },
+      { q: "El DUA beneficia:", o: ["Solo al alumnado con discapacidad", "A todo el alumnado, promoviendo mayor participación, motivación e inclusión", "Solo a los alumnos con altas capacidades"], c: 1 },
+      { q: "El Principio I corresponde al:", o: ["CÓMO del aprendizaje", "QUÉ del aprendizaje (redes de reconocimiento)", "POR QUÉ del aprendizaje"], c: 1 },
+      { q: "El Principio II corresponde al:", o: ["QUÉ del aprendizaje", "CÓMO del aprendizaje (redes estratégicas)", "POR QUÉ del aprendizaje"], c: 1 },
+      { q: "El Principio III corresponde al:", o: ["QUÉ del aprendizaje", "CÓMO del aprendizaje", "POR QUÉ del aprendizaje (redes afectivas)"], c: 2 },
+      { q: "El DUA propone diseñar la enseñanza:", o: ["Solo para el alumno promedio", "Desde el inicio pensando en la diversidad de todo el alumnado", "Después de detectar problemas"], c: 1 },
+      { q: "¿Qué autor/es se citan como referencia del DUA en España?", o: ["Pastor et al. (2014)", "Bandura (1977)", "Piaget (1970)"], c: 0 },
+    ]
+  },
+  "UA4_T1": {
+    title: "Atención a la diversidad en educación",
+    ua: 4,
+    questions: [
+      { q: "¿Qué ley española introdujo formalmente el concepto de 'atención a la diversidad'?", o: ["LOE (2006)", "LOGSE (1990)", "LOMCE (2013)"], c: 1 },
+      { q: "¿Cuál es la diferencia clave entre integración e inclusión?", o: ["Son sinónimos", "En la integración el alumno se adapta al sistema; en la inclusión el sistema se transforma", "La inclusión solo se aplica a alumnos con discapacidad"], c: 1 },
+      { q: "Los valores éticos de la atención a la diversidad incluyen:", o: ["Competitividad y meritocracia", "Equidad, justicia, solidaridad y respeto", "Uniformidad y estandarización"], c: 1 },
+      { q: "El Nivel I de intervención a la diversidad abarca:", o: ["Adaptaciones curriculares individuales", "La comunidad educativa y las relaciones con el entorno", "Las medidas del aula ordinaria"], c: 1 },
+      { q: "El Nivel IV de intervención se centra en:", o: ["Medidas generales para todo el centro", "Intervenciones individualizadas (adaptaciones curriculares, planes personalizados)", "La cultura inclusiva de toda la comunidad"], c: 1 },
+      { q: "La inclusión educativa implica:", o: ["Solo la presencia del alumno en el aula ordinaria", "Presencia, participación activa y reconocimiento de la singularidad de cada alumno", "Crear itinerarios separados para cada tipo de alumno"], c: 1 },
+      { q: "La infantilización y el paternalismo hacia personas con discapacidad:", o: ["Son actitudes positivas y protectoras", "Niegan la capacidad de toma de decisiones y limitan la autonomía", "Son recomendadas por la legislación educativa"], c: 1 },
+      { q: "En la ESO, la atención a la diversidad incluye:", o: ["Solo evaluaciones adaptadas", "Mayor estructura de apoyos, orientación y programas de diversificación", "Ausencia de medidas específicas"], c: 1 },
+      { q: "En la Formación Profesional, la atención a la diversidad tiene un enfoque:", o: ["Exclusivamente teórico", "Práctico, con adaptaciones en módulos profesionales e inserción laboral", "Idéntico al de Bachillerato"], c: 1 },
+      { q: "La colaboración con agentes externos incluye:", o: ["Solo la familia", "Orientadores, equipos técnicos, servicios de salud y asociaciones", "Solo el equipo directivo del centro"], c: 1 },
+      { q: "La relación con las familias en la atención a la diversidad debe basarse en:", o: ["Comunicación unidireccional del centro", "Comunicación fluida, respeto, confianza y corresponsabilidad", "Delegar toda responsabilidad en la familia"], c: 1 },
+      { q: "El Nivel II de intervención se sitúa en:", o: ["La comunidad y el entorno", "El centro educativo (organización de apoyos, coordinación docente)", "El alumno individual"], c: 1 },
+      { q: "El Nivel III de intervención se centra en:", o: ["El aula (metodologías inclusivas, DUA, agrupamientos flexibles)", "La comunidad educativa general", "Adaptaciones curriculares significativas individuales"], c: 0 },
+      { q: "La atención a la diversidad NO es:", o: ["Una responsabilidad moral del docente", "Un añadido opcional al currículo", "Un eje pedagógico fundamental"], c: 1 },
+      { q: "El modelo inclusivo defiende que:", o: ["El estudiante debe adaptarse al sistema", "Es la escuela la que debe diseñarse para atender a la diversidad", "Solo los especialistas deben atender al alumnado diverso"], c: 1 },
+      { q: "En Bachillerato, la flexibilización curricular es:", o: ["Muy amplia", "Más limitada que en ESO", "Inexistente"], c: 1 },
+      { q: "La diversidad del alumnado se reconoce actualmente como:", o: ["Un problema a resolver", "Una riqueza y un valor pedagógico", "Un obstáculo para el rendimiento medio"], c: 1 },
+      { q: "El profesorado es considerado:", o: ["Un actor secundario en la atención a la diversidad", "Un agente clave en la atención a la diversidad", "Responsable solo de los contenidos"], c: 1 },
+      { q: "Un ejemplo de integración (no inclusión) sería:", o: ["Un alumno con diversidad funcional participando en actividades con materiales accesibles", "Un alumno con diversidad funcional trabajando con material diferente, separado del grupo", "Un aula diseñada desde el inicio con metodología flexible para todos"], c: 1 },
+      { q: "La atención a la diversidad exige al docente:", o: ["Actitud autoritaria y rígida", "Actitud reflexiva, empática y comprometida", "Ignorar las diferencias para tratar a todos igual"], c: 1 },
+    ]
+  },
+  "UA4_T2": {
+    title: "Necesidades Específicas de Apoyo Educativo (NEAE)",
+    ua: 4,
+    questions: [
+      { q: "¿Qué significan las siglas NEAE?", o: ["Necesidades Educativas de Aprendizaje Específico", "Necesidades Específicas de Apoyo Educativo", "Normas Especiales de Atención Educativa"], c: 1 },
+      { q: "El TDAH es una alteración del:", o: ["Sistema óseo", "Neurodesarrollo", "Sistema inmunitario"], c: 1 },
+      { q: "¿Cuántas modalidades de TDAH existen?", o: ["Dos", "Tres: inatento, hiperactivo-impulsivo y combinado", "Una sola"], c: 1 },
+      { q: "La dislexia es una dificultad específica de:", o: ["Cálculo", "Lectura", "Expresión oral"], c: 1 },
+      { q: "La discalculia afecta al:", o: ["Lenguaje escrito", "Cálculo y las habilidades matemáticas", "Lenguaje oral"], c: 1 },
+      { q: "La disgrafía afecta a:", o: ["La lectura", "La escritura", "La comprensión oral"], c: 1 },
+      { q: "Las DEA (dificultades específicas de aprendizaje) tienen base:", o: ["Social y cultural", "Neurobiológica", "Exclusivamente emocional"], c: 1 },
+      { q: "La detección temprana de las NEAE es importante porque:", o: ["No tiene relevancia", "Permite activar medidas de apoyo antes de que las dificultades se consoliden", "Solo es útil en educación infantil"], c: 1 },
+      { q: "¿Qué tipo de NEAE incluye a alumnos de otros países con desconocimiento del idioma?", o: ["Altas capacidades", "Incorporación tardía al sistema educativo", "TDAH"], c: 1 },
+      { q: "Las altas capacidades pueden manifestarse como:", o: ["Solo alto rendimiento académico", "Potencial intelectual superior que puede incluir aburrimiento, desmotivación o infradiagnóstico", "Solo habilidades artísticas"], c: 1 },
+      { q: "Una estrategia clave para el TDAH es:", o: ["Tareas extensas sin pausas", "Fragmentación de tareas y pausas activas", "Ausencia de estructura y rutinas"], c: 1 },
+      { q: "El refuerzo positivo inmediato en TDAH debe centrarse en:", o: ["Solo el resultado final", "El esfuerzo más que en el resultado", "La comparación con otros alumnos"], c: 1 },
+      { q: "Los trastornos del lenguaje incluyen:", o: ["Solo la dislexia", "TEL/TDL, disfemia y mutismo selectivo, entre otros", "Solo la discalculia"], c: 1 },
+      { q: "Para alumnado con altas capacidades se recomienda:", o: ["Repetir contenidos ya dominados", "Proyectos de profundización, mentoría, flexibilización curricular y compactación", "Reducir el nivel de exigencia"], c: 1 },
+      { q: "Las condiciones personales o de historia escolar incluyen:", o: ["Solo discapacidades intelectuales", "Situaciones sociofamiliares, absentismo, hospitalización e itinerancia", "Solo altas capacidades"], c: 1 },
+      { q: "¿Quién es agente activo en la detección de NEAE?", o: ["Solo el orientador", "Todo el profesorado", "Solo la familia"], c: 1 },
+      { q: "La flexibilidad en la evaluación para alumnado con TDAH:", o: ["Significa bajar el nivel de exigencia", "Garantiza que pueda demostrar lo aprendido sin que el trastorno se lo impida", "No está contemplada en la normativa"], c: 1 },
+      { q: "Un alumno con dislexia en secundaria puede beneficiarse de:", o: ["Más texto escrito sin adaptaciones", "Acceso a textos digitales con lectores, tiempo extra y evaluación oral", "Eliminación de todas las tareas de lectura"], c: 1 },
+      { q: "El infradiagnóstico de altas capacidades es especialmente frecuente en:", o: ["Chicos con buen rendimiento", "Chicas", "Alumnos extranjeros exclusivamente"], c: 1 },
+      { q: "Para la incorporación tardía al sistema educativo se pueden usar:", o: ["Solo clases particulares privadas", "Aulas de acogida, plan lingüístico, tutoría entre iguales y mediadores culturales", "Exclusivamente repetición de curso"], c: 1 },
+      { q: "Las NEAE NO incluyen:", o: ["TDAH", "Dificultades de aprendizaje", "Preferencias estéticas del alumno"], c: 2 },
+    ]
+  },
+  "UA4_T3": {
+    title: "Necesidades Educativas Especiales (NEE)",
+    ua: 4,
+    questions: [
+      { q: "¿Qué informe supuso un cambio de paradigma al introducir el concepto de NEE?", o: ["Informe PISA", "Informe Warnock (1978)", "Informe Delors"], c: 1 },
+      { q: "Las NEE se definen como necesidades derivadas de:", o: ["Cualquier dificultad de aprendizaje", "Discapacidades sensoriales, motoras, intelectuales, TEA o trastornos graves de conducta", "Solo bajo rendimiento académico"], c: 1 },
+      { q: "La discapacidad intelectual implica limitaciones en:", o: ["Solo el cociente intelectual", "Funcionamiento intelectual y conducta adaptativa", "Solo la motricidad"], c: 1 },
+      { q: "La discapacidad visual NO implica:", o: ["Una forma distinta de acceder a la información", "Una menor capacidad cognitiva", "Necesidad de materiales adaptados"], c: 1 },
+      { q: "El sistema braille es un apoyo clave para alumnado con:", o: ["Discapacidad auditiva", "Discapacidad visual (ceguera)", "Discapacidad motora"], c: 1 },
+      { q: "La lengua de signos es un recurso fundamental para alumnado con:", o: ["Discapacidad visual", "Discapacidad auditiva", "Discapacidad intelectual"], c: 1 },
+      { q: "El TEA se caracteriza por:", o: ["Solo problemas de conducta", "Dificultades en comunicación social e interacción, con patrones restrictivos/repetitivos", "Exclusivamente discapacidad intelectual"], c: 1 },
+      { q: "El TEA presenta:", o: ["Un cuadro clínico uniforme en todos los casos", "Gran variabilidad (espectro)", "Solo dificultades motoras"], c: 1 },
+      { q: "El trastorno grave de conducta (TGC) incluye:", o: ["Solo agresividad física", "Patrones persistentes de comportamiento disruptivo, agresivo o antisocial", "Solo el TDAH"], c: 1 },
+      { q: "Para alumnado con discapacidad intelectual, las adaptaciones curriculares deben ser:", o: ["Iguales para todos", "Significativas e individualizadas, consensuadas con el equipo de orientación", "Exclusivamente de contenido, no de metodología"], c: 1 },
+      { q: "Los pictogramas y secuencias gráficas son apoyos especialmente útiles para:", o: ["Solo alumnado con discapacidad visual", "Alumnado con discapacidad intelectual y/o TEA", "Solo alumnado con discapacidad motora"], c: 1 },
+      { q: "La discapacidad motora puede requerir:", o: ["Solo adaptaciones metodológicas", "Eliminación de barreras físicas, tecnología asistiva y tiempos ampliados", "Solo apoyo emocional"], c: 1 },
+      { q: "Para el alumnado con TEA es importante:", o: ["Cambiar constantemente las rutinas para estimularlo", "Proporcionar anticipación, estructura y apoyos visuales", "Evitar cualquier tipo de interacción social"], c: 1 },
+      { q: "Los intereses restringidos en el TEA pueden usarse como:", o: ["Motivo de castigo", "Vía de motivación para el aprendizaje", "Criterio de exclusión"], c: 1 },
+      { q: "La sobreestimulación sensorial debe reducirse especialmente en alumnado con:", o: ["Altas capacidades", "TEA", "Dificultades de lectura"], c: 1 },
+      { q: "El Informe Warnock sustituyó el término 'educación especial' por:", o: ["Educación adaptada", "Necesidades educativas especiales", "Educación inclusiva"], c: 1 },
+      { q: "Las NEE requieren apoyos durante:", o: ["Solo la educación infantil", "Un periodo o a lo largo de toda la escolarización", "Solo la educación secundaria"], c: 1 },
+      { q: "La discapacidad auditiva puede afectar al:", o: ["Solo al equilibrio", "Desarrollo del lenguaje", "Solo a la visión"], c: 1 },
+      { q: "Los sistemas FM son un recurso para alumnado con:", o: ["Discapacidad visual", "Discapacidad auditiva", "Discapacidad intelectual"], c: 1 },
+      { q: "El enfoque educativo inclusivo para NEE se centra en:", o: ["Las limitaciones del alumno", "Eliminar barreras y facilitar el acceso al aprendizaje, no en reducir expectativas", "Solo la calificación numérica"], c: 1 },
+      { q: "El TGC incluye diagnósticos como:", o: ["Solo TDAH", "Trastorno negativista desafiante y trastorno de conducta", "Solo ansiedad"], c: 1 },
+      { q: "Para el TGC se recomiendan:", o: ["Solo castigos frecuentes", "Límites claros, refuerzo positivo, programas de modificación de conducta y coordinación", "Ignorar completamente la conducta"], c: 1 },
+      { q: "La adaptación de materiales para discapacidad visual incluye:", o: ["Solo ampliar el tamaño de letra", "Mapas en relieve, lectores de pantalla, audiodescripción y braille", "Solo ubicación preferente en el aula"], c: 1 },
+      { q: "¿Cuál es la diferencia principal entre NEAE y NEE?", o: ["Son exactamente lo mismo", "Las NEE son una categoría más específica dentro de las NEAE, asociadas a discapacidad o trastorno del desarrollo", "Las NEAE son más graves que las NEE"], c: 1 },
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════════════
+// UTILITY FUNCTIONS
+// ═══════════════════════════════════════════════════════════
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function pickN(arr, n) {
+  return shuffle(arr).slice(0, n);
+}
+
+function generateTest(bank, n = 20) {
+  const selected = pickN(bank, Math.min(n, bank.length));
+  return selected.map(q => {
+    // Shuffle options but track correct answer
+    const indices = [0, 1, 2];
+    const shuffled = shuffle(indices);
+    return {
+      q: q.q,
+      options: shuffled.map(i => q.o[i]),
+      correct: shuffled.indexOf(q.c),
+    };
+  });
+}
+
+function generateGeneralTest(n = 20) {
+  const allQ = [];
+  Object.values(questionBanks).forEach(bank => {
+    bank.questions.forEach(q => allQ.push(q));
+  });
+  return generateTest(allQ, n);
+}
+
+function getGrade(score, total) {
+  const pct = (score / total) * 10;
+  if (pct >= 9) return { label: "Sobresaliente", emoji: "🏆", color: "#276749" };
+  if (pct >= 7) return { label: "Notable", emoji: "🎯", color: "#2B6CB0" };
+  if (pct >= 6) return { label: "Bien", emoji: "👍", color: "#2C5282" };
+  if (pct >= 5) return { label: "Aprobado", emoji: "✅", color: "#C05621" };
+  return { label: "Suspenso", emoji: "📚", color: "#C53030" };
+}
+
+// ═══════════════════════════════════════════════════════════
+// COMPONENTS
+// ═══════════════════════════════════════════════════════════
+
+const UA_COLORS = {
+  1: { bg: "#1B2A4A", light: "#EBF4FA", accent: "#2C5282" },
+  2: { bg: "#276749", light: "#F0FFF4", accent: "#2F855A" },
+  3: { bg: "#744210", light: "#FFFAF0", accent: "#C05621" },
+  4: { bg: "#553C9A", light: "#FAF5FF", accent: "#6B46C1" },
+  general: { bg: "#1A202C", light: "#F7FAFC", accent: "#4A5568" },
+};
+
+function QuizApp() {
+  const [screen, setScreen] = useState("home");
+  const [currentTest, setCurrentTest] = useState(null);
+  const [answers, setAnswers] = useState({});
+  const [currentQ, setCurrentQ] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [testInfo, setTestInfo] = useState(null);
+  const [testCount, setTestCount] = useState({});
+
+  const startTest = useCallback((bankKey, testNum) => {
+    let questions;
+    let info;
+    if (bankKey === "general") {
+      questions = generateGeneralTest(20);
+      info = { title: `Test General #${testNum}`, ua: "general", bankKey };
+    } else {
+      const bank = questionBanks[bankKey];
+      questions = generateTest(bank.questions, 20);
+      info = { title: `${bank.title} — Test #${testNum}`, ua: bank.ua, bankKey };
+    }
+    setCurrentTest(questions);
+    setTestInfo(info);
+    setAnswers({});
+    setCurrentQ(0);
+    setShowResults(false);
+    setScreen("test");
+  }, []);
+
+  const selectAnswer = useCallback((qIdx, optIdx) => {
+    if (showResults) return;
+    setAnswers(prev => ({ ...prev, [qIdx]: optIdx }));
+  }, [showResults]);
+
+  const finishTest = useCallback(() => {
+    setShowResults(true);
+    setCurrentQ(0);
+    const key = testInfo.bankKey + "_" + (testCount[testInfo.bankKey] || 0);
+    setTestCount(prev => ({ ...prev, [testInfo.bankKey]: (prev[testInfo.bankKey] || 0) + 1 }));
+  }, [testInfo, testCount]);
+
+  const score = useMemo(() => {
+    if (!currentTest || !showResults) return 0;
+    let s = 0;
+    currentTest.forEach((q, i) => {
+      if (answers[i] === q.correct) s++;
+    });
+    return s;
+  }, [currentTest, answers, showResults]);
+
+  const answered = Object.keys(answers).length;
+  const uaColor = testInfo ? UA_COLORS[testInfo.ua] || UA_COLORS.general : UA_COLORS[1];
+
+  // ── HOME SCREEN ──
+  if (screen === "home") {
+    const uas = [
+      { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1", "UA1_T2", "UA1_T3"] },
+      { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1", "UA2_T2", "UA2_T3"] },
+      { num: 3, title: "Personalidad, diferencias y DUA", topics: ["UA3_T1", "UA3_T2", "UA3_T3"] },
+      { num: 4, title: "Diversidad, NEAE y NEE", topics: ["UA4_T1", "UA4_T2", "UA4_T3"] },
+    ];
+    return (
+      <div style={{ minHeight: "100vh", background: "#F7FAFC", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
+        <div style={{ background: "linear-gradient(135deg, #1B2A4A 0%, #2C5282 100%)", padding: "32px 20px 28px", textAlign: "center" }}>
+          <h1 style={{ color: "#fff", fontSize: 22, margin: 0, fontWeight: 700, letterSpacing: "-0.3px" }}>
+            📝 Tests de Repaso
+          </h1>
+          <p style={{ color: "#BEE3F8", fontSize: 13, margin: "6px 0 0", fontWeight: 400 }}>
+            Aprendizaje y desarrollo de la personalidad del adolescente
+          </p>
+          <p style={{ color: "#90CDF4", fontSize: 11, margin: "4px 0 0" }}>
+            20 preguntas · 3 opciones · Sin penalización
+          </p>
+        </div>
+
+        <div style={{ maxWidth: 600, margin: "0 auto", padding: "16px 16px 32px" }}>
+          {uas.map(ua => (
+            <div key={ua.num} style={{ marginBottom: 20 }}>
+              <div style={{
+                background: UA_COLORS[ua.num].bg,
+                color: "#fff",
+                padding: "10px 16px",
+                borderRadius: "10px 10px 0 0",
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: "0.5px"
+              }}>
+                UNIDAD {ua.num} — {ua.title}
+              </div>
+              <div style={{ background: "#fff", borderRadius: "0 0 10px 10px", boxShadow: "0 1px 4px rgba(0,0,0,0.07)" }}>
+                {ua.topics.map(key => {
+                  const bank = questionBanks[key];
+                  const maxTests = Math.min(4, Math.floor(bank.questions.length / 15));
+                  return (
+                    <div key={key} style={{ padding: "12px 16px", borderBottom: "1px solid #EDF2F7" }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#2D3748", marginBottom: 8 }}>
+                        {bank.title}
+                      </div>
+                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                        {Array.from({ length: maxTests }, (_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => startTest(key, i + 1)}
+                            style={{
+                              background: UA_COLORS[ua.num].light,
+                              border: `1.5px solid ${UA_COLORS[ua.num].accent}`,
+                              color: UA_COLORS[ua.num].accent,
+                              borderRadius: 6,
+                              padding: "5px 12px",
+                              fontSize: 12,
+                              fontWeight: 600,
+                              cursor: "pointer",
+                              transition: "all 0.15s",
+                            }}
+                            onMouseOver={e => { e.target.style.background = UA_COLORS[ua.num].accent; e.target.style.color = "#fff"; }}
+                            onMouseOut={e => { e.target.style.background = UA_COLORS[ua.num].light; e.target.style.color = UA_COLORS[ua.num].accent; }}
+                          >
+                            Test {i + 1}
+                          </button>
+                        ))}
+                        <span style={{ fontSize: 10, color: "#A0AEC0", alignSelf: "center", marginLeft: 4 }}>
+                          {bank.questions.length} preguntas
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
+          {/* GENERAL TESTS */}
+          <div style={{ marginBottom: 20 }}>
+            <div style={{
+              background: "linear-gradient(135deg, #1A202C 0%, #4A5568 100%)",
+              color: "#fff",
+              padding: "10px 16px",
+              borderRadius: "10px 10px 0 0",
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "0.5px"
+            }}>
+              🎯 TESTS GENERALES — Todas las unidades
+            </div>
+            <div style={{ background: "#fff", borderRadius: "0 0 10px 10px", padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.07)" }}>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                {Array.from({ length: 10 }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => startTest("general", i + 1)}
+                    style={{
+                      background: "#F7FAFC",
+                      border: "1.5px solid #4A5568",
+                      color: "#4A5568",
+                      borderRadius: 6,
+                      padding: "5px 12px",
+                      fontSize: 12,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      transition: "all 0.15s",
+                    }}
+                    onMouseOver={e => { e.target.style.background = "#4A5568"; e.target.style.color = "#fff"; }}
+                    onMouseOut={e => { e.target.style.background = "#F7FAFC"; e.target.style.color = "#4A5568"; }}
+                  >
+                    General {i + 1}
+                  </button>
+                ))}
+              </div>
+              <p style={{ fontSize: 10, color: "#A0AEC0", marginTop: 8, marginBottom: 0 }}>
+                Cada test general mezcla preguntas de todos los temas al azar
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── TEST SCREEN ──
+  if (screen === "test" && currentTest) {
+    const q = currentTest[currentQ];
+    const grade = showResults ? getGrade(score, currentTest.length) : null;
+
+    return (
+      <div style={{ minHeight: "100vh", background: "#F7FAFC", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
+        {/* Header */}
+        <div style={{ background: uaColor.bg, padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <button
+            onClick={() => setScreen("home")}
+            style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", borderRadius: 6, padding: "5px 12px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}
+          >
+            ← Volver
+          </button>
+          <span style={{ color: "#fff", fontSize: 12, fontWeight: 600, textAlign: "center", flex: 1, padding: "0 8px" }}>
+            {testInfo.title}
+          </span>
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 11, whiteSpace: "nowrap" }}>
+            {answered}/20
+          </span>
+        </div>
+
+        {/* Results banner */}
+        {showResults && grade && (
+          <div style={{
+            background: `linear-gradient(135deg, ${grade.color}15, ${grade.color}25)`,
+            border: `2px solid ${grade.color}`,
+            margin: "16px 16px 0",
+            borderRadius: 12,
+            padding: "20px",
+            textAlign: "center",
+          }}>
+            <div style={{ fontSize: 36, marginBottom: 4 }}>{grade.emoji}</div>
+            <div style={{ fontSize: 28, fontWeight: 800, color: grade.color }}>
+              {score}/{currentTest.length}
+            </div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: grade.color, marginTop: 2 }}>
+              {grade.label}
+            </div>
+            <div style={{ fontSize: 12, color: "#718096", marginTop: 6 }}>
+              Nota: {((score / currentTest.length) * 10).toFixed(1)} / 10
+            </div>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 14 }}>
+              <button
+                onClick={() => { setScreen("home"); }}
+                style={{ background: "#fff", border: `1.5px solid ${grade.color}`, color: grade.color, borderRadius: 8, padding: "8px 18px", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              >
+                Menú principal
+              </button>
+              <button
+                onClick={() => startTest(testInfo.bankKey, Math.floor(Math.random() * 10) + 1)}
+                style={{ background: grade.color, border: "none", color: "#fff", borderRadius: 8, padding: "8px 18px", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              >
+                Nuevo test
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Question navigation */}
+        <div style={{ padding: "12px 16px 4px", overflowX: "auto" }}>
+          <div style={{ display: "flex", gap: 4, minWidth: "fit-content" }}>
+            {currentTest.map((_, i) => {
+              const isActive = i === currentQ;
+              const isAnswered = answers[i] !== undefined;
+              const isCorrect = showResults && answers[i] === currentTest[i].correct;
+              const isWrong = showResults && isAnswered && answers[i] !== currentTest[i].correct;
+              const notAnswered = showResults && !isAnswered;
+              let bg = isActive ? uaColor.accent : isAnswered ? uaColor.light : "#EDF2F7";
+              let clr = isActive ? "#fff" : isAnswered ? uaColor.accent : "#A0AEC0";
+              let bdr = isActive ? uaColor.accent : "transparent";
+              if (showResults) {
+                if (isCorrect) { bg = "#C6F6D5"; clr = "#276749"; bdr = "#38A169"; }
+                else if (isWrong) { bg = "#FED7D7"; clr = "#C53030"; bdr = "#FC8181"; }
+                else if (notAnswered) { bg = "#FEFCBF"; clr = "#975A16"; bdr = "#ECC94B"; }
+                if (isActive) { bdr = "#1A202C"; }
+              }
+              return (
+                <button
+                  key={i}
+                  onClick={() => setCurrentQ(i)}
+                  style={{
+                    width: 28, height: 28, borderRadius: 6, border: `2px solid ${bdr}`,
+                    background: bg, color: clr, fontSize: 10, fontWeight: 700,
+                    cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                    padding: 0,
+                  }}
+                >
+                  {i + 1}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Question card */}
+        <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 16px 100px" }}>
+          <div style={{ background: "#fff", borderRadius: 12, padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginTop: 8 }}>
+            <div style={{ fontSize: 11, color: uaColor.accent, fontWeight: 700, marginBottom: 8 }}>
+              Pregunta {currentQ + 1} de {currentTest.length}
+            </div>
+            <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "#1A202C", fontWeight: 600, margin: "0 0 16px" }}>
+              {q.q}
+            </p>
+            {q.options.map((opt, oi) => {
+              const selected = answers[currentQ] === oi;
+              const isCorrectOpt = showResults && oi === q.correct;
+              const isWrongSelected = showResults && selected && oi !== q.correct;
+              let optBg = selected ? `${uaColor.accent}12` : "#F7FAFC";
+              let optBorder = selected ? uaColor.accent : "#E2E8F0";
+              let optColor = "#2D3748";
+              if (showResults) {
+                if (isCorrectOpt) { optBg = "#F0FFF4"; optBorder = "#38A169"; optColor = "#276749"; }
+                if (isWrongSelected) { optBg = "#FFF5F5"; optBorder = "#FC8181"; optColor = "#C53030"; }
+              }
+              return (
+                <button
+                  key={oi}
+                  onClick={() => selectAnswer(currentQ, oi)}
+                  style={{
+                    display: "flex", alignItems: "flex-start", gap: 10, width: "100%",
+                    background: optBg, border: `2px solid ${optBorder}`, borderRadius: 10,
+                    padding: "12px 14px", marginBottom: 8, cursor: showResults ? "default" : "pointer",
+                    textAlign: "left", transition: "all 0.15s",
+                  }}
+                >
+                  <span style={{
+                    width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 11, fontWeight: 700,
+                    background: (showResults && isCorrectOpt) ? "#38A169" : (showResults && isWrongSelected) ? "#E53E3E" : selected ? uaColor.accent : "#E2E8F0",
+                    color: (selected || (showResults && (isCorrectOpt || isWrongSelected))) ? "#fff" : "#718096",
+                  }}>
+                    {showResults && isCorrectOpt ? "✓" : showResults && isWrongSelected ? "✗" : String.fromCharCode(65 + oi)}
+                  </span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.5, color: optColor, fontWeight: selected ? 600 : 400 }}>
+                    {opt}
+                  </span>
+                </button>
+              );
+            })}
+            {showResults && answers[currentQ] !== q.correct && (
+              <div style={{ background: "#F0FFF4", border: "1px solid #C6F6D5", borderRadius: 8, padding: "8px 12px", marginTop: 4, fontSize: 12, color: "#276749" }}>
+                ✅ Respuesta correcta: <strong>{q.options[q.correct]}</strong>
+              </div>
+            )}
+          </div>
+
+          {/* Navigation */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 14, gap: 8 }}>
+            <button
+              onClick={() => setCurrentQ(Math.max(0, currentQ - 1))}
+              disabled={currentQ === 0}
+              style={{
+                flex: 1, padding: "10px", borderRadius: 8, border: "1.5px solid #CBD5E0",
+                background: "#fff", color: currentQ === 0 ? "#CBD5E0" : "#4A5568",
+                fontSize: 13, fontWeight: 600, cursor: currentQ === 0 ? "default" : "pointer",
+              }}
+            >
+              ← Anterior
+            </button>
+            {currentQ < currentTest.length - 1 ? (
+              <button
+                onClick={() => setCurrentQ(currentQ + 1)}
+                style={{
+                  flex: 1, padding: "10px", borderRadius: 8, border: "none",
+                  background: uaColor.accent, color: "#fff",
+                  fontSize: 13, fontWeight: 600, cursor: "pointer",
+                }}
+              >
+                Siguiente →
+              </button>
+            ) : !showResults ? (
+              <button
+                onClick={finishTest}
+                style={{
+                  flex: 1, padding: "10px", borderRadius: 8, border: "none",
+                  background: "#276749", color: "#fff",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer",
+                }}
+              >
+                ✓ Finalizar test
+              </button>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(<QuizApp />);
+</script>
+</body>
+</html>
