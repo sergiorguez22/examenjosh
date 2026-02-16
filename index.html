@@ -3,27 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tests de Repaso - PGFPCOM01</title>
+<title>Tests de Repaso — Universidad Europea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-  button { font-family: inherit; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',system-ui,sans-serif;background:#fafafa;color:#1a1a1a;-webkit-font-smoothing:antialiased}
+  button{font-family:inherit;cursor:pointer}
+  ::selection{background:#e53e2e20}
+  ::-webkit-scrollbar{height:4px;width:4px}
+  ::-webkit-scrollbar-thumb{background:#ccc;border-radius:4px}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useEffect, useCallback, useMemo } = React;
-
-
-
-// ═══════════════════════════════════════════════════════════
-// QUESTION BANKS - ~25 questions per topic (300+ total)
-// ═══════════════════════════════════════════════════════════
-
+const{useState,useCallback,useMemo}=React;
 const questionBanks = {
   "UA1_T1": {
     title: "Pubertad: desarrollo físico y sexual",
@@ -365,440 +363,897 @@ const questionBanks = {
     ]
   }
 };
+// ══════════════════════════════════════════════════════════════
+// PROCESOS Y CONTEXTOS EDUCATIVOS (9821001102) - 13 topics
+// ══════════════════════════════════════════════════════════════
 
-// ═══════════════════════════════════════════════════════════
-// UTILITY FUNCTIONS
-// ═══════════════════════════════════════════════════════════
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+const questionBanks_PCE = {
+  "PCE_UA1_T1": {
+    title: "El sistema educativo español (s. XIX-XX)",
+    ua: 1,
+    questions: [
+      {q:"¿Qué documento de 1812 es considerado la primera ley de educación en España?",o:["La Constitución de Cádiz","La Ley Moyano","El Informe Quintana"],c:0},
+      {q:"¿Quién realizó el Informe Quintana en 1813?",o:["Claudio Moyano","José Manuel de Quintana","El Duque de Rivas"],c:1},
+      {q:"¿Qué estableció el Reglamento General de Instrucción Pública de 1821?",o:["La educación universal, uniforme, pública y libre","La educación exclusivamente religiosa","La privatización de la enseñanza"],c:0},
+      {q:"¿Qué año se promulgó la Ley Moyano?",o:["1845","1857","1870"],c:1},
+      {q:"¿Cuántos años de vigencia tuvo la Ley Moyano?",o:["50 años","113 años","75 años"],c:1},
+      {q:"¿Cuál era un objetivo fundamental de la Ley Moyano?",o:["Universalizar la educación","Privatizar toda la enseñanza","Eliminar la educación religiosa"],c:0},
+      {q:"¿Qué Plan de 1845 buscaba controlar todos los aspectos del sector educativo?",o:["Plan Calomarde","Plan Pidal","Plan del Duque de Rivas"],c:1},
+      {q:"¿Qué artículo de la Constitución de 1978 garantiza el derecho a la educación?",o:["Artículo 14","Artículo 27","Artículo 35"],c:1},
+      {q:"¿Qué ley de 1970 reorganizó completamente el sistema educativo?",o:["LODE","LGE (Ley General de Educación)","LOGSE"],c:1},
+      {q:"¿Qué ley extendió la educación obligatoria hasta los 16 años?",o:["LGE 1970","LOGSE 1990","LOECE 1980"],c:1},
+      {q:"¿Qué ley de 1985 reguló el derecho a la educación y la participación?",o:["LOECE","LODE","LOPEG"],c:1},
+      {q:"La LOECE de 1980 fue la primera ley educativa tras…",o:["La Ley Moyano","La Constitución de 1978","La LGE de 1970"],c:1},
+      {q:"¿Qué promovía la Ley Moyano respecto a la educación de las niñas?",o:["Igualdad total con los niños","Creación de escuelas centradas en habilidades domésticas","Prohibición de su escolarización"],c:1},
+      {q:"¿Qué estructura tenía la Ley Moyano?",o:["Dos secciones","Cuatro secciones","Seis secciones"],c:1},
+      {q:"¿Qué característica tenía la Ley Moyano respecto a la organización?",o:["Concepción descentralizada","Concepción centralista","Concepción autonómica"],c:1},
+      {q:"El Plan del Duque de Rivas de 1836 supuso un retroceso en…",o:["La gratuidad de la enseñanza","La libertad de cátedra","La educación religiosa"],c:0},
+      {q:"¿Qué creó la LODE de 1985?",o:["La ESO","El consejo escolar, las AMPAS y la concertación","Los ciclos formativos"],c:1},
+      {q:"¿Qué ley reformó aspectos de la LOGSE sobre organización de centros?",o:["LOECE 1980","LOPEG 1995","LODE 1985"],c:1},
+      {q:"Los Planes de Calomarde de 1824 se caracterizaron por…",o:["Planes escolásticos y censura bibliográfica","Apertura y modernización","Gratuidad universal"],c:0},
+      {q:"¿En qué se dividía la primera enseñanza según la Ley Moyano?",o:["Básica y media","Elemental y superior","Primaria y secundaria"],c:1},
+      {q:"¿Qué título de la Constitución de Cádiz se dedicó íntegramente a la educación?",o:["Título V","Título IX","Título III"],c:1},
+      {q:"¿Quién fue el ministro que dio nombre a la Ley Moyano?",o:["Claudio Moyano","Manuel Quintana","Pedro Pidal"],c:0},
+      {q:"La Constitución de 1978 garantiza la educación como…",o:["Un privilegio","Un derecho fundamental","Una opción voluntaria"],c:1},
+      {q:"¿Qué se creó con la Constitución de Cádiz de 1812?",o:["La Dirección General de Estudios","El Ministerio de Educación","Las universidades públicas"],c:0},
+      {q:"La LOGSE de 1990 introdujo nuevos niveles de…",o:["Educación universitaria","Formación Profesional","Educación infantil privada"],c:1}
+    ]
+  },
+  "PCE_UA1_T2": {
+    title: "El sistema educativo español (s. XXI)",
+    ua: 1,
+    questions: [
+      {q:"¿Qué significa LOCFP 2002?",o:["Ley Orgánica de las Cualificaciones de la FP","Ley Orgánica de Calidad de la FP","Ley Orgánica del Currículo de la FP"],c:0},
+      {q:"¿Qué organismo internacional desarrolla el Informe PISA?",o:["UNESCO","OCDE","Unión Europea"],c:1},
+      {q:"¿Qué evalúa el Informe PISA?",o:["Solo matemáticas","Competencias en lectura, matemáticas y ciencias","Solo el nivel de idiomas"],c:1},
+      {q:"¿En qué año se aprobó la LOE?",o:["2002","2006","2013"],c:1},
+      {q:"¿Qué introdujo la LOMCE de 2013?",o:["Las competencias básicas","Las evaluaciones externas y las reválidas","La educación obligatoria hasta los 18"],c:1},
+      {q:"¿En qué año se aprobó la LOMLOE?",o:["2018","2020","2022"],c:1},
+      {q:"¿Cuántas competencias clave establece la LOMLOE?",o:["6","8","10"],c:1},
+      {q:"La LOE 2006 introdujo el concepto de…",o:["Competencias básicas","Estándares de aprendizaje","Descriptores operativos"],c:0},
+      {q:"¿Qué ley nunca llegó a aplicarse completamente por el cambio de gobierno?",o:["LOE 2006","LOCE 2002","LOMLOE 2020"],c:1},
+      {q:"La LOMCE 2013 fue conocida popularmente como…",o:["Ley Celaá","Ley Wert","Ley Maravall"],c:1},
+      {q:"¿Qué significan las siglas OCDE?",o:["Organización para la Cooperación y el Desarrollo Económicos","Oficina de Control de la Educación Europea","Organismo de Coordinación del Deporte Educativo"],c:0},
+      {q:"La LOMLOE establece los elementos del currículo como…",o:["Objetivos, contenidos y criterios","Competencias, saberes básicos y criterios de evaluación","Solo estándares de aprendizaje"],c:1},
+      {q:"¿Qué elemento curricular introdujo la LOMCE que la LOMLOE eliminó?",o:["Las competencias clave","Los estándares de aprendizaje evaluables","Los objetivos de etapa"],c:1},
+      {q:"La estructura educativa en la LOE incluye…",o:["Infantil, Primaria, ESO, Bachillerato y FP","Solo Primaria y Secundaria","Infantil, Básica y Superior"],c:0},
+      {q:"¿Qué ley creó el INCUAL?",o:["LOCE 2002","LOCFP 2002","LOE 2006"],c:1},
+      {q:"¿Cada cuántos años se realiza el Informe PISA?",o:["Cada 2 años","Cada 3 años","Cada 5 años"],c:1},
+      {q:"La LOMLOE se caracteriza por reforzar…",o:["Las reválidas","La equidad, inclusión y la educación personalizada","La centralización educativa"],c:1},
+      {q:"¿Qué competencia clave NO es de la LOMLOE?",o:["Competencia digital","Competencia matemática","Competencia artística obligatoria"],c:2},
+      {q:"El Informe PISA evalúa a estudiantes de…",o:["12 años","15 años","18 años"],c:1},
+      {q:"¿Qué ley introdujo por primera vez las competencias clave?",o:["LOGSE 1990","LOE 2006","LOMLOE 2020"],c:1},
+      {q:"La LOMCE mantuvo la estructura de etapas de la…",o:["LOGSE","LOE","LOCE"],c:1},
+      {q:"¿Cuál de estas NO es una competencia clave LOMLOE?",o:["Competencia plurilingüe","Competencia emprendedora","Competencia memorística"],c:2},
+      {q:"La LOCE 2002 fue impulsada por el gobierno de…",o:["PSOE","PP","Gobierno de coalición"],c:1},
+      {q:"¿Qué institución española analiza los resultados PISA en España?",o:["ANECA","INEE (Instituto Nacional de Evaluación Educativa)","INCUAL"],c:1}
+    ]
+  },
+  "PCE_UA1_T3": {
+    title: "Legislación actual: LOMLOE",
+    ua: 1,
+    questions: [
+      {q:"¿Cuáles son los ejes principales de la LOMLOE?",o:["Derechos de la infancia, igualdad de género, inclusión, desarrollo sostenible y digitalización","Solo la digitalización y la inclusión","Competitividad y excelencia académica"],c:0},
+      {q:"¿Qué es el 'perfil de salida' en la LOMLOE?",o:["Las notas finales del alumno","Las competencias que el alumno debe adquirir al final de la etapa","El informe de orientación laboral"],c:1},
+      {q:"¿Qué son los 'descriptores operativos' en la LOMLOE?",o:["Las calificaciones numéricas","Concreciones de las competencias clave para cada etapa","Los horarios de cada asignatura"],c:1},
+      {q:"¿Qué son los 'saberes básicos' en la LOMLOE?",o:["Los contenidos, destrezas y actitudes de cada área","Solo los contenidos teóricos","Las competencias transversales"],c:0},
+      {q:"¿Qué son las 'situaciones de aprendizaje' en la LOMLOE?",o:["Los exámenes finales","Actividades contextualizadas que movilizan competencias","Las clases magistrales"],c:1},
+      {q:"¿Hasta qué edad es obligatoria la ESO según la LOMLOE?",o:["14 años","16 años","18 años"],c:1},
+      {q:"¿Qué principio pedagógico refuerza la LOMLOE en la ESO?",o:["Atención personalizada y aprendizaje competencial","Memorización de contenidos","Evaluación mediante reválidas"],c:0},
+      {q:"¿Cuántas modalidades de Bachillerato establece la LOMLOE?",o:["3","4","5"],c:2},
+      {q:"La PAU regulada por la LOMLOE se refiere a…",o:["La Prueba de Acceso a la Universidad","El Plan de Atención Universal","La Programación Anual Unificada"],c:0},
+      {q:"¿Quién aprueba la concreción del currículo en un centro?",o:["El Consejo Escolar","El Claustro de Profesores","La Inspección educativa"],c:1},
+      {q:"La inclusión educativa en la LOMLOE se basa en…",o:["Separar al alumnado con necesidades","No dejar a ningún alumno atrás, eliminando barreras","Crear centros especializados exclusivamente"],c:1},
+      {q:"¿Qué eje transversal NO es de la LOMLOE?",o:["Igualdad de género","Desarrollo sostenible","Competitividad económica"],c:2},
+      {q:"La comunidad educativa según la LOMLOE incluye…",o:["Solo profesores y alumnos","Administraciones, alumnado, familias, profesorado y centros","Solo el equipo directivo"],c:1},
+      {q:"¿Qué elemento curricular conecta competencias clave con materias?",o:["Los saberes básicos","Las competencias específicas","Los descriptores operativos"],c:1},
+      {q:"Los criterios de evaluación en la LOMLOE se vinculan a…",o:["Los estándares de aprendizaje","Las competencias específicas","Los contenidos mínimos"],c:1},
+      {q:"¿Qué enfoque de evaluación promueve la LOMLOE?",o:["Evaluación sumativa exclusivamente","Evaluación continua, formativa e integradora","Solo exámenes finales"],c:1},
+      {q:"La LOMLOE elimina los itinerarios de la LOMCE en…",o:["Bachillerato","La ESO","Formación Profesional"],c:1},
+      {q:"¿Qué papel tienen las administraciones educativas según la LOMLOE?",o:["Solo financiar","Regular, evaluar y garantizar la equidad del sistema","Solo inspeccionar"],c:1},
+      {q:"Las competencias clave de la LOMLOE incluyen la competencia…",o:["Ciudadana","Deportiva","Artesanal"],c:0},
+      {q:"¿Qué principio de la ESO busca la LOMLOE respecto a la repetición?",o:["Aumentar las repeticiones","Reducir la repetición como medida excepcional","Eliminar completamente la evaluación"],c:1},
+      {q:"La digitalización es un eje transversal que implica…",o:["Usar solo libros digitales","Integrar la competencia digital en todo el currículo","Eliminar los libros de texto"],c:1},
+      {q:"El Bachillerato según la LOMLOE tiene una duración de…",o:["1 año","2 años, con posibilidad de 3","3 años obligatorios"],c:1},
+      {q:"¿Qué derechos refuerza la LOMLOE respecto al alumnado?",o:["Solo derechos académicos","Derechos de la infancia como principio rector","Derechos laborales"],c:1}
+    ]
+  },
+  "PCE_UA2_T1": {
+    title: "La Formación Profesional en el sistema educativo",
+    ua: 2,
+    questions: [
+      {q:"¿Qué artículo de la LOMLOE define la FP?",o:["Artículo 27","Artículo 42","Artículo 91"],c:1},
+      {q:"¿En cuántos niveles se estructura la FP?",o:["2 (Medio y Superior)","3 (Básico, Medio y Superior)","4 (Básico, Medio, Superior y Máster)"],c:1},
+      {q:"¿Cuál es la duración habitual de un ciclo formativo de FP?",o:["1 curso académico","2 cursos académicos","3 cursos académicos"],c:1},
+      {q:"¿Qué es la FP Dual?",o:["FP solo online","Formación que combina centro educativo y empresa","FP solo en la empresa"],c:1},
+      {q:"Una ventaja de la FP Dual es…",o:["Mayor conexión entre educación y mundo laboral","Menor duración del ciclo","Eliminar las prácticas obligatorias"],c:0},
+      {q:"¿Qué es la acreditación de competencias?",o:["Un examen de acceso a la universidad","Reconocimiento oficial de competencias adquiridas por experiencia","Una titulación de máster"],c:1},
+      {q:"¿A quién va dirigida la acreditación de competencias?",o:["Solo a graduados universitarios","A personas con experiencia laboral sin título formal","Solo a menores de 25 años"],c:1},
+      {q:"La FP se caracteriza por su enfoque…",o:["Exclusivamente teórico","Práctico y vinculado al mercado laboral","Solo académico"],c:1},
+      {q:"¿Qué propósito clave tiene la FP según la LOMLOE?",o:["Preparar solo para la universidad","Preparar para el empleo y el emprendimiento","Solo para personas adultas"],c:0},
+      {q:"Los ciclos formativos tienen organización…",o:["Anual","Modular","Trimestral"],c:1},
+      {q:"¿Qué facilita la FP entre educación y trabajo?",o:["Obstáculos burocráticos","La transición entre educación y mercado laboral","El abandono escolar"],c:1},
+      {q:"¿Qué competencias incluye la FP además de las técnicas?",o:["Solo deportivas","Habilidades transversales como comunicación y trabajo en equipo","Solo informáticas"],c:1},
+      {q:"La FP Básica está dirigida a…",o:["Graduados universitarios","Alumnos que necesitan una vía alternativa para completar formación básica","Solo adultos mayores de 25 años"],c:1},
+      {q:"¿Qué actitud fomenta especialmente la FP?",o:["La pasividad","La actitud emprendedora","La dependencia laboral"],c:1},
+      {q:"La colaboración con sectores productivos en FP busca…",o:["Reducir plazas educativas","Que los planes respondan a necesidades del mercado","Eliminar la formación teórica"],c:1},
+      {q:"¿Qué incluyen los cursos de especialización de FP?",o:["Formación básica inicial","Formación avanzada tras un ciclo formativo","Solo prácticas en empresa"],c:1},
+      {q:"La digitalización afecta a la FP requiriendo…",o:["Eliminar la tecnología","Nuevas competencias profesionales digitales","Solo usar papel y lápiz"],c:1},
+      {q:"¿Qué artículos de la LOMLOE regulan los propósitos de la FP?",o:["Artículos 2 y 3","Artículos 27 y 28","Artículos 91 y 92"],c:0},
+      {q:"Un itinerario de FP permite…",o:["Avanzar de forma flexible entre niveles educativos","Solo obtener un título y no más","Acceder directamente al mercado sin título"],c:0},
+      {q:"¿Qué reto actual enfrenta la FP?",o:["Exceso de plazas","Adaptarse a la sostenibilidad e inclusión social","Desvincularse del mercado laboral"],c:1},
+      {q:"La FP de Grado Superior permite acceso a…",o:["Solo al mercado laboral","La universidad","Solo a otro ciclo medio"],c:1}
+    ]
+  },
+  "PCE_UA2_T2": {
+    title: "Enseñanzas de régimen especial",
+    ua: 2,
+    questions: [
+      {q:"¿Cuáles son las tres grandes áreas de enseñanzas de régimen especial?",o:["Artísticas, idiomas y deportivas","Ciencias, letras y tecnología","Religión, música y deporte"],c:0},
+      {q:"¿Dónde se imparten las enseñanzas de idiomas oficiales?",o:["En universidades","En Escuelas Oficiales de Idiomas","En academias privadas exclusivamente"],c:1},
+      {q:"Las enseñanzas artísticas incluyen…",o:["Solo pintura","Música, danza, artes plásticas y diseño","Solo teatro"],c:1},
+      {q:"¿Qué promueven las enseñanzas deportivas?",o:["Solo competición de élite","Disciplina, espíritu de colaboración y formación de técnicos","Solo fitness"],c:1},
+      {q:"Las enseñanzas de régimen especial se caracterizan por ser…",o:["Generales y obligatorias","Específicas y altamente especializadas","Solo para adultos"],c:1},
+      {q:"Una contribución social de estas enseñanzas es…",o:["Solo económica","Enriquecer el tejido cultural y promover valores","Solo deportiva"],c:1},
+      {q:"¿Qué reto enfrentan las enseñanzas de régimen especial?",o:["Exceso de recursos","Adaptarse a la tecnología y garantizar equidad","Falta de alumnos"],c:1},
+      {q:"Las enseñanzas de idiomas facilitan…",o:["Solo la lectura","La movilidad internacional y empleabilidad","Solo la gramática"],c:1},
+      {q:"Las enseñanzas artísticas fomentan especialmente…",o:["La memorización","La creatividad y la expresión personal","Solo la técnica instrumental"],c:1},
+      {q:"El Real Decreto 1041/2017 regula…",o:["Las enseñanzas deportivas","Las Escuelas Oficiales de Idiomas","Las enseñanzas artísticas superiores"],c:1},
+      {q:"¿Cómo se evalúan las enseñanzas de régimen especial?",o:["Solo con exámenes finales","Con evaluación continua y certificaciones específicas","Sin evaluación formal"],c:1},
+      {q:"¿Pueden compatibilizarse con enseñanzas ordinarias?",o:["Nunca","Sí, tienen flexibilidad para combinarse","Solo en educación infantil"],c:1},
+      {q:"La Ley 1/2024 afecta a…",o:["Las enseñanzas deportivas","Las enseñanzas artísticas","Las Escuelas de Idiomas"],c:1},
+      {q:"Un objetivo de las enseñanzas deportivas es formar…",o:["Solo deportistas olímpicos","Técnicos cualificados para un sector en expansión","Solo árbitros"],c:1},
+      {q:"Las enseñanzas de régimen especial complementan…",o:["Solo la FP","La educación general del sistema educativo","Solo la universidad"],c:1},
+      {q:"¿Qué habilidades desarrollan estas enseñanzas además de las técnicas?",o:["Solo las cognitivas","Perseverancia, integración y trabajo en equipo","Solo las memorísticas"],c:1}
+    ]
+  },
+  "PCE_UA2_T3": {
+    title: "Documentos institucionales del centro",
+    ua: 2,
+    questions: [
+      {q:"¿Qué es el PEC?",o:["Plan de Evaluación Curricular","Proyecto Educativo de Centro","Programa de Educación Continua"],c:1},
+      {q:"¿Qué artículo de la LOMLOE regula el PEC?",o:["Artículo 91","Artículo 121","Artículo 42"],c:1},
+      {q:"El PEC define…",o:["Solo los horarios","La misión, visión, valores y estrategias del centro","Solo las notas de los alumnos"],c:1},
+      {q:"¿Quién elabora el PEC?",o:["Solo el director","Toda la comunidad educativa de forma participativa","Solo la inspección"],c:1},
+      {q:"La concreción del currículo en el PEC la aprueba…",o:["El Consejo Escolar","El Claustro de Profesores","Las familias"],c:1},
+      {q:"¿Qué incluye el PEC respecto a la diversidad?",o:["Nada específico","Planes de atención a la diversidad","Solo medidas para alumnos con discapacidad"],c:1},
+      {q:"La estrategia digital del centro forma parte del…",o:["Plan de Autoprotección","PEC","Solo del PAT"],c:1},
+      {q:"¿Qué es el Plan de Convivencia?",o:["El horario del centro","Documento que fomenta respeto, empatía y resolución de conflictos","Las normas de uniforme"],c:1},
+      {q:"¿Qué son las NCOF?",o:["Normas de Calificación Oficial","Normas de Organización, Funcionamiento y Convivencia","Nuevos Criterios de Oferta Formativa"],c:1},
+      {q:"Las NCOF regulan…",o:["Solo los exámenes","Derechos, deberes y convivencia en el centro","Solo el transporte escolar"],c:1},
+      {q:"El Plan de Mejora del PEC se revisa…",o:["Nunca","Periódicamente","Solo al final de cada etapa"],c:1},
+      {q:"¿Qué garantizan las NCOF respecto a la equidad?",o:["Nada","Medidas para garantizar equidad e inclusión","Solo becas económicas"],c:1},
+      {q:"El PEC tiene carácter…",o:["Estático e inamovible","Dinámico y flexible","Solo teórico"],c:1},
+      {q:"¿Qué agentes externos colaboran en el PEC?",o:["Ninguno","Familias, instituciones locales y entidades sociales","Solo empresas privadas"],c:1},
+      {q:"El PEC integra planes transversales como…",o:["Solo el Plan de Emergencias","Plan de Convivencia, Plan de Igualdad, Estrategia Digital","Solo el horario escolar"],c:1},
+      {q:"¿Qué documento regula los derechos y deberes de la comunidad escolar?",o:["El PEC","Las NCOF","La PGA"],c:1},
+      {q:"El Plan de Convivencia se integra dentro del…",o:["PAT","PEC","Plan de Autoprotección"],c:1},
+      {q:"La participación de la comunidad educativa en las NCOF busca…",o:["Solo informar a las familias","Un clima escolar positivo y colaborativo","Reducir el horario lectivo"],c:1}
+    ]
+  },
+  "PCE_UA2_T4": {
+    title: "Instrumentos para la organización escolar",
+    ua: 2,
+    questions: [
+      {q:"¿Qué es la PGA?",o:["Prueba General de Acceso","Programación General Anual","Plan de Gestión Administrativa"],c:1},
+      {q:"¿Qué artículo de la LOMLOE regula la PGA?",o:["Artículo 121","Artículo 125","Artículo 91"],c:1},
+      {q:"¿Quién elabora la PGA?",o:["Solo el Claustro","El equipo directivo con participación activa de departamentos","Solo las familias"],c:1},
+      {q:"La PGA se aprueba por…",o:["Solo el director","El Claustro de Profesores y el Consejo Escolar","Solo la inspección educativa"],c:1},
+      {q:"¿Qué fase inicial incluye la elaboración de la PGA?",o:["Solo la planificación","Diagnóstico inicial de logros y dificultades del curso anterior","Solo la redacción final"],c:1},
+      {q:"Un principio rector de la PGA es…",o:["La competitividad entre centros","La coherencia con el PEC","La autonomía total del profesor"],c:1},
+      {q:"¿Qué es el PAT?",o:["Plan de Autoprotección del Territorio","Plan de Acción Tutorial","Plan de Adaptación Tecnológica"],c:1},
+      {q:"La Memoria Anual evalúa…",o:["Solo las notas","El desarrollo de la PGA y propone mejoras","Solo el presupuesto"],c:1},
+      {q:"¿Qué incluye la PGA respecto a actividades?",o:["Solo clases lectivas","Actividades complementarias y extraescolares","Solo exámenes"],c:1},
+      {q:"El Plan de Atención a la Diversidad garantiza…",o:["Competición académica","La inclusión educativa","Solo becas"],c:1},
+      {q:"¿Qué es el PLC?",o:["Plan de Lectura Comprensiva","Proyecto Lingüístico de Centro","Programa de Logros Curriculares"],c:1},
+      {q:"El Plan de Autoprotección se orienta a…",o:["La protección de datos","La seguridad en emergencias","La protección del medio ambiente"],c:1},
+      {q:"La PGA incluye la distribución de…",o:["Solo los recursos económicos","Recursos humanos y materiales","Solo los libros de texto"],c:1},
+      {q:"La programación curricular en la PGA concreta…",o:["Solo los exámenes","Contenidos, actividades, criterios de evaluación y metodologías","Solo los horarios"],c:1},
+      {q:"Los proyectos específicos que puede desarrollar cada centro son…",o:["Obligatorios para todos","Adaptados a sus necesidades y objetivos estratégicos","Impuestos por la inspección"],c:1},
+      {q:"¿Qué principio busca la implicación de todos los actores educativos en la PGA?",o:["Exclusión","Participación","Independencia"],c:1}
+    ]
+  },
+  "PCE_UA3_T1": {
+    title: "Inteligencia emocional y educación",
+    ua: 3,
+    questions: [
+      {q:"¿Quiénes acuñaron el término 'inteligencia emocional' en 1990?",o:["Daniel Goleman","Peter Salovey y John Mayer","Howard Gardner"],c:1},
+      {q:"¿Quién popularizó la inteligencia emocional en 1995?",o:["Howard Gardner","Edward Thorndike","Daniel Goleman"],c:2},
+      {q:"¿Qué psicólogo introdujo la inteligencia social en 1920?",o:["David Wechsler","Edward Thorndike","Charles Darwin"],c:1},
+      {q:"Howard Gardner propuso la teoría de…",o:["La inteligencia general","Las inteligencias múltiples","El coeficiente intelectual"],c:1},
+      {q:"¿Cuáles son los 5 componentes de la IE según Goleman?",o:["Memoria, atención, lenguaje, lógica y creatividad","Autocontrol, autoconocimiento, autorregulación, empatía y habilidades sociales","Percepción, análisis, síntesis, evaluación y aplicación"],c:1},
+      {q:"El autoconocimiento en IE se refiere a…",o:["Conocer solo los defectos","Capacidad de reconocer las propias emociones y su efecto","Solo conocer el CI"],c:1},
+      {q:"La empatía es la capacidad de…",o:["Imponer las propias emociones","Comprender las emociones de los demás","Ignorar los sentimientos ajenos"],c:1},
+      {q:"Los modelos de habilidades de IE se centran en…",o:["Rasgos de personalidad","Capacidades cognitivas para procesar emociones","Solo la autoestima"],c:1},
+      {q:"Los modelos mixtos de IE combinan…",o:["Solo habilidades cognitivas","Habilidades emocionales con rasgos de personalidad","Solo aspectos biológicos"],c:1},
+      {q:"Darwin estudió las emociones en su obra…",o:["El origen de las especies","La expresión de las emociones en el hombre y los animales","La selección natural"],c:1},
+      {q:"Wechsler destacó que la inteligencia incluye aspectos…",o:["Solo cognitivos","No intelectuales como las emociones","Solo lingüísticos"],c:1},
+      {q:"La autorregulación en IE implica…",o:["Suprimir todas las emociones","Gestionar las emociones de forma adaptativa","Expresar todas las emociones sin filtro"],c:1},
+      {q:"La educación emocional en la LOMLOE se considera…",o:["Opcional y secundaria","Un elemento transversal e importante","Solo para educación infantil"],c:1},
+      {q:"Un reto en la implementación de la educación emocional es…",o:["Exceso de formación docente","La falta de formación específica del profesorado","Demasiados recursos disponibles"],c:1},
+      {q:"La inteligencia académica se mide con pruebas como…",o:["Tests emocionales","WAIS y Stanford-Binet","Solo entrevistas personales"],c:1},
+      {q:"¿Qué tipo de inteligencia de Gardner se relaciona con entender a otros?",o:["Intrapersonal","Interpersonal","Lingüística"],c:1},
+      {q:"Las habilidades sociales en IE incluyen…",o:["Solo la comunicación verbal","Gestión de relaciones, influencia y trabajo en equipo","Solo la escucha"],c:1},
+      {q:"El autocontrol en IE se refiere a…",o:["Controlar a los demás","Gestionar impulsos y emociones disruptivas","Eliminar las emociones"],c:1},
+      {q:"Goleman argumentó que la IE es tan importante como…",o:["La memoria","El CI para el éxito personal y profesional","La inteligencia lingüística"],c:1},
+      {q:"La inteligencia intrapersonal de Gardner se refiere a…",o:["Entender a los demás","Entenderse a sí mismo","Solo la lógica"],c:1}
+    ]
+  },
+  "PCE_UA3_T2": {
+    title: "Habilidades sociales y educación",
+    ua: 3,
+    questions: [
+      {q:"Según Caballo (2008), las habilidades sociales son…",o:["Innatas e inmutables","Capacidades para interactuar adecuada y efectivamente con los demás","Solo técnicas de comunicación verbal"],c:1},
+      {q:"La teoría del aprendizaje social de Bandura destaca…",o:["Solo el aprendizaje por repetición","El aprendizaje por observación e imitación","Solo el aprendizaje genético"],c:1},
+      {q:"¿Cuáles son las 4 fases del aprendizaje por observación de Bandura?",o:["Ver, copiar, repetir, olvidar","Atención, retención, reproducción y motivación","Escuchar, leer, escribir, hablar"],c:1},
+      {q:"La escucha activa implica…",o:["Solo oír las palabras","Prestar atención plena, comprender y responder empáticamente","Interrumpir para dar consejos"],c:1},
+      {q:"La asertividad es la capacidad de…",o:["Imponer siempre la propia opinión","Expresar opiniones y derechos respetando a los demás","Evitar cualquier conflicto"],c:1},
+      {q:"El aprendizaje por experiencia directa ocurre cuando…",o:["Solo se lee sobre el tema","Se adquieren habilidades enfrentándose a situaciones reales","Solo se observa a otros"],c:1},
+      {q:"El refuerzo social y verbal ayuda a…",o:["Castigar comportamientos","Consolidar comportamientos sociales positivos","Ignorar al alumno"],c:1},
+      {q:"La comunicación positiva es clave para…",o:["Solo la empatía","La empatía, la escucha activa y la asertividad","Solo los exámenes"],c:1},
+      {q:"La competencia emocional docente incluye…",o:["Solo conocimientos de la materia","Gestión emocional, empatía y comunicación positiva","Solo la puntualidad"],c:1},
+      {q:"La competencia emocional del alumnado se desarrolla mediante…",o:["Solo exámenes","Programas de educación emocional y dinámicas grupales","Solo lecturas"],c:1},
+      {q:"Un ejemplo de aprendizaje por observación en el aula es…",o:["Leer un libro","Observar cómo el profesor gestiona un conflicto calmadamente","Hacer un examen"],c:1},
+      {q:"La empatía en el ámbito educativo facilita…",o:["La competición entre alumnos","Comprender perspectivas ajenas y mejorar la convivencia","El individualismo"],c:1},
+      {q:"Los compromisos personales para desarrollar la IE incluyen…",o:["Solo estudiar más","Práctica reflexiva y autoevaluación emocional","Solo asistir a clase"],c:1},
+      {q:"Las habilidades sociales en el ámbito escolar son fundamentales para…",o:["Solo la interacción profesor-alumno","La interacción entre todos los agentes educativos","Solo las actividades extraescolares"],c:1},
+      {q:"¿Qué tipo de actividad desarrolla habilidades sociales por experiencia directa?",o:["Un examen escrito","Una jornada de voluntariado en la comunidad","Leer un manual"],c:1}
+    ]
+  },
+  "PCE_UA3_T3": {
+    title: "Conflictos en educación: convivencia y mediación",
+    ua: 3,
+    questions: [
+      {q:"Según Deutsch (2011), el conflicto es…",o:["Siempre negativo","Una situación con intereses opuestos que puede ser oportunidad","Algo que debe evitarse siempre"],c:1},
+      {q:"¿Cuántos estilos de enfrentamiento al conflicto se identifican?",o:["3","5","7"],c:1},
+      {q:"La mediación escolar se basa en…",o:["Imponer una solución desde la dirección","Un tercero neutral que ayuda a las partes a llegar a un acuerdo","El castigo de los implicados"],c:1},
+      {q:"¿Qué tipo de conflicto NO es típico en educación?",o:["Entre alumnos","Entre profesor y alumno","Entre empresas y proveedores"],c:2},
+      {q:"Las fases de resolución de conflictos incluyen…",o:["Solo el castigo","Identificación, análisis, búsqueda de soluciones y seguimiento","Solo la expulsión"],c:1},
+      {q:"La ayuda entre iguales consiste en…",o:["Alumnos que ayudan a resolver conflictos entre compañeros","Solo los profesores mediando","Expulsar a los alumnos conflictivos"],c:0},
+      {q:"La coeducación en la convivencia busca…",o:["Separar por géneros","Educar en igualdad y respeto entre géneros","Solo para alumnas"],c:1},
+      {q:"El Aprendizaje-Servicio (ApS) combina…",o:["Solo teoría y exámenes","Aprendizaje académico con servicio a la comunidad","Solo voluntariado sin aprendizaje"],c:1},
+      {q:"Las dinámicas grupales para habilidades sociales tienen estructura de…",o:["Solo juegos libres","Objetivos, desarrollo, reflexión y evaluación","Solo debates"],c:1},
+      {q:"El papel del docente en las dinámicas grupales es de…",o:["Observador pasivo","Facilitador, guía y mediador","Juez que castiga errores"],c:1},
+      {q:"Considerar el conflicto como negativo se debe a que…",o:["Siempre genera violencia","Se asocia con confrontación y falta de herramientas para gestionarlo","Es siempre destructivo"],c:1},
+      {q:"Un conflicto entre profesores puede surgir por…",o:["Solo diferencias salariales","Diferencias metodológicas o de criterios","Solo problemas personales"],c:1},
+      {q:"Los conflictos con las familias suelen relacionarse con…",o:["Solo calificaciones","Expectativas sobre la educación de sus hijos","Solo el transporte escolar"],c:1},
+      {q:"La evaluación de las dinámicas grupales puede ser…",o:["Solo del profesor","Autoevaluación, coevaluación y heteroevaluación","Solo un examen"],c:1},
+      {q:"Según Fisher, Ury y Patton, afrontar conflictos requiere…",o:["Evitarlos siempre","Tiempo y energía","Solo fuerza"],c:1},
+      {q:"¿Qué característica tienen los conflictos?",o:["Son estáticos","Son dinámicos y pueden evolucionar en intensidad","Son siempre iguales"],c:1}
+    ]
+  },
+  "PCE_UA4_T1": {
+    title: "La orientación educativa",
+    ua: 4,
+    questions: [
+      {q:"La orientación educativa busca acompañar al estudiante en su desarrollo…",o:["Solo académico","Integral: personal, académico, social y profesional","Solo vocacional"],c:1},
+      {q:"La LOMLOE regula la orientación educativa priorizando…",o:["Solo las calificaciones","Atención personalizada, inclusión y equidad","Solo la competitividad"],c:1},
+      {q:"¿Cuáles son los ámbitos de intervención de la orientación educativa?",o:["Solo el académico","Académico, personal-emocional y vocacional-profesional","Solo el laboral"],c:1},
+      {q:"El rol del tutor en orientación incluye…",o:["Solo pasar lista","Acompañar, orientar y mediar entre alumno, familia y equipo docente","Solo corregir exámenes"],c:1},
+      {q:"Las estrategias académicas de orientación incluyen…",o:["Solo dar apuntes","Técnicas de estudio, aprendizaje autorregulado y apoyo","Solo repetición de curso"],c:1},
+      {q:"Las estrategias vocacionales y profesionales ayudan a…",o:["Solo elegir universidad","Explorar intereses, habilidades y valores para decisiones futuras","Solo encontrar empleo"],c:1},
+      {q:"El equipo de orientación está formado por…",o:["Solo el tutor","Orientadores, tutores y profesionales de apoyo","Solo el director"],c:1},
+      {q:"Un impacto de la orientación educativa es…",o:["Aumentar el fracaso escolar","Mejorar el rendimiento académico y desarrollo emocional","Solo reducir gastos"],c:1},
+      {q:"La orientación educativa ha evolucionado desde…",o:["Siempre ha sido igual","Orientación vocacional hacia un enfoque holístico","Un enfoque holístico hacia solo vocacional"],c:1},
+      {q:"Un reto actual de la orientación es…",o:["Exceso de orientadores","Integración de tecnologías digitales y diversidad cultural","Demasiados recursos"],c:1},
+      {q:"Las tutorías individualizadas son una estrategia para…",o:["Solo alumnos problemáticos","Abordar necesidades específicas del alumnado","Solo alumnos de excelencia"],c:1},
+      {q:"La orientación educativa contribuye a reducir…",o:["El número de profesores","Las desigualdades educativas","El currículo"],c:1},
+      {q:"Los programas de mentorización en orientación buscan…",o:["Solo vigilar al alumno","Acompañar y guiar al alumno con un referente","Solo evaluar"],c:1},
+      {q:"La preparación para la vida profesional es un impacto de la orientación en…",o:["El corto plazo solo","El medio y largo plazo","Solo durante la ESO"],c:1},
+      {q:"¿Qué fomenta la orientación educativa en el alumnado?",o:["La dependencia del profesor","La autonomía y el pensamiento crítico","Solo la memorización"],c:1}
+    ]
+  },
+  "PCE_UA4_T2": {
+    title: "Modelos de organización escolar",
+    ua: 4,
+    questions: [
+      {q:"El modelo burocrático de organización escolar se basa en las teorías de…",o:["Piaget","Max Weber","Vygotsky"],c:1},
+      {q:"¿Qué caracteriza al modelo burocrático?",o:["Flexibilidad total","Jerarquía clara, normas definidas y procedimientos estandarizados","Participación democrática de todos"],c:1},
+      {q:"El modelo participativo promueve…",o:["Control jerárquico estricto","Toma de decisiones conjunta y colaboración","Individualismo del profesorado"],c:1},
+      {q:"El modelo colegiado se caracteriza por…",o:["Autoridad centralizada","Responsabilidad compartida entre profesionales","Solo decisiones del director"],c:1},
+      {q:"El modelo de red permite…",o:["Aislamiento del centro","Colaboración entre centros y su entorno","Solo competencia entre centros"],c:1},
+      {q:"La planificación estratégica en gestión escolar incluye…",o:["Solo el presupuesto","Diagnóstico, objetivos, acciones y evaluación","Solo los horarios"],c:1},
+      {q:"El liderazgo efectivo en organización escolar implica…",o:["Control autoritario","Visión, comunicación, motivación y gestión del cambio","Solo administración de recursos"],c:1},
+      {q:"La cultura organizativa del centro influye en…",o:["Solo la decoración","El clima escolar y la calidad educativa","Solo los uniformes"],c:1},
+      {q:"Un indicador de calidad en gestión escolar es…",o:["Solo el número de alumnos","Rendimiento académico, satisfacción y clima escolar","Solo el presupuesto"],c:1},
+      {q:"La evolución histórica de los modelos organizativos va desde…",o:["Participativo a burocrático","Centralizado-jerárquico hacia modelos flexibles e interconectados","Red hacia burocrático"],c:1},
+      {q:"El uso de tecnología en organización escolar busca…",o:["Eliminar al profesorado","Mejorar la eficiencia, comunicación y gestión de recursos","Solo entretenimiento"],c:1},
+      {q:"Un reto actual en organización escolar es…",o:["Exceso de recursos","Atención a la diversidad, digitalización y sostenibilidad","Falta de alumnos"],c:1},
+      {q:"Las estructuras organizativas que favorecen la calidad son…",o:["Rígidas e inmutables","Flexibles, inclusivas e innovadoras","Solo jerárquicas"],c:1},
+      {q:"La innovación en organización escolar impacta en…",o:["Solo la administración","La mejora de prácticas pedagógicas y resultados","Solo en el presupuesto"],c:1},
+      {q:"Tras la II Guerra Mundial, los modelos organizativos tendieron hacia…",o:["Mayor burocratización","Mayor participación y democracia","Mayor centralización"],c:1}
+    ]
+  },
+  "PCE_UA4_T3": {
+    title: "Gestión escolar: liderazgo y clima organizacional",
+    ua: 4,
+    questions: [
+      {q:"El liderazgo transformacional se centra en…",o:["Mantener el status quo","Inspirar y motivar para alcanzar objetivos comunes","Solo controlar al profesorado"],c:1},
+      {q:"El liderazgo pedagógico prioriza…",o:["La administración financiera","La mejora de las prácticas docentes y el aprendizaje","Solo las relaciones externas"],c:1},
+      {q:"El liderazgo distribuido se caracteriza por…",o:["Concentrar todo el poder en el director","Delegar responsabilidades y fomentar participación de todos","Solo dar órdenes"],c:1},
+      {q:"El proceso de toma de decisiones incluye…",o:["Solo la intuición del director","Diagnóstico, análisis, opciones, decisión y evaluación","Solo votar"],c:1},
+      {q:"¿Qué componentes tiene el clima organizacional?",o:["Solo la temperatura del aula","Relaciones interpersonales, comunicación, motivación y satisfacción","Solo el salario"],c:1},
+      {q:"Un clima organizacional positivo impacta en…",o:["Solo la administración","La motivación docente y el aprendizaje del alumnado","Solo en los padres"],c:1},
+      {q:"Estrategias para mejorar el clima organizacional incluyen…",o:["Solo aumentar salarios","Comunicación fluida, reconocimiento y trabajo colaborativo","Solo sanciones"],c:1},
+      {q:"La relación entre liderazgo y clima organizacional es…",o:["Inexistente","Directa: el estilo de liderazgo configura el clima","Solo económica"],c:1},
+      {q:"Un desafío en la toma de decisiones escolar es…",o:["Exceso de consenso","Resistencia al cambio y falta de información","Demasiada participación"],c:1},
+      {q:"Los centros con liderazgo distribuido logran…",o:["Menor participación","Mayor participación del profesorado y clima positivo","Solo eficiencia administrativa"],c:1},
+      {q:"El liderazgo transformacional promueve especialmente…",o:["La rutina","La innovación y el cambio","Solo la obediencia"],c:1},
+      {q:"Robinson et al. (2020) destacan que el liderazgo pedagógico se centra en…",o:["Solo la gestión económica","El desarrollo profesional docente y estrategias basadas en evidencia","Solo la disciplina"],c:1},
+      {q:"Harris (2021) define el liderazgo distribuido como…",o:["Autoritario","Reconocer competencias de cada miembro para el éxito global","Centralizado"],c:1},
+      {q:"La toma de decisiones participativa favorece…",o:["El conflicto","El consenso y la implicación de la comunidad educativa","La imposición"],c:1},
+      {q:"La gestión escolar eficaz integra…",o:["Solo liderazgo","Liderazgo, toma de decisiones y clima organizacional","Solo recursos económicos"],c:1}
+    ]
   }
-  return a;
-}
-
-function pickN(arr, n) {
-  return shuffle(arr).slice(0, n);
-}
-
-function generateTest(bank, n = 20) {
-  const selected = pickN(bank, Math.min(n, bank.length));
-  return selected.map(q => {
-    // Shuffle options but track correct answer
-    const indices = [0, 1, 2];
-    const shuffled = shuffle(indices);
-    return {
-      q: q.q,
-      options: shuffled.map(i => q.o[i]),
-      correct: shuffled.indexOf(q.c),
-    };
-  });
-}
-
-function generateGeneralTest(n = 20) {
-  const allQ = [];
-  Object.values(questionBanks).forEach(bank => {
-    bank.questions.forEach(q => allQ.push(q));
-  });
-  return generateTest(allQ, n);
-}
-
-function getGrade(score, total) {
-  const pct = (score / total) * 10;
-  if (pct >= 9) return { label: "Sobresaliente", emoji: "🏆", color: "#276749" };
-  if (pct >= 7) return { label: "Notable", emoji: "🎯", color: "#2B6CB0" };
-  if (pct >= 6) return { label: "Bien", emoji: "👍", color: "#2C5282" };
-  if (pct >= 5) return { label: "Aprobado", emoji: "✅", color: "#C05621" };
-  return { label: "Suspenso", emoji: "📚", color: "#C53030" };
-}
-
-// ═══════════════════════════════════════════════════════════
-// COMPONENTS
-// ═══════════════════════════════════════════════════════════
-
-const UA_COLORS = {
-  1: { bg: "#1B2A4A", light: "#EBF4FA", accent: "#2C5282" },
-  2: { bg: "#276749", light: "#F0FFF4", accent: "#2F855A" },
-  3: { bg: "#744210", light: "#FFFAF0", accent: "#C05621" },
-  4: { bg: "#553C9A", light: "#FAF5FF", accent: "#6B46C1" },
-  general: { bg: "#1A202C", light: "#F7FAFC", accent: "#4A5568" },
 };
 
-function QuizApp() {
-  const [screen, setScreen] = useState("home");
-  const [currentTest, setCurrentTest] = useState(null);
-  const [answers, setAnswers] = useState({});
-  const [currentQ, setCurrentQ] = useState(0);
-  const [showResults, setShowResults] = useState(false);
-  const [testInfo, setTestInfo] = useState(null);
-  const [testCount, setTestCount] = useState({});
+// ══════════════════════════════════════════════════════════════
+// SOCIEDAD, FAMILIA Y EDUCACIÓN (PGFPCOM02) - 15 topics
+// ══════════════════════════════════════════════════════════════
 
-  const startTest = useCallback((bankKey, testNum) => {
-    let questions;
-    let info;
-    if (bankKey === "general") {
-      questions = generateGeneralTest(20);
-      info = { title: `Test General #${testNum}`, ua: "general", bankKey };
-    } else {
-      const bank = questionBanks[bankKey];
-      questions = generateTest(bank.questions, 20);
-      info = { title: `${bank.title} — Test #${testNum}`, ua: bank.ua, bankKey };
-    }
-    setCurrentTest(questions);
-    setTestInfo(info);
-    setAnswers({});
-    setCurrentQ(0);
-    setShowResults(false);
-    setScreen("test");
-  }, []);
+const questionBanks_SFE = {
+  "SFE_UA1_T1": {
+    title: "Análisis sistémico de la institución escolar",
+    ua: 1,
+    questions: [
+      {q:"La teoría general de sistemas (TGS) fue propuesta por…",o:["Luhmann","Ludwig von Bertalanffy","Bronfenbrenner"],c:1},
+      {q:"La escuela como sistema abierto recibe 'entradas' como…",o:["Solo alumnos","Estudiantes, financiación, normativas y expectativas sociales","Solo libros de texto"],c:1},
+      {q:"Las 'salidas' del sistema escolar incluyen…",o:["Solo graduados","Graduados, innovaciones y prestigio","Solo informes"],c:1},
+      {q:"La retroalimentación en el sistema escolar se realiza mediante…",o:["Solo los exámenes","Evaluaciones internas y externas","Solo quejas de familias"],c:1},
+      {q:"El concepto de autopoiesis aplicado a la escuela significa que…",o:["La escuela no cambia nunca","Construye activamente significados y reglas internas para reproducirse","Solo depende del exterior"],c:1},
+      {q:"El nivel micro del análisis sistémico corresponde a…",o:["Las políticas públicas","El aula","Los órganos de gestión"],c:1},
+      {q:"El nivel macro del análisis sistémico corresponde a…",o:["El aula","Las políticas públicas","La relación profesor-alumno"],c:1},
+      {q:"Luhmann aportó a la perspectiva sistémica…",o:["Solo la cibernética","La teoría sociológica de sistemas","Solo la TGS"],c:1},
+      {q:"La perspectiva sistémica es útil para el liderazgo escolar porque permite…",o:["Simplificar los problemas","Diagnosticar cuellos de botella y diseñar intervenciones a distintos niveles","Solo gestionar el presupuesto"],c:1},
+      {q:"La homeostasis en la TGS se refiere a…",o:["El crecimiento constante","La tendencia del sistema a mantener su equilibrio interno","La destrucción del sistema"],c:1},
+      {q:"La neuroplasticidad, la IA generativa o las crisis migratorias son ejemplos de…",o:["Elementos internos del aula","Tensiones externas que la escuela debe procesar","Solo teorías pedagógicas"],c:1},
+      {q:"Morin aportó los enfoques de…",o:["La cibernética","La complejidad","La TGS pura"],c:1},
+      {q:"El nivel meso del análisis sistémico se refiere a…",o:["El aula","Los órganos colegiados de gestión del centro","Las políticas nacionales"],c:1},
+      {q:"La autonomía relativa de la escuela implica que…",o:["La escuela no depende de nadie","Responde a tensiones externas sin perder su identidad","Es completamente autónoma"],c:1},
+      {q:"La resiliencia en el contexto escolar sistémico se refiere a…",o:["Resistir cualquier cambio","Capacidad de adaptarse a crisis manteniendo la identidad","Ignorar los problemas"],c:1}
+    ]
+  },
+  "SFE_UA1_T2": {
+    title: "Los centros educativos como fuente de influencia",
+    ua: 1,
+    questions: [
+      {q:"La escuela ha evolucionado de ser un transmisor de conocimientos a…",o:["Solo un espacio de socialización","Un centro de desarrollo integral de los estudiantes","Solo un lugar de exámenes"],c:1},
+      {q:"El Informe Delors estableció los cuatro pilares del aprendizaje, que son…",o:["Leer, escribir, calcular y memorizar","Aprender a conocer, hacer, vivir juntos y ser","Solo competencias digitales"],c:1},
+      {q:"'Aprender a conocer' se refiere a…",o:["Solo memorizar datos","Adquirir instrumentos de comprensión y pensamiento crítico","Solo aprobar exámenes"],c:1},
+      {q:"'Aprender a vivir juntos' implica…",o:["Solo convivir en el aula","Comprender al otro y gestionar conflictos pacíficamente","Solo obedecer reglas"],c:1},
+      {q:"El enfoque basado en competencias busca…",o:["Solo contenidos teóricos","Una formación integral que combine saber, saber hacer y saber ser","Solo la memorización"],c:1},
+      {q:"La globalización ha impactado en la educación exigiendo…",o:["Menos interculturalidad","Preparar estudiantes para un mundo interconectado y multicultural","Solo educación local"],c:1},
+      {q:"Las TIC han transformado la educación permitiendo…",o:["Solo usar pizarras digitales","Entornos más dinámicos, interactivos y accesibles globalmente","Solo examinar online"],c:1},
+      {q:"La educación para la ciudadanía global implica…",o:["Solo patriotismo","Comprender y participar activamente en asuntos globales","Solo aprender idiomas"],c:1},
+      {q:"El papel del docente en la influencia educativa es ser…",o:["Solo transmisor de información","Guía, facilitador y modelo de referencia","Solo evaluador"],c:1},
+      {q:"'Aprender a hacer' se relaciona con…",o:["Solo la teoría","Aplicar conocimientos y desarrollar habilidades prácticas","Solo los exámenes"],c:1},
+      {q:"La competencia intercultural es cada vez más valorada por…",o:["Solo razones turísticas","La globalización y la diversidad en entornos laborales","Solo en academias de idiomas"],c:1},
+      {q:"El Informe 'La educación encierra un tesoro' fue elaborado por…",o:["La OCDE","La Comisión Delors para la UNESCO","El Banco Mundial"],c:1},
+      {q:"'Aprender a ser' se refiere a…",o:["Solo adquirir títulos","El desarrollo integral de la personalidad","Solo ser obediente"],c:1},
+      {q:"Las nuevas demandas del mercado laboral exigen…",o:["Solo títulos universitarios","Competencias transversales, adaptabilidad y pensamiento crítico","Solo experiencia laboral"],c:1},
+      {q:"La educación como herramienta de cambio social implica…",o:["Solo formar trabajadores","Promover la justicia social, equidad y desarrollo sostenible","Solo competitividad económica"],c:1}
+    ]
+  },
+  "SFE_UA1_T3": {
+    title: "Desafíos de la docencia en el siglo XXI",
+    ua: 1,
+    questions: [
+      {q:"Las ratios elevadas en las aulas afectan…",o:["Solo al presupuesto","A la atención personalizada y la calidad de enseñanza","Solo al ruido"],c:1},
+      {q:"La evolución del docente ha ido de 'autoridad tradicional' a…",o:["Solo administrador","Facilitador, líder, mentor y mediador","Solo vigilante"],c:1},
+      {q:"Una contradicción del rol docente es…",o:["Tener demasiados recursos","Se le exige innovar pero con recursos y tiempo limitados","Tener demasiado tiempo libre"],c:1},
+      {q:"La brecha digital en educación se refiere a…",o:["Solo la falta de internet","El acceso desigual a tecnologías entre docentes y alumnos","Solo la falta de ordenadores"],c:1},
+      {q:"La formación continua del profesorado es necesaria porque…",o:["Los contenidos nunca cambian","El conocimiento evoluciona constantemente","Solo para obtener puntos"],c:1},
+      {q:"La flexibilidad como competencia docente implica…",o:["No tener planificación","Adaptarse a cambios, diversidad y nuevas metodologías","Solo cambiar de horario"],c:1},
+      {q:"El aumento de agresividad en entornos educativos es un reto que requiere…",o:["Solo expulsiones","Estrategias de prevención, mediación y educación emocional","Solo más vigilantes"],c:1},
+      {q:"La importancia del dominio de redes sociales por los docentes se debe a…",o:["Solo para entretenimiento","Los estudiantes las usan como fuente de información y socialización","Solo para publicar notas"],c:1},
+      {q:"La diversidad en las aulas exige…",o:["Un enfoque único para todos","Enfoques pedagógicos más flexibles y personalizados","Solo separar por niveles"],c:1},
+      {q:"La sobrecarga del profesorado genera…",o:["Mayor motivación","Insatisfacción y burnout profesional","Mejores resultados"],c:1},
+      {q:"Los REA (Recursos Educativos Abiertos) son…",o:["Solo libros de texto","Materiales educativos de acceso libre y gratuito","Solo exámenes online"],c:1},
+      {q:"La imagen del docente vs. la realidad muestra…",o:["Que son iguales","Una discrepancia entre lo que se espera y las condiciones reales","Que los docentes tienen exceso de recursos"],c:1},
+      {q:"¿Qué desafío plantea la movilidad estudiantil?",o:["Solo problemas administrativos","Gestionar diversidad cultural y lingüística en el aula","Solo problemas de transporte"],c:1},
+      {q:"La gestión del aula en contextos de alta densidad requiere…",o:["Solo control disciplinario","Estrategias metodológicas adaptadas y organización eficiente","Solo más espacio físico"],c:1}
+    ]
+  },
+  "SFE_UA1_T4": {
+    title: "Neurociencia en educación",
+    ua: 1,
+    questions: [
+      {q:"¿Qué técnica permite observar el cerebro en tiempo real?",o:["Solo radiografías","Resonancia magnética funcional (fMRI)","Solo análisis de sangre"],c:1},
+      {q:"La neuroplasticidad se refiere a…",o:["Que el cerebro no cambia","La capacidad del cerebro para modificarse con el aprendizaje","Solo al desarrollo infantil"],c:1},
+      {q:"Howard Gardner propuso la teoría de las inteligencias múltiples en…",o:["1973","1983","1995"],c:1},
+      {q:"La neuroeducación es la intersección entre…",o:["Medicina y deporte","Neurociencia y educación","Filosofía y psicología"],c:1},
+      {q:"Las metodologías activamente participativas se basan en que el cerebro aprende mejor…",o:["Con clases magistrales pasivas","Con experiencias activas, colaborativas y significativas","Solo repitiendo"],c:1},
+      {q:"La educación emocional desde la neurociencia reconoce que…",o:["Las emociones no afectan al aprendizaje","Las emociones son fundamentales en los procesos cognitivos","Solo la razón importa"],c:1},
+      {q:"La diferenciación del aprendizaje desde la neurociencia busca…",o:["Enseñar igual a todos","Adaptarse a las capacidades cognitivas individuales","Solo separar por CI"],c:1},
+      {q:"John Dewey es relevante para la neuroeducación porque…",o:["Inventó la fMRI","Sentó las bases de la educación centrada en el alumno y la experiencia","Solo estudió matemáticas"],c:1},
+      {q:"La neurociencia aplicada a la mejora de la atención sugiere…",o:["Clases más largas sin descanso","Alternar actividades, usar estímulos variados y respetar ritmos","Solo silencio total"],c:1},
+      {q:"Las técnicas de neuroimagen como EEG y PET permiten…",o:["Solo diagnosticar enfermedades","Observar la activación cerebral durante el aprendizaje","Solo medir la inteligencia"],c:1},
+      {q:"La inclusión y apoyo a la diversidad cognitiva desde la neurociencia implica…",o:["Que todos los cerebros son iguales","Reconocer diferentes formas de procesar información","Solo atender a alumnos con discapacidad"],c:1},
+      {q:"Las perspectivas futuras de la neurociencia en educación incluyen…",o:["Eliminar a los docentes","Personalización aún mayor del aprendizaje basada en datos cerebrales","Solo más exámenes"],c:1},
+      {q:"La neurociencia cognitiva estudia…",o:["Solo las emociones","Los procesos cerebrales implicados en percepción, pensamiento y memoria","Solo el comportamiento social"],c:1},
+      {q:"Antes de la neurociencia, los enfoques educativos se basaban principalmente en…",o:["Evidencia cerebral","Intuiciones pedagógicas y teorías psicopedagógicas","Solo la tradición religiosa"],c:1}
+    ]
+  },
+  "SFE_UA2_T1": {
+    title: "La función tutorial, el tutor/a y la tutoría",
+    ua: 2,
+    questions: [
+      {q:"¿Qué ley reconoció por primera vez la tutorización como derecho del alumnado?",o:["LOGSE 1990","Ley General de Educación 1970","LOMLOE 2020"],c:1},
+      {q:"Álvarez y Bisquerra definen la acción tutorial como…",o:["Solo orientación académica","Orientación individual y grupal en ámbitos académicos, personales y afectivos","Solo disciplina"],c:1},
+      {q:"La acción tutorial es un proceso…",o:["Puntual y esporádico","Continuo, planificado y transversal a todas las etapas","Solo para la ESO"],c:1},
+      {q:"¿Qué principio de la acción tutorial busca anticiparse a dificultades?",o:["Principio correctivo","Principio preventivo","Principio sancionador"],c:1},
+      {q:"La tutoría tiene como funciones…",o:["Solo pasar lista","Orientar, acompañar, mediar y coordinar","Solo evaluar"],c:1},
+      {q:"Las áreas de intervención tutorial incluyen…",o:["Solo la académica","Académica, personal-social y vocacional-profesional","Solo la disciplinaria"],c:1},
+      {q:"Los niveles de acción tutorial son…",o:["Solo individual","Individual, grupal e institucional","Solo grupal"],c:1},
+      {q:"Una competencia esencial del tutor/a es…",o:["Solo conocer su materia","Empatía, habilidades comunicativas y capacidad de coordinación","Solo la puntualidad"],c:1},
+      {q:"El tutor/a coordina información del…",o:["Solo del director","Del resto de personal docente y coopera con familias","Solo del orientador"],c:1},
+      {q:"La acción tutorial es un proceso personal porque…",o:["Todos los alumnos son iguales","Debe atender a la personalización de cada tutorizado","Solo se dirige a uno"],c:1},
+      {q:"Según Pantoja (2013), la tutoría contribuye a…",o:["Solo la disciplina","La personalización de la educación y atención a diferencias individuales","Solo las calificaciones"],c:1},
+      {q:"La acción tutorial debe ser también reflexiva según Angulo (2003) para…",o:["Solo reflexionar sobre las notas","Evaluar si la tutorización responde a las necesidades del educando","Solo reflexionar sobre la metodología"],c:1},
+      {q:"La acción tutorial es transversal porque…",o:["Solo se da en la hora de tutoría","Se integra en todas las materias y la acción educativa","Solo es del tutor"],c:1},
+      {q:"La perspectiva colaborativa de la tutoría implica…",o:["Solo el trabajo del tutor","Coordinación con docentes, familias y orientación","Solo trabajo individual"],c:1},
+      {q:"La acción tutorial es especialmente necesaria en momentos de…",o:["Solo al inicio del curso","Cambios importantes: pubertad, cambio de etapas, elección de itinerarios","Solo al final del curso"],c:1}
+    ]
+  },
+  "SFE_UA2_T2": {
+    title: "El Plan de Acción Tutorial y su elaboración",
+    ua: 2,
+    questions: [
+      {q:"¿Qué es el PAT?",o:["Un examen periódico","El documento que establece las actuaciones de acompañamiento y orientación","Un plan de actividades extraescolares"],c:1},
+      {q:"El PAT forma parte del…",o:["Plan de Autoprotección","Proyecto Educativo de Centro","Solo del departamento de orientación"],c:1},
+      {q:"¿Quiénes elaboran el PAT?",o:["Solo el tutor","El equipo de coordinación pedagógica, tutores, orientación y familias","Solo la dirección"],c:1},
+      {q:"Una característica del PAT es ser…",o:["Rígido e inamovible","Flexible y abierto a la dinámica del aula","Solo teórico"],c:1},
+      {q:"El PAT debe ser evaluable para…",o:["Solo cumplir normativa","Mejorar la acción tutorial desde la reflexión","Solo puntuar al tutor"],c:1},
+      {q:"La LOMLOE establece en su artículo 91 que la tutoría es…",o:["Opcional","Una función propia del profesorado","Solo del orientador"],c:1},
+      {q:"Los elementos del PAT incluyen…",o:["Solo el horario de tutoría","Objetivos, contenidos, actividades, temporalización y evaluación","Solo los nombres de los tutores"],c:1},
+      {q:"El PAT está contextualizado a…",o:["Un modelo único para todos los centros","La realidad del centro, su contexto social y las necesidades del alumnado","Solo a la legislación estatal"],c:1},
+      {q:"La evaluación del PAT utiliza…",o:["Solo exámenes","Cuestionarios, entrevistas, observación y memorias","Solo notas del alumnado"],c:1},
+      {q:"El PAT también puede denominarse…",o:["PGA","POAT (Plan de Orientación y Acción Tutorial)","PEC"],c:1},
+      {q:"El PAT es viable y práctico cuando…",o:["Tiene objetivos inalcanzables","Se desarrolla con objetivos realizables","Es solo teórico"],c:1},
+      {q:"El Real Decreto 217/2022 regula la tutoría en…",o:["Educación Infantil","Educación Secundaria Obligatoria","Solo Bachillerato"],c:1},
+      {q:"El PAT integra la acción tutorial en…",o:["Solo la hora de tutoría","Todos los procesos de enseñanza-aprendizaje","Solo las actividades extraescolares"],c:1},
+      {q:"Según Santana (2012), el PAT es un documento…",o:["Individual del tutor","Consensuado que implica a todos los agentes educativos","Solo del equipo directivo"],c:1}
+    ]
+  },
+  "SFE_UA2_T3": {
+    title: "Perspectiva del PAT desde el profesorado",
+    ua: 2,
+    questions: [
+      {q:"La coordinación docente en el PAT se dificulta por…",o:["Exceso de tiempo","La organización por departamentos que refuerza la compartimentación","Demasiados orientadores"],c:1},
+      {q:"La relación con los equipos de orientación suele ser…",o:["Muy fluida siempre","Superficial o esporádica en la práctica","Inexistente por ley"],c:1},
+      {q:"La formación del profesorado en tutoría es…",o:["Suficiente y completa","A menudo insuficiente y no específica","Excesiva"],c:1},
+      {q:"La participación del alumnado en el PAT es importante para…",o:["Solo cumplir normativa","Que el alumnado sea protagonista de su propio desarrollo","Solo mantener el orden"],c:1},
+      {q:"Un obstáculo para la coordinación docente es…",o:["Exceso de espacios de reunión","La falta de espacios institucionalizados para reflexión conjunta","Demasiados coordinadores"],c:1},
+      {q:"La relación con la administración en el PAT se complica por…",o:["Exceso de recursos","Burocracia excesiva y falta de flexibilidad","Demasiada libertad"],c:1},
+      {q:"Los departamentos tienden a priorizar…",o:["La acción tutorial","Los contenidos académicos y la cultura examinatoria","La creatividad del alumnado"],c:1},
+      {q:"La escasez de orientadores en los centros provoca…",o:["Mejor atención personalizada","Imposibilidad de acompañamiento continuo","Más tiempo libre para el tutor"],c:1},
+      {q:"Dos modelos de orientación coexisten en España según su ubicación…",o:["Interno y mixto","Dentro del centro o en gabinete externo","Público y privado"],c:1},
+      {q:"La implicación de las familias en el PAT suele verse limitada por…",o:["Exceso de participación","Barreras laborales, culturales o comunicativas","Demasiadas reuniones"],c:1},
+      {q:"La sobrecarga de tareas del tutor deja poco margen para…",o:["Dar clase","Coordinación efectiva con orientación","Corregir exámenes"],c:1},
+      {q:"La cultura profesional de departamentos dificulta…",o:["La especialización","El trabajo cooperativo requerido por el PAT","La autonomía docente"],c:1}
+    ]
+  },
+  "SFE_UA2_T4": {
+    title: "Metodologías expresivas e integración familiar",
+    ua: 2,
+    questions: [
+      {q:"La comunicación bidireccional entre familia y escuela implica…",o:["Solo la escuela informando","Flujo de información en ambas direcciones","Solo las familias preguntando"],c:1},
+      {q:"Las comunidades de aprendizaje buscan…",o:["Solo mejorar las notas","Integrar a familias y comunidad en el proceso educativo","Solo formar a docentes"],c:1},
+      {q:"Las escuelas de familias son…",o:["Centros solo para padres","Espacios formativos donde familias adquieren herramientas educativas","Solo reuniones de AMPA"],c:1},
+      {q:"El modelo ecológico de Bronfenbrenner es pertinente porque…",o:["Solo habla del individuo","Muestra la interrelación entre familia, escuela y comunidad","Solo es biológico"],c:1},
+      {q:"El mesosistema de Bronfenbrenner se refiere a…",o:["Solo la familia","La interacción entre microsistemas como familia y escuela","Solo la escuela"],c:1},
+      {q:"La participación familiar se ve condicionada por…",o:["Solo la voluntad de los padres","Nivel socioeconómico, educativo, condiciones laborales y dinámicas del centro","Solo el horario escolar"],c:1},
+      {q:"Las plataformas virtuales para comunicación familia-escuela permiten…",o:["Solo enviar notas","Información continua y canal directo de consultas","Solo matriculación"],c:1},
+      {q:"La inclusión y equidad en la participación familiar requiere…",o:["Tratar a todas las familias igual","Adaptar estrategias a las características socioculturales de cada familia","Solo traducir documentos"],c:1},
+      {q:"Los proyectos de éxito de integración familiar incluyen…",o:["Solo reuniones trimestrales","Tertulias dialógicas, grupos interactivos y talleres conjuntos","Solo circulares informativas"],c:1},
+      {q:"El voluntariado y la colaboración de familias en el centro busca…",o:["Solo mano de obra gratuita","Corresponsabilidad y sentimiento de pertenencia","Solo vigilar el recreo"],c:1},
+      {q:"Epstein (2018) subraya que la comunicación debe ser…",o:["Solo unidireccional","Bidireccional, permitiendo a las familias también expresarse","Solo escrita"],c:1},
+      {q:"Los boletines informativos deben usar…",o:["Lenguaje técnico","Lenguaje claro, amigable y libre de tecnicismos","Solo gráficos"],c:1},
+      {q:"El aprendizaje compartido entre familias y escuela facilita…",o:["Solo las tareas","Que las familias apoyen el proceso educativo en casa","Solo los deberes"],c:1}
+    ]
+  },
+  "SFE_UA3_T1": {
+    title: "La familia como contexto de desarrollo",
+    ua: 3,
+    questions: [
+      {q:"Según Benítez-Pérez (2017), la familia es…",o:["Una estructura rígida e inmutable","Uno de los aspectos más valorados, elemento natural y fundamental de la sociedad","Solo una unidad económica"],c:1},
+      {q:"Desde la perspectiva sociológica, la familia garantiza…",o:["Solo la economía","La reproducción social, transmisión de valores y la integración social","Solo la vivienda"],c:1},
+      {q:"Desde la perspectiva psicológica, la familia es el primer…",o:["Centro de trabajo","Agente socializador","Centro educativo formal"],c:1},
+      {q:"Los vínculos de apego entre progenitores e hijos son…",o:["Irrelevantes","Determinantes para el bienestar y la maduración personal","Solo físicos"],c:1},
+      {q:"La función afectiva y emocional de la familia implica…",o:["Solo cubrir necesidades materiales","Proporcionar seguridad emocional, amor y pertenencia","Solo la disciplina"],c:1},
+      {q:"La función socializadora de la familia transmite…",o:["Solo idiomas","Normas, valores, roles y formas de relación con la sociedad","Solo religión"],c:1},
+      {q:"La función educativa de la familia incluye…",o:["Solo la escolarización formal","Aprendizajes iniciales que configuran personalidad, valores y actitudes","Solo ayudar con los deberes"],c:1},
+      {q:"La función económica de la familia asegura…",o:["Solo el ahorro","La provisión de recursos materiales para el bienestar","Solo la herencia"],c:1},
+      {q:"La función de protección y cuidado incluye…",o:["Solo la alimentación","Salud, seguridad física y emocional de sus miembros","Solo la vivienda"],c:1},
+      {q:"El artículo 16 de la Declaración Universal de DDHH reconoce a la familia como…",o:["Una opción personal","Elemento natural y fundamental de la sociedad con derecho a protección","Solo una tradición"],c:1},
+      {q:"La conceptualización de la familia requiere una mirada…",o:["Solo jurídica","Plural, crítica e interdisciplinar","Solo religiosa"],c:1},
+      {q:"Desde la perspectiva pedagógica, la familia es…",o:["Solo un complemento","El primer y más decisivo contexto educativo","Solo para las vacaciones"],c:1},
+      {q:"La definición de familia se centra cada vez más en…",o:["La estructura formal","Los lazos afectivos y la calidad de las relaciones","Solo la biología"],c:1},
+      {q:"Losada (2015) destaca la importancia de los vínculos de…",o:["Vecindad","Apego entre progenitores e hijos","Compañerismo"],c:1}
+    ]
+  },
+  "SFE_UA3_T2": {
+    title: "Evolución familiar y tipos de familia",
+    ua: 3,
+    questions: [
+      {q:"En las sociedades preindustriales predominaban las familias…",o:["Nucleares","Amplias, centradas en tierra y herencia","Monoparentales"],c:1},
+      {q:"Con la industrialización se consolidó el modelo de familia…",o:["Amplia","Nuclear basada en la intimidad y el consumo","Reconstituida"],c:1},
+      {q:"Las familias posnucleares se caracterizan por…",o:["Ser todas iguales","Alejarse del esquema nuclear tradicional manteniendo funciones esenciales","No tener funciones"],c:1},
+      {q:"Las familias monoparentales están formadas por…",o:["Dos progenitores y sus hijos","Un solo progenitor con sus hijos","Solo abuelos y nietos"],c:1},
+      {q:"Las familias reconstituidas surgen cuando…",o:["Una pareja tiene su primer hijo","Una nueva pareja integra hijos de relaciones anteriores","Solo por adopción"],c:1},
+      {q:"Las familias homoparentales están formadas por…",o:["Parejas heterosexuales","Parejas del mismo sexo con hijos","Solo abuelos"],c:1},
+      {q:"Los estilos de crianza según Maccoby y Martin son…",o:["Libre y estricto","Autoritario, permisivo, negligente y democrático (autoritativo)","Solo democrático"],c:1},
+      {q:"El estilo de crianza autoritativo/democrático se caracteriza por…",o:["Solo control estricto","Equilibrio entre afecto y exigencia","Solo permisividad"],c:1},
+      {q:"El estilo de crianza autoritario genera en los adolescentes…",o:["Alta autoestima","Baja autonomía e impulsividad","Gran creatividad"],c:1},
+      {q:"El estilo de crianza negligente se caracteriza por…",o:["Exceso de afecto","Ausencia de supervisión y de afecto","Mucha exigencia"],c:1},
+      {q:"El estilo permisivo puede contribuir a…",o:["Gran disciplina","Falta de límites, inmadurez o conductas disruptivas","Alta responsabilidad"],c:1},
+      {q:"Desde los años sesenta, fenómenos como la emancipación femenina han generado…",o:["Solo familias nucleares","Pluralización de los modelos familiares","Solo divorcios"],c:1},
+      {q:"Como docentes, conocer la diversidad familiar permite…",o:["Solo clasificar familias","Generar un entorno inclusivo, respetuoso y empático","Solo enviar circulares"],c:1},
+      {q:"Las técnicas de reproducción asistida han generado nuevos modelos como…",o:["Solo adopción","Familias surgidas de donación de gametos o gestación subrogada","Solo familias numerosas"],c:1},
+      {q:"La familia nuclear tradicional ha dejado de ser…",o:["Una opción válida","El modelo hegemónico exclusivo","Una forma de familia"],c:1}
+    ]
+  },
+  "SFE_UA3_T3": {
+    title: "Gestión de la adolescencia en el entorno familiar",
+    ua: 3,
+    questions: [
+      {q:"Los factores de riesgo en la adolescencia son condiciones que…",o:["Garantizan problemas","Aumentan la probabilidad de dificultades de adaptación","No tienen efecto"],c:1},
+      {q:"Los factores de protección buscan…",o:["Aislar al adolescente","Mitigar el impacto de los factores de riesgo","Solo premiar buenas notas"],c:1},
+      {q:"Un factor de protección familiar es…",o:["Ausencia de supervisión","Vínculos afectivos sólidos y estilos educativos positivos","Disciplina inconsistente"],c:1},
+      {q:"Un factor de riesgo familiar es…",o:["Comunicación fluida","Disciplina inconsistente o autoridad coercitiva sin afecto","Estilo democrático"],c:1},
+      {q:"Las estrategias de afrontamiento son…",o:["Solo huir del problema","Recursos cognitivos y conductuales para manejar situaciones estresantes","Solo medicación"],c:1},
+      {q:"Las cinco estrategias funcionales de afrontamiento incluyen…",o:["Solo evitación","Buscar apoyo social, resolver problemas, regularse emocionalmente, distanciarse y reevaluar","Solo llorar"],c:1},
+      {q:"El estilo de crianza más beneficioso para los adolescentes es…",o:["Autoritario","Autoritativo/democrático","Negligente"],c:1},
+      {q:"La resiliencia en adolescentes se refiere a…",o:["No tener problemas","Capacidad de adaptarse positivamente ante la adversidad","Solo ser fuerte físicamente"],c:1},
+      {q:"El entorno familiar actúa como factor de riesgo cuando…",o:["Hay comunicación abierta","Se carece de supervisión o se ejerce disciplina inconsistente","Hay afecto y normas claras"],c:1},
+      {q:"La gestión de la adolescencia desde la institución educativa implica…",o:["Solo dar contenidos académicos","Orientar familias y fomentar estrategias preventivas","Solo sancionar"],c:1},
+      {q:"Las familias permisivas pueden contribuir a…",o:["Gran disciplina","Inmadurez si no hay supervisión responsable","Excelentes resultados académicos"],c:1},
+      {q:"Los factores de protección personales incluyen…",o:["Solo la genética","Autoestima, habilidades sociales y sentido de competencia","Solo el CI alto"],c:1},
+      {q:"El acompañamiento familiar debe basarse en…",o:["Solo la rigidez","Respeto, diálogo, calidez emocional y firmeza normativa","Solo la permisividad"],c:1},
+      {q:"Las expectativas excesivas en contextos de vulnerabilidad pueden…",o:["Mejorar el rendimiento","Exacerbar problemáticas aunque el estilo parental sea estructurado","No tener efecto"],c:1}
+    ]
+  },
+  "SFE_UA4_T1": {
+    title: "Relación familia-escuela: intervención educativa",
+    ua: 4,
+    questions: [
+      {q:"El modelo ecológico de Bronfenbrenner señala que familia y escuela son…",o:["Independientes","Microsistemas interdependientes cuya interacción configura el mesosistema","El mismo sistema"],c:1},
+      {q:"Bourdieu y Passeron analizan la transmisión del…",o:["Capital económico solo","Capital cultural y cómo las desigualdades familiares se reproducen","Capital deportivo"],c:1},
+      {q:"El modelo de Epstein identifica seis tipos de…",o:["Evaluación","Implicación familiar","Liderazgo docente"],c:1},
+      {q:"Los seis tipos de Epstein incluyen crianza, comunicación, voluntariado, aprendizaje en el hogar…",o:["Deporte y música","Toma de decisiones y colaboración con la comunidad","Solo exámenes"],c:1},
+      {q:"El modelo de Hoover-Dempsey y Sandler se centra en…",o:["Solo la evaluación","Por qué las familias se implican y qué factores lo motivan","Solo el currículo"],c:1},
+      {q:"La Ley General de Educación de 1970 introdujo…",o:["Solo la FP","Las Juntas de Padres como órganos con representación parental","Solo los exámenes finales"],c:1},
+      {q:"Los coordinadores de familia y mediadores culturales buscan…",o:["Solo traducir documentos","Facilitar la comunicación y participación de familias diversas","Solo organizar fiestas"],c:1},
+      {q:"En Educación Infantil (3-6 años), la participación familiar es…",o:["Irrelevante","Especialmente intensa y cotidiana","Solo en reuniones formales"],c:1},
+      {q:"En la ESO (12-16 años), la participación familiar se centra en…",o:["Solo las notas","Orientación vocacional, prevención de riesgos y acompañamiento emocional","Solo la matrícula"],c:1},
+      {q:"El Aprendizaje-Servicio en relación familia-escuela combina…",o:["Solo teoría","Aprendizaje curricular con servicio a la comunidad involucrando familias","Solo voluntariado"],c:1},
+      {q:"Las escuelas de padres ofrecen…",o:["Solo entretenimiento","Formación y herramientas para apoyar el desarrollo de sus hijos","Solo actividades deportivas"],c:1},
+      {q:"La corresponsabilidad pedagógica implica que…",o:["Solo la escuela educa","Familia y escuela se reconocen como copartícipes del desarrollo integral","Solo las familias educan"],c:1},
+      {q:"Los programas de involucramiento parental en primera infancia generan…",o:["Pocos beneficios","Retornos sociales superiores a intervenciones solo escolares","Solo gastos"],c:1},
+      {q:"Campbell et al. (2014) demuestran desde la economía de la educación que…",o:["La participación familiar no importa","Programas de involucramiento parental tienen alta rentabilidad social","Solo la inversión escolar importa"],c:1}
+    ]
+  },
+  "SFE_UA4_T2": {
+    title: "Modelos de relación familia-escuela",
+    ua: 4,
+    questions: [
+      {q:"Tradicionalmente, la escuela era el espacio de socialización…",o:["Primaria","Secundaria","Terciaria"],c:1},
+      {q:"El paradigma de relación familia-escuela cambió a partir de los años…",o:["Cuarenta","Sesenta y setenta","Noventa"],c:1},
+      {q:"Según Mendoza-Santana y Cárdenas-Sacoto, la importancia de la participación familiar…",o:["Es menor","Se reconoce cada vez más en la literatura académica","Solo es cultural"],c:1},
+      {q:"El modelo de partenariado de Epstein proporciona…",o:["Solo teoría","Un marco operativo con seis tipos de implicación familiar","Solo tres tipos de comunicación"],c:1},
+      {q:"El modelo ecológico de Bronfenbrenner aplicado a familia-escuela destaca…",o:["La separación de contextos","La interconexión entre microsistemas donde se desenvuelve el niño","Solo el aula"],c:1},
+      {q:"Las herramientas de comunicación para docentes incluyen…",o:["Solo cartas formales","Entrevistas, plataformas digitales, boletines y reuniones participativas","Solo correo electrónico"],c:1},
+      {q:"Las prácticas inclusivas en relación familia-escuela buscan…",o:["Solo familias con recursos","Integrar a todas las familias incluyendo LGBTIQ+, migrantes y monoparentales","Solo familias nucleares"],c:1},
+      {q:"La formación docente continua en relación con familias es necesaria para…",o:["Solo cumplir requisitos","Gestionar la diversidad familiar y mejorar la comunicación","Solo obtener certificados"],c:1},
+      {q:"La evaluación del impacto de la relación familia-escuela mide…",o:["Solo las notas","Rendimiento académico, bienestar emocional y participación","Solo la asistencia"],c:1},
+      {q:"Las nuevas configuraciones familiares exigen que la escuela…",o:["Las ignore","Se adapte y reconozca la pluralidad sin reproducir normatividades","Solo las tolere"],c:1},
+      {q:"Rogero (2010) destaca los movimientos de renovación pedagógica en España como…",o:["Irrelevantes","Promotores de la transformación de los sistemas educativos","Solo teóricos"],c:1},
+      {q:"La Convención sobre los Derechos del Niño (1989) incidió en…",o:["Solo la educación formal","La necesidad de vínculos sólidos entre escuela y familia","Solo los derechos laborales"],c:1},
+      {q:"La participación democrática de las familias implica…",o:["Solo votar en elecciones","Participar activamente en la toma de decisiones del centro","Solo recibir información"],c:1}
+    ]
+  },
+  "SFE_UA4_T3": {
+    title: "Educación en valores: familia y escuela",
+    ua: 4,
+    questions: [
+      {q:"Los valores son principios que orientan la conducta humana en función del…",o:["Beneficio individual","Bien común","Éxito económico"],c:1},
+      {q:"Kohlberg es conocido por su teoría del…",o:["Aprendizaje social","Desarrollo moral progresivo","Condicionamiento operante"],c:1},
+      {q:"Freire destaca la necesidad de una educación…",o:["Bancaria y pasiva","Liberadora que fomente conciencia crítica y responsabilidad social","Solo técnica"],c:1},
+      {q:"La corresponsabilidad educativa en valores implica que…",o:["Solo la escuela educa en valores","Familia y escuela comparten la responsabilidad de inculcar valores","Solo la familia educa en valores"],c:1},
+      {q:"El clima escolar y la cultura institucional influyen en…",o:["Solo la decoración","La formación ética y la convivencia del alumnado","Solo el presupuesto"],c:1},
+      {q:"Proyectos conjuntos familia-escuela en valores incluyen…",o:["Solo exámenes","Actividades de voluntariado, tertulias y proyectos comunitarios","Solo reuniones informativas"],c:1},
+      {q:"La formación ética del profesorado es necesaria porque…",o:["Los profesores no tienen valores","El docente es modelo y referente de comportamiento ético","Solo para cumplir normativa"],c:1},
+      {q:"Los valores como justicia, solidaridad y empatía favorecen…",o:["Solo el rendimiento académico","La convivencia armónica en el aula y la sociedad","Solo la disciplina"],c:1},
+      {q:"La educación en valores es un proceso…",o:["Puntual y aislado","Sistémico, pluridimensional, intencional e integrado","Solo para Primaria"],c:1},
+      {q:"Según Ramos (2020), los docentes deben…",o:["Solo transmitir conocimientos","Ser guía en la apropiación de valores, un ejemplo y una huella","Solo evaluar"],c:1},
+      {q:"La función social de los valores reside en…",o:["Solo la tradición","Generar cohesión social y promover el respeto a los DDHH","Solo en la religión"],c:1},
+      {q:"La familia es el primer agente socializador en la construcción de…",o:["Solo hábitos de higiene","La identidad moral de los individuos","Solo el lenguaje"],c:1},
+      {q:"La estrategia de aprendizaje-servicio integra valores porque…",o:["Solo es voluntariado","Combina aprendizaje curricular con servicio comunitario solidario","Solo son prácticas obligatorias"],c:1}
+    ]
+  },
+  "SFE_UA4_T4": {
+    title: "La educación desde la perspectiva de género",
+    ua: 4,
+    questions: [
+      {q:"La perspectiva de género permite…",o:["Solo separar por sexos","Identificar, cuestionar y transformar relaciones de poder y desigualdad","Solo estudiar biología"],c:1},
+      {q:"El sistema sexo/género según Rubin (1986) se refiere a…",o:["Solo diferencias biológicas","Acuerdos mediante los cuales la sociedad transforma la sexualidad biológica en productos culturales","Solo la orientación sexual"],c:1},
+      {q:"El género es un constructo…",o:["Biológico e inmutable","Social y cultural, aprendido y modificable","Solo genético"],c:1},
+      {q:"La Ley Moyano de 1857 reconoció el derecho de las niñas a la educación, pero…",o:["Con plena igualdad","Con un currículo orientado a labores domésticas","Prohibiendo su acceso a secundaria"],c:1},
+      {q:"Durante la Segunda República se impulsó…",o:["La separación por sexos","La coeducación, laicidad y escuelas mixtas","Solo la educación masculina"],c:1},
+      {q:"El sexismo se entiende como…",o:["Solo agresiones físicas","Creencias y actitudes que perpetúan la inferioridad de las mujeres","Solo diferencias salariales"],c:1},
+      {q:"Los estereotipos de género son…",o:["Verdades biológicas","Creencias generalizadas sobre atributos de hombres y mujeres","Solo bromas"],c:1},
+      {q:"El modelo coeducativo busca…",o:["Separar por géneros","Educar en igualdad, eliminando estereotipos y fomentando equidad","Solo añadir contenidos sobre mujeres"],c:1},
+      {q:"La LOMLOE 2020 incorpora la perspectiva de género como…",o:["Algo opcional","Un eje transversal del sistema educativo","Solo en una asignatura"],c:1},
+      {q:"La violencia de género en la adolescencia puede manifestarse como…",o:["Solo agresiones físicas","Control, manipulación emocional, ciberacoso y violencia física","Solo insultos"],c:1},
+      {q:"El artículo 14 de la Constitución española reconoce…",o:["Solo el derecho a la educación","La igualdad ante la ley y la no discriminación por razón de sexo","Solo el derecho al trabajo"],c:1},
+      {q:"La coeducación va más allá de…",o:["Solo la igualdad salarial","La simple escuela mixta: implica transformar prácticas y valores","Solo los contenidos"],c:1},
+      {q:"El sexismo sutil en la escuela se manifiesta en…",o:["Solo agresiones visibles","Lenguaje, materiales didácticos, expectativas diferenciadas y currículo oculto","Solo los uniformes"],c:1},
+      {q:"Platero (2014) destaca que la asignación de género se produce en…",o:["Un vacío","Un contexto social concreto, siendo aprendido y dependiente de coordenadas históricas","Solo en la familia"],c:1}
+    ]
+  }
+};
 
-  const selectAnswer = useCallback((qIdx, optIdx) => {
-    if (showResults) return;
-    setAnswers(prev => ({ ...prev, [qIdx]: optIdx }));
-  }, [showResults]);
 
-  const finishTest = useCallback(() => {
-    setShowResults(true);
-    setCurrentQ(0);
-    const key = testInfo.bankKey + "_" + (testCount[testInfo.bankKey] || 0);
-    setTestCount(prev => ({ ...prev, [testInfo.bankKey]: (prev[testInfo.bankKey] || 0) + 1 }));
-  }, [testInfo, testCount]);
+const LOGO_SRC = "data:image/png;base64,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";
 
-  const score = useMemo(() => {
-    if (!currentTest || !showResults) return 0;
-    let s = 0;
-    currentTest.forEach((q, i) => {
-      if (answers[i] === q.correct) s++;
-    });
-    return s;
-  }, [currentTest, answers, showResults]);
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function pickN(a,n){return shuffle(a).slice(0,n)}
+function generateTest(bank,n=20){return pickN(bank,Math.min(n,bank.length)).map(q=>{const idx=shuffle([0,1,2]);return{q:q.q,options:idx.map(i=>q.o[i]),correct:idx.indexOf(q.c)}})}
+function generateGeneralTest(banks,n=20){const all=[];Object.values(banks).forEach(b=>b.questions.forEach(q=>all.push(q)));return generateTest(all,n)}
+function getGrade(s,t){const n=(s/t)*10;if(n>=9)return{label:"Sobresaliente",color:"#16a34a",bg:"#f0fdf4"};if(n>=7)return{label:"Notable",color:"#2563eb",bg:"#eff6ff"};if(n>=6)return{label:"Bien",color:"#7c3aed",bg:"#f5f3ff"};if(n>=5)return{label:"Aprobado",color:"#d97706",bg:"#fffbeb"};return{label:"Suspenso",color:"#dc2626",bg:"#fef2f2"}}
 
-  const answered = Object.keys(answers).length;
-  const uaColor = testInfo ? UA_COLORS[testInfo.ua] || UA_COLORS.general : UA_COLORS[1];
+const SUBJECTS = [
+  {
+    id: "PGFPCOM01",
+    name: "Aprendizaje y desarrollo",
+    full: "Aprendizaje y desarrollo de la personalidad del adolescente",
+    banks: questionBanks,
+    uas: [
+      {n:1,title:"Desarrollo del adolescente",keys:["UA1_T1","UA1_T2","UA1_T3"]},
+      {n:2,title:"Teorías y procesos de aprendizaje",keys:["UA2_T1","UA2_T2","UA2_T3"]},
+      {n:3,title:"Personalidad, diferencias y DUA",keys:["UA3_T1","UA3_T2","UA3_T3"]},
+      {n:4,title:"Diversidad, NEAE y NEE",keys:["UA4_T1","UA4_T2","UA4_T3"]}
+    ]
+  },
+  {
+    id: "PCE",
+    name: "Procesos y contextos educativos",
+    full: "Procesos y contextos educativos",
+    banks: questionBanks_PCE,
+    uas: [
+      {n:1,title:"El sistema educativo español",keys:["PCE_UA1_T1","PCE_UA1_T2","PCE_UA1_T3"]},
+      {n:2,title:"FP, régimen especial y documentos",keys:["PCE_UA2_T1","PCE_UA2_T2","PCE_UA2_T3","PCE_UA2_T4"]},
+      {n:3,title:"Inteligencia emocional y convivencia",keys:["PCE_UA3_T1","PCE_UA3_T2","PCE_UA3_T3"]},
+      {n:4,title:"Orientación y gestión escolar",keys:["PCE_UA4_T1","PCE_UA4_T2","PCE_UA4_T3"]}
+    ]
+  },
+  {
+    id: "SFE",
+    name: "Sociedad, familia y educación",
+    full: "Sociedad, familia y educación",
+    banks: questionBanks_SFE,
+    uas: [
+      {n:1,title:"La institución escolar y desafíos docentes",keys:["SFE_UA1_T1","SFE_UA1_T2","SFE_UA1_T3","SFE_UA1_T4"]},
+      {n:2,title:"Función tutorial y PAT",keys:["SFE_UA2_T1","SFE_UA2_T2","SFE_UA2_T3","SFE_UA2_T4"]},
+      {n:3,title:"La familia y la adolescencia",keys:["SFE_UA3_T1","SFE_UA3_T2","SFE_UA3_T3"]},
+      {n:4,title:"Relación familia-escuela y valores",keys:["SFE_UA4_T1","SFE_UA4_T2","SFE_UA4_T3","SFE_UA4_T4"]}
+    ]
+  }
+];
 
-  // ── HOME SCREEN ──
-  if (screen === "home") {
-    const uas = [
-      { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1", "UA1_T2", "UA1_T3"] },
-      { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1", "UA2_T2", "UA2_T3"] },
-      { num: 3, title: "Personalidad, diferencias y DUA", topics: ["UA3_T1", "UA3_T2", "UA3_T3"] },
-      { num: 4, title: "Diversidad, NEAE y NEE", topics: ["UA4_T1", "UA4_T2", "UA4_T3"] },
-    ];
-    return (
-      <div style={{ minHeight: "100vh", background: "#F7FAFC", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
-        <div style={{ background: "linear-gradient(135deg, #1B2A4A 0%, #2C5282 100%)", padding: "32px 20px 28px", textAlign: "center" }}>
-          <h1 style={{ color: "#fff", fontSize: 22, margin: 0, fontWeight: 700, letterSpacing: "-0.3px" }}>
-            📝 Tests de Repaso
-          </h1>
-          <p style={{ color: "#BEE3F8", fontSize: 13, margin: "6px 0 0", fontWeight: 400 }}>
-            Aprendizaje y desarrollo de la personalidad del adolescente
-          </p>
-          <p style={{ color: "#90CDF4", fontSize: 11, margin: "4px 0 0" }}>
-            20 preguntas · 3 opciones · Sin penalización
-          </p>
+const ACCENT="#e53e2e";
+
+function QuizApp(){
+  const[screen,setScreen]=useState("subjects");
+  const[subject,setSubject]=useState(null);
+  const[test,setTest]=useState(null);
+  const[answers,setAnswers]=useState({});
+  const[qi,setQi]=useState(0);
+  const[done,setDone]=useState(false);
+  const[info,setInfo]=useState(null);
+
+  const start=useCallback((subj,key,num)=>{
+    let qs,inf;
+    if(key==="general"){qs=generateGeneralTest(subj.banks,20);inf={title:`Test General ${num}`,key,subj}}
+    else{const bk=subj.banks[key];qs=generateTest(bk.questions,20);inf={title:bk.title,key,subj}}
+    setTest(qs);setInfo(inf);setAnswers({});setQi(0);setDone(false);setScreen("test");
+  },[]);
+
+  const score=useMemo(()=>{if(!test||!done)return 0;let s=0;test.forEach((q,i)=>{if(answers[i]===q.correct)s++});return s},[test,answers,done]);
+  const answered=Object.keys(answers).length;
+  const totalQ=useMemo(()=>{if(!subject)return 0;return Object.values(subject.banks).reduce((t,b)=>t+b.questions.length,0)},[subject]);
+
+  // ── SUBJECT SELECTOR ──
+  if(screen==="subjects"){
+    return(
+      <div style={{minHeight:"100vh",background:"#fafafa",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"20px"}}>
+        <img src={LOGO_SRC} alt="UE" style={{height:52,marginBottom:20,borderRadius:6}}/>
+        <h1 style={{fontSize:22,fontWeight:700,letterSpacing:"-0.5px",textAlign:"center"}}>Tests de Repaso</h1>
+        <p style={{fontSize:12,color:"#888",marginTop:6,marginBottom:28,textAlign:"center"}}>Elige una asignatura para comenzar</p>
+        <div style={{width:"100%",maxWidth:400,display:"flex",flexDirection:"column",gap:10}}>
+          {SUBJECTS.map(s=>{
+            const qCount=Object.values(s.banks).reduce((t,b)=>t+b.questions.length,0);
+            const tCount=Object.keys(s.banks).length;
+            return(
+              <button key={s.id} onClick={()=>{setSubject(s);setScreen("home")}}
+                style={{background:"#fff",border:"1.5px solid #eee",borderRadius:12,padding:"18px 20px",textAlign:"left",transition:"all .15s"}}
+                onMouseOver={e=>{e.currentTarget.style.borderColor=ACCENT;e.currentTarget.style.boxShadow="0 2px 12px #e53e2e15"}}
+                onMouseOut={e=>{e.currentTarget.style.borderColor="#eee";e.currentTarget.style.boxShadow="none"}}>
+                <div style={{fontSize:15,fontWeight:700,color:"#1a1a1a"}}>{s.name}</div>
+                <div style={{fontSize:12,color:"#888",marginTop:3}}>{s.full}</div>
+                <div style={{display:"flex",gap:8,marginTop:8}}>
+                  <span style={{fontSize:10,background:"#f5f5f5",padding:"2px 8px",borderRadius:12,color:"#666"}}>{tCount} temas</span>
+                  <span style={{fontSize:10,background:"#f5f5f5",padding:"2px 8px",borderRadius:12,color:"#666"}}>{qCount} preguntas</span>
+                </div>
+              </button>
+            )
+          })}
         </div>
+      </div>
+    )
+  }
 
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "16px 16px 32px" }}>
-          {uas.map(ua => (
-            <div key={ua.num} style={{ marginBottom: 20 }}>
-              <div style={{
-                background: UA_COLORS[ua.num].bg,
-                color: "#fff",
-                padding: "10px 16px",
-                borderRadius: "10px 10px 0 0",
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: "0.5px"
-              }}>
-                UNIDAD {ua.num} — {ua.title}
+  // ── HOME (topic list) ──
+  if(screen==="home"&&subject){
+    return(
+      <div style={{minHeight:"100vh",background:"#fafafa"}}>
+        <div style={{background:"#fff",borderBottom:"1px solid #eee",padding:"20px 20px 18px"}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+            <button onClick={()=>{setSubject(null);setScreen("subjects")}} style={{background:"none",border:"none",fontSize:16,color:"#888",padding:0}}>←</button>
+            <img src={LOGO_SRC} alt="UE" style={{height:32,borderRadius:4}}/>
+          </div>
+          <h1 style={{fontSize:18,fontWeight:700,letterSpacing:"-0.3px"}}>{subject.name}</h1>
+          <p style={{fontSize:12,color:"#888",marginTop:3}}>{subject.full}</p>
+          <div style={{display:"inline-flex",gap:6,marginTop:8,fontSize:10,color:"#aaa"}}>
+            <span style={{background:"#f5f5f5",padding:"2px 8px",borderRadius:12}}>20 preguntas</span>
+            <span style={{background:"#f5f5f5",padding:"2px 8px",borderRadius:12}}>3 opciones</span>
+            <span style={{background:"#f5f5f5",padding:"2px 8px",borderRadius:12}}>{totalQ} preguntas totales</span>
+          </div>
+        </div>
+        <div style={{maxWidth:540,margin:"0 auto",padding:"16px 16px 40px"}}>
+          {subject.uas.map(ua=>(
+            <div key={ua.n} style={{marginBottom:14}}>
+              <div style={{fontSize:10,fontWeight:700,color:"#999",letterSpacing:"1.2px",padding:"0 2px 6px",textTransform:"uppercase"}}>
+                Unidad {ua.n} — {ua.title}
               </div>
-              <div style={{ background: "#fff", borderRadius: "0 0 10px 10px", boxShadow: "0 1px 4px rgba(0,0,0,0.07)" }}>
-                {ua.topics.map(key => {
-                  const bank = questionBanks[key];
-                  const maxTests = Math.min(4, Math.floor(bank.questions.length / 15));
-                  return (
-                    <div key={key} style={{ padding: "12px 16px", borderBottom: "1px solid #EDF2F7" }}>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#2D3748", marginBottom: 8 }}>
-                        {bank.title}
-                      </div>
-                      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                        {Array.from({ length: maxTests }, (_, i) => (
-                          <button
-                            key={i}
-                            onClick={() => startTest(key, i + 1)}
-                            style={{
-                              background: UA_COLORS[ua.num].light,
-                              border: `1.5px solid ${UA_COLORS[ua.num].accent}`,
-                              color: UA_COLORS[ua.num].accent,
-                              borderRadius: 6,
-                              padding: "5px 12px",
-                              fontSize: 12,
-                              fontWeight: 600,
-                              cursor: "pointer",
-                              transition: "all 0.15s",
-                            }}
-                            onMouseOver={e => { e.target.style.background = UA_COLORS[ua.num].accent; e.target.style.color = "#fff"; }}
-                            onMouseOut={e => { e.target.style.background = UA_COLORS[ua.num].light; e.target.style.color = UA_COLORS[ua.num].accent; }}
-                          >
-                            Test {i + 1}
-                          </button>
-                        ))}
-                        <span style={{ fontSize: 10, color: "#A0AEC0", alignSelf: "center", marginLeft: 4 }}>
-                          {bank.questions.length} preguntas
-                        </span>
-                      </div>
+              {ua.keys.map(key=>{
+                const bk=subject.banks[key];
+                if(!bk)return null;
+                const maxT=Math.max(1,Math.min(4,Math.floor(bk.questions.length/12)));
+                return(
+                  <div key={key} style={{background:"#fff",border:"1px solid #eee",borderRadius:10,padding:"12px 14px",marginBottom:5}}>
+                    <div style={{fontSize:13,fontWeight:600,marginBottom:8}}>{bk.title}</div>
+                    <div style={{display:"flex",gap:5,flexWrap:"wrap",alignItems:"center"}}>
+                      {Array.from({length:maxT},(_,i)=>(
+                        <button key={i} onClick={()=>start(subject,key,i+1)}
+                          style={{background:"#fafafa",border:"1.5px solid #ddd",color:"#555",borderRadius:7,padding:"5px 14px",fontSize:11,fontWeight:600,transition:"all .12s"}}
+                          onMouseOver={e=>{e.target.style.borderColor=ACCENT;e.target.style.color=ACCENT}}
+                          onMouseOut={e=>{e.target.style.borderColor="#ddd";e.target.style.color="#555"}}
+                        >Test {i+1}</button>
+                      ))}
+                      <span style={{fontSize:9,color:"#bbb",marginLeft:3}}>{bk.questions.length}p</span>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                )
+              })}
             </div>
           ))}
-
-          {/* GENERAL TESTS */}
-          <div style={{ marginBottom: 20 }}>
-            <div style={{
-              background: "linear-gradient(135deg, #1A202C 0%, #4A5568 100%)",
-              color: "#fff",
-              padding: "10px 16px",
-              borderRadius: "10px 10px 0 0",
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: "0.5px"
-            }}>
-              🎯 TESTS GENERALES — Todas las unidades
-            </div>
-            <div style={{ background: "#fff", borderRadius: "0 0 10px 10px", padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.07)" }}>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {Array.from({ length: 10 }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => startTest("general", i + 1)}
-                    style={{
-                      background: "#F7FAFC",
-                      border: "1.5px solid #4A5568",
-                      color: "#4A5568",
-                      borderRadius: 6,
-                      padding: "5px 12px",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      cursor: "pointer",
-                      transition: "all 0.15s",
-                    }}
-                    onMouseOver={e => { e.target.style.background = "#4A5568"; e.target.style.color = "#fff"; }}
-                    onMouseOut={e => { e.target.style.background = "#F7FAFC"; e.target.style.color = "#4A5568"; }}
-                  >
-                    General {i + 1}
-                  </button>
+          <div style={{marginTop:16}}>
+            <div style={{fontSize:10,fontWeight:700,color:"#999",letterSpacing:"1.2px",padding:"0 2px 6px",textTransform:"uppercase"}}>Tests Generales — Todas las unidades</div>
+            <div style={{background:"#fff",border:"1px solid #eee",borderRadius:10,padding:"14px"}}>
+              <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+                {Array.from({length:10},(_,i)=>(
+                  <button key={i} onClick={()=>start(subject,"general",i+1)}
+                    style={{background:"#1a1a1a",border:"none",color:"#fff",borderRadius:7,padding:"5px 14px",fontSize:11,fontWeight:600,transition:"all .12s"}}
+                    onMouseOver={e=>{e.target.style.background="#333"}}
+                    onMouseOut={e=>{e.target.style.background="#1a1a1a"}}
+                  >General {i+1}</button>
                 ))}
               </div>
-              <p style={{ fontSize: 10, color: "#A0AEC0", marginTop: 8, marginBottom: 0 }}>
-                Cada test general mezcla preguntas de todos los temas al azar
-              </p>
+              <p style={{fontSize:9,color:"#bbb",marginTop:8}}>Mezcla preguntas de todos los temas al azar</p>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-  // ── TEST SCREEN ──
-  if (screen === "test" && currentTest) {
-    const q = currentTest[currentQ];
-    const grade = showResults ? getGrade(score, currentTest.length) : null;
-
-    return (
-      <div style={{ minHeight: "100vh", background: "#F7FAFC", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
-        {/* Header */}
-        <div style={{ background: uaColor.bg, padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <button
-            onClick={() => setScreen("home")}
-            style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", borderRadius: 6, padding: "5px 12px", fontSize: 12, cursor: "pointer", fontWeight: 600 }}
-          >
-            ← Volver
+  // ── TEST ──
+  if(screen==="test"&&test){
+    const q=test[qi];
+    const grade=done?getGrade(score,test.length):null;
+    const nota=((score/test.length)*10).toFixed(1);
+    return(
+      <div style={{minHeight:"100vh",background:"#fafafa"}}>
+        <div style={{background:"#fff",borderBottom:"1px solid #eee",padding:"10px 14px",display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:10}}>
+          <button onClick={()=>setScreen("home")} style={{background:"none",border:"none",fontSize:12,color:"#888",fontWeight:500,display:"flex",alignItems:"center",gap:3}}>
+            <span style={{fontSize:16}}>←</span> Salir
           </button>
-          <span style={{ color: "#fff", fontSize: 12, fontWeight: 600, textAlign: "center", flex: 1, padding: "0 8px" }}>
-            {testInfo.title}
-          </span>
-          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 11, whiteSpace: "nowrap" }}>
-            {answered}/20
-          </span>
+          <span style={{fontSize:11,fontWeight:600,position:"absolute",left:"50%",transform:"translateX(-50%)",whiteSpace:"nowrap",maxWidth:"55%",overflow:"hidden",textOverflow:"ellipsis"}}>{info.title}</span>
+          <span style={{fontSize:11,color:"#aaa",fontWeight:500}}>{answered}/{test.length}</span>
         </div>
+        <div style={{height:2,background:"#f0f0f0"}}><div style={{height:2,background:done?"#16a34a":ACCENT,width:`${(answered/test.length)*100}%`,transition:"width .3s ease"}}/></div>
 
-        {/* Results banner */}
-        {showResults && grade && (
-          <div style={{
-            background: `linear-gradient(135deg, ${grade.color}15, ${grade.color}25)`,
-            border: `2px solid ${grade.color}`,
-            margin: "16px 16px 0",
-            borderRadius: 12,
-            padding: "20px",
-            textAlign: "center",
-          }}>
-            <div style={{ fontSize: 36, marginBottom: 4 }}>{grade.emoji}</div>
-            <div style={{ fontSize: 28, fontWeight: 800, color: grade.color }}>
-              {score}/{currentTest.length}
-            </div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: grade.color, marginTop: 2 }}>
-              {grade.label}
-            </div>
-            <div style={{ fontSize: 12, color: "#718096", marginTop: 6 }}>
-              Nota: {((score / currentTest.length) * 10).toFixed(1)} / 10
-            </div>
-            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 14 }}>
-              <button
-                onClick={() => { setScreen("home"); }}
-                style={{ background: "#fff", border: `1.5px solid ${grade.color}`, color: grade.color, borderRadius: 8, padding: "8px 18px", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-              >
-                Menú principal
-              </button>
-              <button
-                onClick={() => startTest(testInfo.bankKey, Math.floor(Math.random() * 10) + 1)}
-                style={{ background: grade.color, border: "none", color: "#fff", borderRadius: 8, padding: "8px 18px", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-              >
-                Nuevo test
-              </button>
+        {done&&grade&&(
+          <div style={{background:grade.bg,margin:"12px 14px 0",borderRadius:12,padding:"22px 16px",textAlign:"center",border:`1px solid ${grade.color}22`}}>
+            <div style={{fontSize:38,fontWeight:800,color:grade.color,letterSpacing:"-2px"}}>{nota}</div>
+            <div style={{fontSize:12,fontWeight:600,color:grade.color,marginTop:2}}>{grade.label} — {score} de {test.length} correctas</div>
+            <div style={{display:"flex",gap:6,justifyContent:"center",marginTop:14}}>
+              <button onClick={()=>setScreen("home")} style={{background:"#fff",border:"1.5px solid #ddd",color:"#555",borderRadius:7,padding:"7px 16px",fontSize:11,fontWeight:600}}>Menú</button>
+              <button onClick={()=>start(info.subj,info.key,Math.floor(Math.random()*10)+1)} style={{background:grade.color,border:"none",color:"#fff",borderRadius:7,padding:"7px 16px",fontSize:11,fontWeight:600}}>Repetir</button>
             </div>
           </div>
         )}
 
-        {/* Question navigation */}
-        <div style={{ padding: "12px 16px 4px", overflowX: "auto" }}>
-          <div style={{ display: "flex", gap: 4, minWidth: "fit-content" }}>
-            {currentTest.map((_, i) => {
-              const isActive = i === currentQ;
-              const isAnswered = answers[i] !== undefined;
-              const isCorrect = showResults && answers[i] === currentTest[i].correct;
-              const isWrong = showResults && isAnswered && answers[i] !== currentTest[i].correct;
-              const notAnswered = showResults && !isAnswered;
-              let bg = isActive ? uaColor.accent : isAnswered ? uaColor.light : "#EDF2F7";
-              let clr = isActive ? "#fff" : isAnswered ? uaColor.accent : "#A0AEC0";
-              let bdr = isActive ? uaColor.accent : "transparent";
-              if (showResults) {
-                if (isCorrect) { bg = "#C6F6D5"; clr = "#276749"; bdr = "#38A169"; }
-                else if (isWrong) { bg = "#FED7D7"; clr = "#C53030"; bdr = "#FC8181"; }
-                else if (notAnswered) { bg = "#FEFCBF"; clr = "#975A16"; bdr = "#ECC94B"; }
-                if (isActive) { bdr = "#1A202C"; }
-              }
-              return (
-                <button
-                  key={i}
-                  onClick={() => setCurrentQ(i)}
-                  style={{
-                    width: 28, height: 28, borderRadius: 6, border: `2px solid ${bdr}`,
-                    background: bg, color: clr, fontSize: 10, fontWeight: 700,
-                    cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                    padding: 0,
-                  }}
-                >
-                  {i + 1}
+        <div style={{padding:"10px 14px 4px",overflowX:"auto"}}>
+          <div style={{display:"flex",gap:3,minWidth:"fit-content"}}>
+            {test.map((_,i)=>{
+              const active=i===qi,ans=answers[i]!==undefined;
+              const ok=done&&answers[i]===test[i].correct;
+              const bad=done&&ans&&answers[i]!==test[i].correct;
+              const skip=done&&!ans;
+              let bg=active?"#1a1a1a":ans?"#e0e0e0":"#f0f0f0";
+              let clr=active?"#fff":ans?"#555":"#bbb";
+              if(done){if(ok){bg="#dcfce7";clr="#16a34a"}else if(bad){bg="#fee2e2";clr="#dc2626"}else if(skip){bg="#fef9c3";clr="#a16207"}}
+              return(
+                <button key={i} onClick={()=>setQi(i)}
+                  style={{width:24,height:24,borderRadius:5,border:active&&!done?"2px solid #1a1a1a":done&&active?"2px solid #555":"1.5px solid transparent",
+                    background:bg,color:clr,fontSize:9,fontWeight:700,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",padding:0}}>
+                  {i+1}
                 </button>
-              );
+              )
             })}
           </div>
         </div>
 
-        {/* Question card */}
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "8px 16px 100px" }}>
-          <div style={{ background: "#fff", borderRadius: 12, padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginTop: 8 }}>
-            <div style={{ fontSize: 11, color: uaColor.accent, fontWeight: 700, marginBottom: 8 }}>
-              Pregunta {currentQ + 1} de {currentTest.length}
-            </div>
-            <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "#1A202C", fontWeight: 600, margin: "0 0 16px" }}>
-              {q.q}
-            </p>
-            {q.options.map((opt, oi) => {
-              const selected = answers[currentQ] === oi;
-              const isCorrectOpt = showResults && oi === q.correct;
-              const isWrongSelected = showResults && selected && oi !== q.correct;
-              let optBg = selected ? `${uaColor.accent}12` : "#F7FAFC";
-              let optBorder = selected ? uaColor.accent : "#E2E8F0";
-              let optColor = "#2D3748";
-              if (showResults) {
-                if (isCorrectOpt) { optBg = "#F0FFF4"; optBorder = "#38A169"; optColor = "#276749"; }
-                if (isWrongSelected) { optBg = "#FFF5F5"; optBorder = "#FC8181"; optColor = "#C53030"; }
+        <div style={{maxWidth:540,margin:"0 auto",padding:"4px 14px 90px"}}>
+          <div style={{background:"#fff",borderRadius:12,padding:"18px 16px",border:"1px solid #eee",marginTop:4}}>
+            <div style={{fontSize:10,color:"#aaa",fontWeight:600,marginBottom:8,letterSpacing:"0.5px"}}>PREGUNTA {qi+1} / {test.length}</div>
+            <p style={{fontSize:14,lineHeight:1.55,fontWeight:600,margin:"0 0 14px"}}>{q.q}</p>
+            {q.options.map((opt,oi)=>{
+              const sel=answers[qi]===oi;
+              const isOk=done&&oi===q.correct;
+              const isBad=done&&sel&&oi!==q.correct;
+              let bg=sel?"#f8f8f8":"#fff",brd=sel?"#1a1a1a":"#eee",txtC="#1a1a1a";
+              let dotBg=sel?"#1a1a1a":"#f0f0f0",dotC=sel?"#fff":"#aaa";
+              if(done){
+                if(isOk){bg="#f0fdf4";brd="#86efac";txtC="#166534";dotBg="#16a34a";dotC="#fff"}
+                else if(isBad){bg="#fef2f2";brd="#fca5a5";txtC="#991b1b";dotBg="#dc2626";dotC="#fff"}
+                else{brd="#eee";dotBg="#f0f0f0";dotC="#bbb"}
               }
-              return (
-                <button
-                  key={oi}
-                  onClick={() => selectAnswer(currentQ, oi)}
-                  style={{
-                    display: "flex", alignItems: "flex-start", gap: 10, width: "100%",
-                    background: optBg, border: `2px solid ${optBorder}`, borderRadius: 10,
-                    padding: "12px 14px", marginBottom: 8, cursor: showResults ? "default" : "pointer",
-                    textAlign: "left", transition: "all 0.15s",
-                  }}
-                >
-                  <span style={{
-                    width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 11, fontWeight: 700,
-                    background: (showResults && isCorrectOpt) ? "#38A169" : (showResults && isWrongSelected) ? "#E53E3E" : selected ? uaColor.accent : "#E2E8F0",
-                    color: (selected || (showResults && (isCorrectOpt || isWrongSelected))) ? "#fff" : "#718096",
-                  }}>
-                    {showResults && isCorrectOpt ? "✓" : showResults && isWrongSelected ? "✗" : String.fromCharCode(65 + oi)}
+              return(
+                <button key={oi} onClick={()=>{if(!done)setAnswers(p=>({...p,[qi]:oi}))}}
+                  style={{display:"flex",alignItems:"flex-start",gap:10,width:"100%",background:bg,border:`1.5px solid ${brd}`,borderRadius:9,padding:"10px 12px",marginBottom:6,textAlign:"left",transition:"all .1s"}}>
+                  <span style={{width:22,height:22,borderRadius:"50%",flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,background:dotBg,color:dotC}}>
+                    {done&&isOk?"✓":done&&isBad?"✗":String.fromCharCode(65+oi)}
                   </span>
-                  <span style={{ fontSize: 13.5, lineHeight: 1.5, color: optColor, fontWeight: selected ? 600 : 400 }}>
-                    {opt}
-                  </span>
+                  <span style={{fontSize:13,lineHeight:1.5,color:txtC,fontWeight:sel?600:400}}>{opt}</span>
                 </button>
-              );
+              )
             })}
-            {showResults && answers[currentQ] !== q.correct && (
-              <div style={{ background: "#F0FFF4", border: "1px solid #C6F6D5", borderRadius: 8, padding: "8px 12px", marginTop: 4, fontSize: 12, color: "#276749" }}>
-                ✅ Respuesta correcta: <strong>{q.options[q.correct]}</strong>
+            {done&&answers[qi]!==q.correct&&(
+              <div style={{background:"#f0fdf4",border:"1px solid #dcfce7",borderRadius:7,padding:"7px 10px",marginTop:2,fontSize:11,color:"#166534"}}>
+                Correcta: <strong>{q.options[q.correct]}</strong>
               </div>
             )}
           </div>
-
-          {/* Navigation */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 14, gap: 8 }}>
-            <button
-              onClick={() => setCurrentQ(Math.max(0, currentQ - 1))}
-              disabled={currentQ === 0}
-              style={{
-                flex: 1, padding: "10px", borderRadius: 8, border: "1.5px solid #CBD5E0",
-                background: "#fff", color: currentQ === 0 ? "#CBD5E0" : "#4A5568",
-                fontSize: 13, fontWeight: 600, cursor: currentQ === 0 ? "default" : "pointer",
-              }}
-            >
-              ← Anterior
-            </button>
-            {currentQ < currentTest.length - 1 ? (
-              <button
-                onClick={() => setCurrentQ(currentQ + 1)}
-                style={{
-                  flex: 1, padding: "10px", borderRadius: 8, border: "none",
-                  background: uaColor.accent, color: "#fff",
-                  fontSize: 13, fontWeight: 600, cursor: "pointer",
-                }}
-              >
-                Siguiente →
-              </button>
-            ) : !showResults ? (
-              <button
-                onClick={finishTest}
-                style={{
-                  flex: 1, padding: "10px", borderRadius: 8, border: "none",
-                  background: "#276749", color: "#fff",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer",
-                }}
-              >
-                ✓ Finalizar test
-              </button>
-            ) : null}
+          <div style={{display:"flex",justifyContent:"space-between",marginTop:10,gap:6}}>
+            <button onClick={()=>setQi(Math.max(0,qi-1))} disabled={qi===0}
+              style={{flex:1,padding:"9px",borderRadius:7,border:"1.5px solid #eee",background:"#fff",color:qi===0?"#ddd":"#555",fontSize:12,fontWeight:600}}>← Anterior</button>
+            {qi<test.length-1?(
+              <button onClick={()=>setQi(qi+1)} style={{flex:1,padding:"9px",borderRadius:7,border:"none",background:"#1a1a1a",color:"#fff",fontSize:12,fontWeight:600}}>Siguiente →</button>
+            ):!done?(
+              <button onClick={()=>{setDone(true);setQi(0)}} style={{flex:1,padding:"9px",borderRadius:7,border:"none",background:ACCENT,color:"#fff",fontSize:12,fontWeight:700}}>Finalizar</button>
+            ):null}
           </div>
         </div>
       </div>
-    );
+    )
   }
-
   return null;
 }
 
-
-ReactDOM.createRoot(document.getElementById("root")).render(<QuizApp />);
+ReactDOM.createRoot(document.getElementById("root")).render(<QuizApp/>);
 </script>
 </body>
 </html>
