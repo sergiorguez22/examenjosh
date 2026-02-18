@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tests de Repaso — PGFPCOM01</title>
+<title>Tests de Repaso — Máster Profesorado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
@@ -21,7 +21,7 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const questionBanks = {
+const questionBanks_ADP = {
   "UA1_T1": {
     title: "Pubertad: desarrollo físico y sexual",
     ua: 1,
@@ -395,13 +395,356 @@ const questionBanks = {
     ]
   }
 };
+const questionBanks_PCE = {
+  "PCE_UA1_T1": {
+    title: "Evolución legislativa del sistema educativo español",
+    ua: 1,
+    questions: [
+      { q: "La Ley Moyano de 1857 estableció como principio fundamental:", o: ["La descentralización total de la educación en las comunidades autónomas", "La obligatoriedad y gratuidad de la enseñanza primaria y la centralización del sistema", "La separación entre Iglesia y Estado en materia educativa de forma radical"], c: 1 },
+      { q: "La LGE de 1970 fue revolucionaria porque:", o: ["Introdujo la enseñanza obligatoria hasta los 18 años por primera vez", "Unificó el sistema educativo español superando la dualidad entre enseñanza primaria y bachillerato", "Eliminó completamente la influencia de la Iglesia en la educación pública"], c: 1 },
+      { q: "La LOGSE de 1990 introdujo como novedad más significativa:", o: ["La extensión de la escolarización obligatoria hasta los 16 años y un modelo comprensivo", "El bachillerato de tres años con especialización temprana", "La supresión de la Formación Profesional del sistema educativo"], c: 0 },
+      { q: "La diferencia principal entre el modelo comprensivo de la LOGSE y el modelo anterior es que:", o: ["Separaba al alumnado según su rendimiento desde los 12 años", "Mantenía a todo el alumnado en un tronco común hasta los 16 años sin segregación temprana", "Eliminaba toda forma de evaluación durante la educación obligatoria"], c: 1 },
+      { q: "La LOMCE de 2013 generó controversia especialmente por:", o: ["Ampliar la educación obligatoria hasta los 18 años", "Introducir evaluaciones externas y reválidas, y modificar la organización de las asignaturas", "Suprimir la asignatura de religión del currículo oficial"], c: 1 },
+      { q: "La LOMLOE de 2020 recuperó de la LOE:", o: ["Las reválidas y evaluaciones externas con efectos académicos", "La eliminación de itinerarios en la ESO y la supresión de las evaluaciones finales de etapa", "El modelo de bachillerato unificado sin modalidades ni optatividad"], c: 1 },
+      { q: "El principio de equidad en la LOMLOE se traduce en:", o: ["Tratar a todo el alumnado exactamente igual sin consideraciones individuales", "Garantizar la igualdad de oportunidades compensando desigualdades de origen", "Reducir los contenidos curriculares para facilitar la aprobación generalizada"], c: 1 },
+      { q: "Las competencias clave en el sistema educativo español están alineadas con:", o: ["La legislación exclusivamente nacional sin referentes internacionales", "Las recomendaciones del Consejo de la Unión Europea sobre competencias para el aprendizaje permanente", "Los estándares de rendimiento del sistema educativo finlandés exclusivamente"], c: 1 },
+      { q: "El currículo en la LOMLOE se estructura en torno a:", o: ["Solo objetivos y contenidos como elementos prescriptivos", "Competencias clave, competencias específicas, saberes básicos y criterios de evaluación", "Estándares de aprendizaje evaluables como único referente de evaluación"], c: 1 },
+      { q: "Las evaluaciones PISA miden principalmente:", o: ["El conocimiento enciclopédico del alumnado en todas las materias escolares", "La capacidad de aplicar conocimientos a situaciones reales en lectura, matemáticas y ciencias", "El nivel de memorización de los contenidos del currículo nacional"], c: 1 },
+      { q: "La distribución competencial educativa en España implica que:", o: ["Solo el Estado tiene competencia en materia educativa", "El Estado establece el marco básico y las comunidades autónomas lo desarrollan y ejecutan", "Cada centro educativo diseña libremente su propio currículo sin restricciones"], c: 1 },
+      { q: "El modelo de evaluación que promueve la LOMLOE frente a la LOMCE es:", o: ["La evaluación sumativa como único instrumento válido para la promoción", "Una evaluación continua, formativa e integradora con criterios competenciales", "La evaluación exclusivamente mediante exámenes finales externos estandarizados"], c: 1 },
+      { q: "La Constitución de 1812 fue precursora en educación porque:", o: ["Estableció la escolarización obligatoria hasta los 14 años", "Reconoció la instrucción pública como responsabilidad del Estado por primera vez en España", "Creó las primeras universidades públicas de la historia española"], c: 1 },
+      { q: "El Diseño Universal para el Aprendizaje en el marco legislativo actual implica:", o: ["Diseñar el currículo solo para alumnado con discapacidad diagnosticada", "Planificar desde el inicio un currículo flexible y accesible que minimice barreras para todos", "Aplicar adaptaciones individualizadas como primera medida ante cualquier dificultad"], c: 1 },
+      { q: "La diferencia fundamental entre la LOE y la LOMCE respecto a la organización curricular es que:", o: ["Ambas leyes tenían la misma estructura de asignaturas sin diferencias", "La LOMCE clasificó las asignaturas en troncales, específicas y de libre configuración", "La LOE eliminó todas las asignaturas optativas del currículo"], c: 1 },
+      { q: "Los Pilares de la Educación de Delors incluyen:", o: ["Solo aprender a conocer y aprender a hacer como pilares fundamentales", "Aprender a conocer, hacer, vivir juntos y ser como cuatro ejes complementarios", "Aprender a competir y aprender a producir como ejes del siglo XXI"], c: 1 },
+      { q: "La repetición de curso en la LOMLOE se concibe como:", o: ["La primera medida ante el bajo rendimiento del alumno", "Una medida excepcional que requiere haber agotado las medidas de refuerzo previas", "Una decisión automática al no alcanzar cierto número de asignaturas aprobadas"], c: 1 },
+      { q: "El derecho a la educación reconocido en el artículo 27 de la Constitución Española incluye:", o: ["Solo la libertad de enseñanza sin ninguna obligación estatal", "Tanto el derecho a la educación como la libertad de enseñanza y la participación", "Exclusivamente la obligación del Estado de proporcionar educación gratuita universitaria"], c: 1 },
+      { q: "La transición del modelo de Ley Moyano a la LGE supuso:", o: ["Un cambio puramente nominal sin transformaciones estructurales reales", "La superación de un sistema dual clasista hacia un modelo integrado con educación general básica", "La privatización masiva del sistema educativo español"], c: 1 },
+      { q: "El perfil de salida del alumnado al término de la educación básica según la LOMLOE define:", o: ["Solo los contenidos mínimos que deben memorizar todos los alumnos", "Las competencias y aprendizajes fundamentales que el alumnado debe haber desarrollado", "El nivel de calificaciones numéricas necesarias para obtener el título"], c: 1 },
+      { q: "Las situaciones de aprendizaje como elemento curricular de la LOMLOE son:", o: ["Exámenes prácticos que sustituyen a los escritos", "Contextos significativos que integran competencias y saberes básicos en propuestas pedagógicas reales", "Simulacros de emergencia incluidos en el currículo de todas las etapas"], c: 1 },
+      { q: "La principal aportación del Informe Delors al debate educativo fue:", o: ["Defender un modelo exclusivamente academicista y centrado en contenidos", "Proponer una visión humanista de la educación que trasciende la mera instrucción", "Recomendar la eliminación de los sistemas educativos nacionales en favor de uno global"], c: 1 },
+      { q: "El concepto de inclusión en la LOMLOE supera al de integración porque:", o: ["Ambos conceptos significan exactamente lo mismo en la legislación", "La inclusión exige transformar el sistema educativo y no solo insertar al alumno diferente en él", "La inclusión implica crear centros específicos para cada tipo de necesidad educativa"], c: 1 },
+      { q: "La autonomía de los centros educativos en la LOMLOE se entiende como:", o: ["Total libertad para decidir el currículo sin seguir las directrices estatales ni autonómicas", "La capacidad de adaptar el currículo, la organización y la gestión al contexto y necesidades propias", "La privatización encubierta de la gestión de los centros públicos"], c: 1 },
+      { q: "Las enseñanzas mínimas establecidas por el Estado garantizan:", o: ["Que todas las comunidades autónomas enseñen exactamente lo mismo sin variación", "Un marco común que asegura la cohesión del sistema permitiendo adaptación territorial", "Que el currículo no pueda ser modificado por ningún agente educativo"], c: 1 }
+    ]
+  },
+  "PCE_UA1_T2": {
+    title: "Elementos curriculares y evaluación por competencias",
+    ua: 1,
+    questions: [
+      { q: "Las competencias específicas en la LOMLOE se definen como:", o: ["Los contenidos mínimos que el alumno debe memorizar por asignatura", "Los desempeños que el alumnado debe poder activar aplicando saberes de cada materia", "Las calificaciones numéricas que el alumno debe alcanzar en cada evaluación trimestral"], c: 1 },
+      { q: "Los saberes básicos sustituyen al concepto anterior de contenidos porque:", o: ["Son exactamente lo mismo con una denominación modernizada", "Integran conocimientos, destrezas y actitudes superando la visión de contenidos como solo hechos y datos", "Eliminan todos los contenidos conceptuales del currículo escolar"], c: 1 },
+      { q: "La evaluación criterial se diferencia de la evaluación normativa en que:", o: ["Compara al alumno con el grupo de referencia para establecer un ranking", "Evalúa al alumno respecto a criterios de logro predefinidos sin comparación con otros", "Es más subjetiva y depende exclusivamente de la impresión del docente"], c: 1 },
+      { q: "Los criterios de evaluación en la LOMLOE están vinculados directamente a:", o: ["Los estándares de aprendizaje evaluables de la LOMCE exclusivamente", "Las competencias específicas de cada materia como referente de evaluación", "El número de horas lectivas asignadas a cada asignatura"], c: 1 },
+      { q: "Un instrumento de evaluación válido para la evaluación competencial es:", o: ["Exclusivamente el examen de opción múltiple estandarizado", "El portafolio de aprendizaje que recoge evidencias de desempeño a lo largo del proceso", "El dictado como prueba principal de evaluación de todas las competencias"], c: 1 },
+      { q: "La evaluación formativa tiene como finalidad principal:", o: ["Calificar al alumno al final de cada trimestre con una nota numérica", "Proporcionar información durante el proceso para mejorar el aprendizaje y la enseñanza", "Decidir si el alumno promociona o repite exclusivamente"], c: 1 },
+      { q: "El currículo oculto se refiere a:", o: ["Los contenidos secretos que los centros enseñan sin autorización ministerial", "Los aprendizajes no explícitos que se transmiten a través de las normas, valores y relaciones del centro", "Los temarios que no aparecen en los libros de texto por error editorial"], c: 1 },
+      { q: "La programación didáctica debe incluir según la normativa vigente:", o: ["Solo una lista de contenidos ordenados cronológicamente sin más elementos", "Competencias, criterios de evaluación, situaciones de aprendizaje y medidas de atención a la diversidad", "Exclusivamente las fechas de los exámenes y los porcentajes de calificación"], c: 1 },
+      { q: "La rúbrica como instrumento de evaluación permite:", o: ["Evaluar solo contenidos memorísticos con respuestas cerradas", "Describir niveles de desempeño con criterios explícitos facilitando la autoevaluación", "Calificar más rápido sin necesidad de analizar el trabajo del alumno"], c: 1 },
+      { q: "La transversalidad en el currículo LOMLOE implica que:", o: ["Cada materia trabaja solo sus propios objetivos sin conexión con las demás", "Hay elementos como la educación en valores que atraviesan todas las materias y etapas", "Las materias transversales son optativas y pueden eliminarse del horario"], c: 1 },
+      { q: "La evaluación integradora en la ESO significa que:", o: ["Se pone una única nota que integra todas las materias en un solo número", "Las decisiones sobre el alumno se toman considerando el conjunto de materias y su desarrollo global", "Todos los alumnos reciben la misma calificación independientemente de su rendimiento"], c: 1 },
+      { q: "Los objetivos de etapa se diferencian de las competencias específicas en que:", o: ["Son exactamente el mismo concepto con diferente nombre", "Los objetivos son propósitos generales de la etapa y las competencias específicas son propias de cada materia", "Las competencias específicas son más generales que los objetivos de etapa"], c: 1 },
+      { q: "La coevaluación como estrategia evaluativa permite:", o: ["Que el docente delegue completamente su responsabilidad evaluadora", "Que el alumnado participe en la evaluación de sus iguales desarrollando pensamiento crítico", "Que los padres evalúen directamente la labor del profesorado"], c: 1 },
+      { q: "La concreción curricular sigue un orden que va desde:", o: ["El centro educativo hasta el nivel estatal sin intermediarios autonómicos", "El nivel estatal, pasando por el autonómico, hasta la programación de aula del docente", "El nivel internacional de la OCDE directamente al aula sin ningún filtro"], c: 1 },
+      { q: "La evaluación diagnóstica prevista en la LOMLOE tiene como finalidad:", o: ["Seleccionar a los mejores alumnos para programas especiales de excelencia", "Obtener información sobre el estado del sistema educativo para mejorarlo sin efectos académicos individuales", "Decidir qué centros educativos deben cerrarse por bajo rendimiento"], c: 1 },
+      { q: "Los descriptores operativos del perfil de salida:", o: ["Son las instrucciones de uso del sistema de evaluación digital del centro", "Concretan el nivel de desarrollo competencial esperado al finalizar la etapa educativa", "Solo se aplican en la educación infantil como referentes de evaluación"], c: 1 },
+      { q: "La metodología activa promovida por la LOMLOE prioriza:", o: ["La clase magistral como método único de enseñanza eficaz", "La participación del alumnado como protagonista de su aprendizaje mediante propuestas significativas", "La memorización literal de los saberes básicos del currículo oficial"], c: 1 },
+      { q: "Un proyecto interdisciplinar en el marco de la LOMLOE:", o: ["Es obligatorio solo en educación infantil y primer ciclo de primaria", "Conecta competencias y saberes de varias materias en una propuesta de aprendizaje integrada", "Sustituye completamente a las materias individuales eliminando los horarios asignados"], c: 1 },
+      { q: "La evaluación sumativa cumple la función de:", o: ["Mejorar el proceso de aprendizaje mientras se está desarrollando", "Valorar el grado de consecución de los objetivos al finalizar un periodo de aprendizaje", "Diagnosticar las necesidades iniciales del alumnado antes de comenzar la instrucción"], c: 1 },
+      { q: "Los principios pedagógicos de la LOMLOE incluyen explícitamente:", o: ["Solo la excelencia académica como principio rector del sistema", "La atención personalizada, la prevención del fracaso escolar y el fomento de la lectura entre otros", "La competitividad entre centros como motor de mejora del sistema educativo"], c: 1 },
+      { q: "El aprendizaje basado en competencias exige que la evaluación:", o: ["Se centre exclusivamente en la reproducción de contenidos teóricos", "Valore la capacidad del alumno para movilizar recursos ante situaciones complejas y reales", "Se realice únicamente mediante pruebas escritas de formato cerrado"], c: 1 },
+      { q: "La relación entre competencias clave y competencias específicas es que:", o: ["Son independientes y no tienen ninguna conexión entre sí", "Las competencias específicas de cada materia contribuyen al desarrollo de las competencias clave", "Las competencias clave son menos importantes que las específicas en la evaluación"], c: 1 },
+      { q: "Un diseño curricular basado en resultados de aprendizaje se centra en:", o: ["Los procesos internos del alumno sin considerar lo que demuestra externamente", "Lo que el alumno es capaz de hacer, demostrar y aplicar como evidencia de aprendizaje", "El número de horas que el alumno ha dedicado a estudiar cada materia"], c: 1 },
+      { q: "La autoevaluación del alumnado contribuye a:", o: ["Reducir la carga de trabajo del docente como única finalidad", "Desarrollar la metacognición y la autorregulación del propio aprendizaje", "Sustituir completamente la evaluación profesional del profesorado"], c: 1 },
+      { q: "El enfoque competencial implica que el saber, saber hacer y saber ser:", o: ["Son dimensiones aisladas que se evalúan por separado sin integración", "Se integran en el desempeño competente ante situaciones contextualizadas", "Solo el saber conceptual es relevante para la evaluación académica formal"], c: 1 }
+    ]
+  },
+  "PCE_UA2_T1": {
+    title: "Formación Profesional y enseñanzas de régimen especial",
+    ua: 2,
+    questions: [
+      { q: "La Formación Profesional Básica está dirigida a alumnado que:", o: ["Ha completado la ESO con todas las materias aprobadas", "Tiene entre 15 y 17 años y no ha obtenido el título de ESO tras agotar las medidas ordinarias", "Posee un título universitario y desea reciclarse profesionalmente"], c: 1 },
+      { q: "La FP Dual se caracteriza por:", o: ["Realizarse íntegramente en el centro educativo sin contacto con empresas", "Combinar la formación en el centro educativo con una actividad laboral remunerada en la empresa", "Ser equivalente a un grado universitario en todos los aspectos académicos"], c: 1 },
+      { q: "La diferencia fundamental entre un Ciclo Formativo de Grado Medio y uno de Grado Superior es:", o: ["Solo la duración, siendo el de Grado Superior más corto", "El nivel de cualificación profesional, el acceso y la titulación obtenida", "Que el de Grado Medio es presencial y el de Grado Superior siempre online"], c: 1 },
+      { q: "El módulo de Formación en Centros de Trabajo tiene como finalidad:", o: ["Sustituir las prácticas por un trabajo fin de ciclo teórico", "Completar la formación en un entorno real de trabajo aplicando las competencias adquiridas", "Evaluar al profesorado del ciclo formativo por parte de la empresa colaboradora"], c: 1 },
+      { q: "La acreditación de competencias profesionales permite:", o: ["Obtener un título universitario por experiencia laboral directamente", "Reconocer oficialmente los aprendizajes adquiridos por experiencia laboral o formación no formal", "Trabajar sin ningún tipo de formación previa en cualquier sector"], c: 1 },
+      { q: "Las enseñanzas artísticas superiores se equiparan en el marco del EEES a:", o: ["Ciclos formativos de Grado Medio exclusivamente", "Titulaciones de grado universitario a efectos de acceso a posgrado", "Enseñanzas de educación secundaria obligatoria"], c: 1 },
+      { q: "Las Escuelas Oficiales de Idiomas imparten enseñanzas correspondientes a:", o: ["Solo los niveles A1 y A2 del Marco Común Europeo de Referencia", "Los niveles del MCER hasta el nivel C2 en régimen especial", "Exclusivamente inglés y francés como lenguas extranjeras oficiales"], c: 1 },
+      { q: "La FP en la LOMLOE se organiza en grados que incluyen:", o: ["Solo Grado Medio y Grado Superior como en la legislación anterior", "Grado A, B, C, D y E integrando desde microformaciones hasta especializaciones", "Un único grado unificado sin distinción de niveles formativos"], c: 1 },
+      { q: "El catálogo de cualificaciones profesionales es importante porque:", o: ["Es un listado de empleos disponibles en el mercado laboral actual", "Define los referentes de competencia profesional que estructuran la oferta de FP", "Solo se utiliza para estadísticas de empleo sin aplicación educativa directa"], c: 1 },
+      { q: "Las enseñanzas deportivas se estructuran en:", o: ["Un único nivel sin diferenciación por grado formativo", "Grado Medio y Grado Superior vinculados a modalidades deportivas específicas", "Solo cursos de monitor deportivo sin reconocimiento oficial"], c: 1 },
+      { q: "El PEC es el documento institucional que:", o: ["Solo recoge el horario de las clases y la lista de profesores", "Define la identidad del centro, sus objetivos y la organización general respondiendo a su contexto", "Se elabora exclusivamente por la administración educativa sin participación del centro"], c: 1 },
+      { q: "El Plan de Convivencia del centro tiene como objetivo:", o: ["Establecer solo las sanciones disciplinarias para las faltas graves", "Prevenir conflictos y promover un clima escolar positivo mediante protocolos de actuación y mediación", "Sustituir las normas de convivencia por un sistema sin reglas"], c: 1 },
+      { q: "Las NCOF regulan:", o: ["Solo el uniforme escolar y el código de vestimenta del profesorado", "La organización, funcionamiento y convivencia del centro como marco normativo interno", "Exclusivamente los procedimientos administrativos de matriculación"], c: 1 },
+      { q: "La PGA se elabora anualmente y debe incluir:", o: ["Solo el presupuesto económico del centro sin contenido pedagógico", "Los objetivos del curso, los planes de actuación, las programaciones didácticas y el calendario", "Las calificaciones del alumnado del curso anterior como único contenido"], c: 1 },
+      { q: "El PAT tiene como destinatarios principales:", o: ["Exclusivamente al alumnado con necesidades educativas especiales", "A todo el alumnado del centro con acciones diferenciadas por niveles y grupos", "Solo a las familias como programa de formación de padres"], c: 1 },
+      { q: "El PAD como documento institucional:", o: ["Se aplica solo cuando hay alumnado con discapacidad matriculado", "Recoge las medidas ordinarias y extraordinarias de atención a la diversidad del centro para todo el alumnado", "Es un documento opcional que los centros pueden decidir no elaborar"], c: 1 },
+      { q: "La Memoria Anual del centro cumple la función de:", o: ["Repetir el contenido de la PGA sin ninguna modificación", "Evaluar el grado de cumplimiento de la PGA y proponer mejoras para el curso siguiente", "Promocionar el centro ante las familias como documento publicitario"], c: 1 },
+      { q: "La coordinación entre la FP y el tejido empresarial es fundamental para:", o: ["Que las empresas controlen el currículo educativo según sus intereses exclusivos", "Garantizar que la formación responda a las necesidades reales del mercado laboral", "Eliminar toda formación teórica en favor del aprendizaje exclusivamente práctico"], c: 1 },
+      { q: "Los ciclos formativos de artes plásticas y diseño pertenecen a:", o: ["La educación secundaria obligatoria como materias optativas", "Las enseñanzas de régimen especial dentro de las enseñanzas artísticas profesionales", "La educación universitaria como grados oficiales de Bellas Artes"], c: 1 },
+      { q: "El consejo escolar como órgano de gobierno colegiado del centro:", o: ["Está formado exclusivamente por el equipo directivo sin más participantes", "Incluye representantes del profesorado, familias, alumnado, PAS y administración local", "Solo tiene funciones consultivas sin capacidad de decisión en ningún ámbito"], c: 1 },
+      { q: "La evaluación en FP se centra prioritariamente en:", o: ["La memorización de contenidos teóricos mediante exámenes escritos", "La demostración de competencias profesionales en contextos prácticos y simulados", "La asistencia a clase como único criterio de evaluación y promoción"], c: 1 },
+      { q: "La oferta modular en FP permite:", o: ["Cursar solo los módulos de interés sin obtener ninguna acreditación oficial", "Acreditar módulos profesionales de forma independiente acumulable para obtener un título", "Eliminar la obligación de realizar prácticas en empresa para todos los alumnos"], c: 1 },
+      { q: "Un Proyecto Funcional de centro se diferencia del PEC en que:", o: ["Son documentos idénticos con nombres diferentes según la comunidad autónoma", "El PEC define la identidad y el Proyecto Funcional concreta la organización y gestión operativa", "El Proyecto Funcional es anterior al PEC en el proceso de planificación del centro"], c: 1 },
+      { q: "La orientación profesional en FP debe facilitar:", o: ["Que el alumnado permanezca indefinidamente en el sistema educativo", "La toma de decisiones informadas sobre itinerarios formativos y profesionales", "Que todos los alumnos elijan la misma familia profesional para simplificar la oferta"], c: 1 },
+      { q: "Las pasarelas entre FP y universidad permiten:", o: ["Acceder a cualquier grado sin ningún requisito adicional", "El reconocimiento de créditos y la continuación de estudios universitarios bajo ciertas condiciones", "Solo el acceso a estudios de doctorado directamente desde un ciclo de Grado Superior"], c: 1 }
+    ]
+  },
+  "PCE_UA2_T2": {
+    title: "Documentos institucionales del centro educativo",
+    ua: 2,
+    questions: [
+      { q: "La jerarquía de los documentos institucionales sitúa al PEC como:", o: ["Un documento subordinado a la PGA sin relevancia estratégica", "El documento marco del que derivan el resto de planes y programaciones del centro", "Un anexo del Plan de Convivencia sin entidad propia"], c: 1 },
+      { q: "La programación didáctica debe ser coherente verticalmente con:", o: ["Solo con las programaciones de otros centros del mismo municipio", "El PEC, la concreción curricular autonómica y el marco legislativo estatal", "Las programaciones de ciclos formativos exclusivamente"], c: 1 },
+      { q: "El equipo directivo tiene como función respecto a los documentos institucionales:", o: ["Elaborarlos todos sin participación del claustro ni del consejo escolar", "Impulsar su elaboración participativa, coordinar su desarrollo y velar por su cumplimiento", "Firmarlos sin haberlos leído como mero trámite administrativo"], c: 1 },
+      { q: "La evaluación interna del centro educativo tiene como finalidad:", o: ["Sancionar a los docentes con peor rendimiento en la evaluación", "Identificar fortalezas y debilidades para la mejora continua del centro", "Cumplir un requisito burocrático sin impacto real en la práctica educativa"], c: 1 },
+      { q: "Las señas de identidad del centro se recogen en:", o: ["La PGA como objetivos anuales del curso académico", "El PEC como expresión de los valores, principios y compromisos del centro", "Las NCOF como parte del reglamento disciplinario interno"], c: 1 },
+      { q: "La coordinación didáctica entre departamentos se articula a través de:", o: ["Reuniones informales sin actas ni seguimiento institucional", "La comisión de coordinación pedagógica y las reuniones interdepartamentales", "Comunicaciones exclusivamente por correo electrónico sin reuniones presenciales"], c: 1 },
+      { q: "Un plan de mejora del centro parte de:", o: ["Las quejas aleatorias de las familias sin análisis sistemático previo", "Los resultados de la evaluación interna y externa identificando áreas prioritarias de actuación", "La imposición de la inspección educativa sin participación del centro"], c: 1 },
+      { q: "La participación de las familias en la vida del centro está garantizada por:", o: ["Ningún mecanismo legal que obligue a los centros a facilitar su participación", "Su representación en el consejo escolar y el derecho a asociación mediante AMPAs", "Solo su asistencia a las tutorías individuales con el profesor tutor"], c: 1 },
+      { q: "El Plan Digital de centro tiene como objetivo:", o: ["Sustituir completamente los libros de texto por dispositivos electrónicos", "Integrar las tecnologías digitales en los procesos de enseñanza, aprendizaje y gestión del centro", "Limitar el uso de tecnología al departamento de informática exclusivamente"], c: 1 },
+      { q: "La autonomía pedagógica del centro implica que:", o: ["Puede ignorar completamente la normativa curricular vigente", "Puede tomar decisiones sobre metodología, organización y gestión adaptadas a su contexto", "Cada docente trabaja de forma completamente aislada sin coordinación con el centro"], c: 1 },
+      { q: "Las programaciones de aula se distinguen de las programaciones didácticas en que:", o: ["Son exactamente el mismo documento con diferente denominación", "Las de aula concretan la didáctica para un grupo específico adaptando la programación general", "Las de aula son más generales y las didácticas más específicas"], c: 1 },
+      { q: "Un proyecto de innovación educativa en el centro debe:", o: ["Desarrollarse al margen de los documentos institucionales del centro", "Estar alineado con el PEC y la PGA integrándose en la planificación global del centro", "Ser una iniciativa individual de un docente sin necesidad de aprobación institucional"], c: 1 },
+      { q: "La inspección educativa tiene entre sus funciones:", o: ["Dirigir los centros educativos sustituyendo al equipo directivo", "Supervisar, evaluar y asesorar a los centros velando por el cumplimiento de la normativa", "Solo imponer sanciones disciplinarias al profesorado incumplidor"], c: 1 },
+      { q: "El claustro de profesores aprueba:", o: ["El presupuesto económico del centro como órgano de gestión financiera", "Los aspectos pedagógicos de los documentos institucionales como la PGA y las programaciones", "Las cuotas de las AMPAs y los precios del comedor escolar"], c: 1 },
+      { q: "La rendición de cuentas en el sistema educativo español se canaliza a través de:", o: ["Solo los resultados en las pruebas PISA cada tres años", "La evaluación interna del centro, la Memoria Anual y la supervisión de la inspección educativa", "Las quejas individuales de padres en redes sociales como mecanismo principal"], c: 1 },
+      { q: "El Plan de Igualdad y Convivencia integra:", o: ["Solo medidas disciplinarias para conductas de acoso entre alumnos", "Acciones de prevención, detección e intervención ante discriminación y violencia en el centro", "Exclusivamente protocolos de actuación para emergencias físicas y evacuaciones"], c: 1 },
+      { q: "La coherencia horizontal en la planificación curricular implica:", o: ["Que todos los centros de España enseñen exactamente lo mismo", "Que las programaciones de un mismo nivel educativo estén coordinadas entre materias", "Que cada curso sea independiente del anterior sin conexión vertical"], c: 1 },
+      { q: "Los departamentos didácticos tienen la responsabilidad de:", o: ["Gestionar el presupuesto general del centro educativo", "Elaborar, coordinar y evaluar las programaciones didácticas de sus materias", "Decidir la admisión y expulsión de alumnos del centro"], c: 1 },
+      { q: "El proyecto de dirección que presenta un candidato a la dirección del centro debe:", o: ["Ser confidencial y no compartirse con la comunidad educativa", "Incluir objetivos, líneas de actuación y evaluación alineados con el PEC del centro", "Centrarse exclusivamente en la gestión económica sin contenido pedagógico"], c: 1 },
+      { q: "La relación entre PEC y PGA es de:", o: ["Independencia total sin ningún vínculo entre ambos documentos", "Marco estratégico a concreción operativa anual, siendo la PGA la operativización del PEC", "Subordinación de la PEC a la PGA como documento derivado"], c: 1 },
+      { q: "Los protocolos de actuación ante situaciones de riesgo se incluyen en:", o: ["Solo en el currículo de la asignatura de educación física", "El Plan de Convivencia y otros planes específicos del centro como documentos de referencia", "La programación didáctica de cada materia individualmente"], c: 1 },
+      { q: "La cultura de centro se refiere a:", o: ["Las actividades culturales extraescolares como teatro y música", "El conjunto de valores, creencias, normas y prácticas compartidas que definen la identidad del centro", "La oferta de idiomas extranjeros disponible en el centro educativo"], c: 1 },
+      { q: "La coordinación entre etapas educativas dentro del mismo centro:", o: ["No es necesaria porque cada etapa funciona de forma autónoma", "Es fundamental para garantizar la continuidad y coherencia del proceso educativo del alumnado", "Solo se realiza en los centros que imparten todas las etapas desde infantil hasta bachillerato"], c: 1 },
+      { q: "Un plan de acogida para alumnado de nueva incorporación forma parte de:", o: ["El currículo oficial como materia obligatoria", "Las medidas del PAD y del Plan de Convivencia para facilitar la integración", "Solo la responsabilidad de las familias sin implicación del centro"], c: 1 },
+      { q: "La transparencia en la gestión del centro se garantiza mediante:", o: ["La publicación de las calificaciones de todos los alumnos en el tablón de anuncios", "El acceso a los documentos institucionales, la información a las familias y la rendición de cuentas", "La grabación en vídeo de todas las clases para su difusión pública"], c: 1 }
+    ]
+  },
+  "PCE_UA3_T1": {
+    title: "Inteligencia emocional y habilidades sociales",
+    ua: 3,
+    questions: [
+      { q: "El modelo de inteligencia emocional de Goleman incluye como componentes principales:", o: ["Solo el cociente intelectual y la memoria de trabajo", "Autoconciencia, autorregulación, motivación, empatía y habilidades sociales", "Exclusivamente la capacidad de controlar las emociones ajenas"], c: 1 },
+      { q: "La autoconciencia emocional implica la capacidad de:", o: ["Suprimir todas las emociones para tomar decisiones exclusivamente racionales", "Identificar y comprender las propias emociones y su efecto sobre el pensamiento y la conducta", "Manipular las emociones de los demás para conseguir objetivos personales"], c: 1 },
+      { q: "La empatía como competencia emocional se diferencia de la simpatía en que:", o: ["Simpatía y empatía son términos sinónimos sin distinción conceptual", "La empatía implica comprender la perspectiva del otro sin necesariamente compartir su estado emocional", "La empatía requiere sentir exactamente lo mismo que la otra persona en todo momento"], c: 1 },
+      { q: "La escucha activa como habilidad social requiere:", o: ["Interrumpir al interlocutor para demostrar que se está atento", "Atención plena, retroalimentación verbal y no verbal, y suspensión del juicio mientras se escucha", "Escuchar solo para preparar la propia respuesta sin considerar al otro"], c: 1 },
+      { q: "La asertividad se define como la capacidad de:", o: ["Imponer siempre la propia opinión sobre la de los demás sin considerar alternativas", "Expresar pensamientos, sentimientos y derechos propios respetando simultáneamente los de los demás", "Evitar cualquier conflicto cediendo siempre ante las demandas ajenas"], c: 1 },
+      { q: "Un docente emocionalmente competente gestiona un conflicto en clase:", o: ["Ignorándolo sistemáticamente para que se resuelva solo con el tiempo", "Reconociendo las emociones implicadas, modelando la regulación y facilitando el diálogo", "Sancionando inmediatamente a ambas partes sin escuchar versiones"], c: 1 },
+      { q: "La autorregulación emocional no significa reprimir emociones sino:", o: ["Eliminar toda respuesta emocional ante situaciones estresantes", "Modular la intensidad y la expresión emocional de forma adaptativa al contexto", "Expresar cada emoción sin ningún filtro en cualquier circunstancia"], c: 1 },
+      { q: "El modelo de Salovey y Mayer define la inteligencia emocional como:", o: ["Un rasgo de personalidad fijo e inmodificable desde el nacimiento", "La capacidad de percibir, usar, comprender y gestionar las emociones de forma adaptativa", "Una forma de inteligencia que sustituye completamente a la inteligencia cognitiva"], c: 1 },
+      { q: "La comunicación no verbal en la interacción docente-alumno:", o: ["Es irrelevante comparada con el contenido verbal del mensaje", "Transmite más información emocional que las palabras y puede reforzar o contradecir el mensaje verbal", "Solo incluye los gestos de las manos sin considerar postura, mirada ni tono"], c: 1 },
+      { q: "Las habilidades sociales en el contexto educativo se pueden enseñar mediante:", o: ["Solo instrucción teórica sin práctica ni modelado de conductas", "Modelado, role-playing, retroalimentación y práctica en situaciones reales y simuladas", "La simple convivencia en el aula sin intervención pedagógica específica"], c: 1 },
+      { q: "El efecto Pigmalión en educación demuestra que:", o: ["Las expectativas del docente no influyen en el rendimiento del alumnado", "Las expectativas positivas del docente pueden mejorar el rendimiento al modificar la interacción", "Solo las expectativas negativas tienen efecto sobre el aprendizaje del alumno"], c: 1 },
+      { q: "La resiliencia como competencia socioemocional se fomenta cuando:", o: ["Se evita exponer al alumno a cualquier dificultad o frustración", "Se proporcionan herramientas de afrontamiento y se permite experimentar adversidades con apoyo", "Se ignoran las dificultades emocionales centrándose solo en el rendimiento académico"], c: 1 },
+      { q: "Un programa de educación socioemocional eficaz debe ser:", o: ["Puntual, aplicado solo un día al año como actividad especial del centro", "Sistemático, integrado en el currículo, con práctica continuada y evaluación de resultados", "Exclusivamente teórico sin componentes prácticos ni vivenciales"], c: 1 },
+      { q: "La gestión de conflictos en el aula desde la inteligencia emocional prioriza:", o: ["La imposición de la autoridad del docente como solución inmediata", "La comprensión de las emociones subyacentes y la búsqueda colaborativa de soluciones", "La derivación automática de cualquier conflicto al equipo directivo"], c: 1 },
+      { q: "El burnout docente se relaciona con la inteligencia emocional porque:", o: ["No existe relación entre ambos constructos según la investigación", "Mayor competencia emocional actúa como factor protector frente al desgaste profesional", "Los docentes con alta IE son más propensos al burnout por su mayor sensibilidad"], c: 1 },
+      { q: "La competencia social del docente incluye:", o: ["Solo la capacidad de transmitir contenidos de forma clara y ordenada", "La habilidad para construir relaciones positivas, gestionar grupos y comunicarse eficazmente", "Exclusivamente el dominio de las redes sociales y las herramientas digitales"], c: 1 },
+      { q: "La mediación escolar como estrategia de resolución de conflictos:", o: ["Impone una solución determinada por un adulto sin participación de las partes", "Facilita que las partes en conflicto lleguen a un acuerdo con la ayuda de un mediador neutral", "Solo es aplicable en conflictos entre docentes y nunca entre alumnos"], c: 1 },
+      { q: "La coeducación desde la perspectiva socioemocional promueve:", o: ["La separación de alumnos por sexo para evitar conflictos de convivencia", "La igualdad real entre géneros trabajando estereotipos, respeto y relaciones igualitarias", "Que solo las alumnas reciban formación en competencias emocionales"], c: 1 },
+      { q: "El aprendizaje-servicio como metodología desarrolla habilidades sociales porque:", o: ["Aísla al alumnado de su comunidad para centrarse en el estudio académico", "Conecta el aprendizaje con el servicio a la comunidad desarrollando empatía y compromiso cívico", "Sustituye los exámenes por actividades de voluntariado sin contenido académico"], c: 1 },
+      { q: "La regulación emocional cognitiva incluye estrategias como:", o: ["Solo la expresión libre de todas las emociones sin ningún filtro", "La reevaluación cognitiva, la distracción atencional y la resolución de problemas", "La supresión permanente de cualquier emoción negativa experimentada"], c: 1 },
+      { q: "Las emociones del docente afectan al clima de aula porque:", o: ["Los alumnos no perciben el estado emocional del profesor durante la clase", "El contagio emocional transmite estados afectivos que influyen en la motivación y el aprendizaje", "Solo las emociones extremas del docente tienen algún impacto en el grupo"], c: 1 },
+      { q: "La comunicación asertiva en situaciones de conflicto utiliza mensajes en primera persona porque:", o: ["Evitan la atribución de culpa y expresan el impacto personal de la situación", "Son más agresivos y confrontativos que los mensajes en segunda persona", "Transfieren toda la responsabilidad al interlocutor de forma indirecta"], c: 0 },
+      { q: "La teoría de las emociones básicas de Ekman sostiene que:", o: ["Las emociones son construcciones culturales sin base biológica universal", "Existen emociones universales reconocibles transculturalmente como alegría, tristeza, ira y miedo", "Cada cultura tiene emociones completamente distintas sin elementos compartidos"], c: 1 },
+      { q: "El clima emocional positivo en el aula se construye mediante:", o: ["La ausencia total de normas para que el alumnado se sienta libre", "Seguridad, respeto mutuo, confianza y comunicación abierta entre docente y alumnado", "La eliminación de toda evaluación que pueda generar ansiedad en el alumnado"], c: 1 },
+      { q: "La inteligencia emocional del profesorado influye en la gestión del aula porque:", o: ["No tiene ningún efecto demostrado sobre la dinámica grupal", "Permite anticipar tensiones, modular respuestas y crear un entorno de aprendizaje seguro", "Solo afecta a la relación con las familias sin impacto dentro del aula"], c: 1 }
+    ]
+  },
+  "PCE_UA4_T1": {
+    title: "Orientación educativa, organización y liderazgo",
+    ua: 4,
+    questions: [
+      { q: "La orientación educativa es una función que corresponde:", o: ["Exclusivamente al departamento de orientación sin implicación del profesorado", "A todo el profesorado como parte de su función docente, coordinada por el orientador", "Solo a profesionales externos contratados específicamente para esta tarea"], c: 1 },
+      { q: "El modelo de organización burocrático en un centro educativo se caracteriza por:", o: ["Alta flexibilidad y toma de decisiones descentralizada", "Jerarquía clara, normas formalizadas y procedimientos estandarizados", "Ausencia total de estructura y funcionamiento por consenso absoluto"], c: 1 },
+      { q: "El liderazgo distribuido en educación implica que:", o: ["Solo el director toma todas las decisiones sin delegar en nadie", "La responsabilidad del liderazgo se comparte entre múltiples agentes de la comunidad educativa", "Cada docente lidera de forma independiente sin coordinación con el equipo"], c: 1 },
+      { q: "El tutor tiene entre sus funciones principales:", o: ["Solo pasar lista y gestionar las faltas de asistencia del grupo", "Coordinar la acción tutorial, mediar entre familias y profesorado y hacer seguimiento del alumnado", "Impartir exclusivamente su materia sin atender a aspectos personales del alumnado"], c: 1 },
+      { q: "El modelo participativo de organización escolar promueve:", o: ["La toma de decisiones exclusiva del equipo directivo sin consultas", "La implicación de toda la comunidad educativa en la toma de decisiones y la gestión del centro", "La privatización de la gestión del centro mediante empresas externas"], c: 1 },
+      { q: "El clima organizacional del centro educativo depende de:", o: ["Solo las instalaciones físicas y el equipamiento material disponible", "Las relaciones interpersonales, el estilo de liderazgo, la comunicación y la cultura institucional", "Exclusivamente el nivel socioeconómico del entorno donde se ubica el centro"], c: 1 },
+      { q: "La orientación académica y profesional en secundaria debe:", o: ["Realizarse solo en el último curso antes de la decisión sobre itinerarios", "Ser un proceso continuo y sistemático que acompañe al alumnado durante toda la etapa", "Limitarse a informar sobre las notas de corte de acceso a la universidad"], c: 1 },
+      { q: "El modelo de organización en red se diferencia del burocrático en que:", o: ["Mantiene una jerarquía más rígida y centralizada que el burocrático", "Se basa en relaciones horizontales, colaboración entre centros y flexibilidad organizativa", "Elimina toda estructura organizativa funcionando de forma completamente anárquica"], c: 1 },
+      { q: "El equipo de orientación educativa y psicopedagógica interviene:", o: ["Solo cuando hay alumnado con discapacidad diagnosticada en el centro", "En la evaluación psicopedagógica, el asesoramiento al profesorado y la prevención de dificultades", "Exclusivamente en los centros privados concertados como requisito legal"], c: 1 },
+      { q: "Un liderazgo pedagógico eficaz del equipo directivo se centra en:", o: ["La gestión administrativa y burocrática como prioridad absoluta", "La mejora de los procesos de enseñanza y aprendizaje como eje central de la dirección", "La representación institucional del centro en actos públicos como función principal"], c: 1 },
+      { q: "La cultura de colaboración entre docentes se favorece mediante:", o: ["La competición entre departamentos por recursos y reconocimiento", "Espacios y tiempos institucionales para el trabajo conjunto, la reflexión y el intercambio de prácticas", "La evaluación individual del profesorado basada en el rendimiento de sus alumnos"], c: 1 },
+      { q: "El modelo colegiado de organización escolar se fundamenta en:", o: ["La autoridad vertical del director como líder único e indiscutible", "La toma de decisiones compartida entre profesionales con igual estatus y voz", "La subcontratación de servicios educativos a empresas especializadas"], c: 1 },
+      { q: "La acción tutorial como eje vertebrador de la orientación incluye:", o: ["Solo la resolución de problemas disciplinarios del grupo clase", "Atención personalizada, desarrollo de competencias socioemocionales y coordinación con familias", "Exclusivamente la preparación de informes administrativos sobre el alumnado"], c: 1 },
+      { q: "La toma de decisiones en un centro educativo debe considerar:", o: ["Solo los indicadores de rendimiento académico sin otros factores", "Datos de evaluación, contexto del centro, recursos disponibles y las necesidades de toda la comunidad", "Exclusivamente la opinión del equipo directivo sin consultar al profesorado"], c: 1 },
+      { q: "Las comunidades de aprendizaje profesional entre docentes:", o: ["Son grupos cerrados que no comparten conocimiento con otros centros", "Facilitan la reflexión colectiva sobre la práctica y la mejora continua de la enseñanza", "Funcionan solo de forma virtual sin necesidad de encuentros presenciales"], c: 1 },
+      { q: "El liderazgo transformacional en educación se caracteriza por:", o: ["Mantener el statu quo y evitar cualquier cambio en la organización", "Inspirar, motivar y promover el desarrollo profesional del equipo hacia una visión compartida", "Imponer cambios unilaterales sin considerar la opinión de la comunidad educativa"], c: 1 },
+      { q: "La coordinación entre el departamento de orientación y los tutores es esencial para:", o: ["Que el orientador se desentienda de la atención directa al alumnado", "Garantizar la coherencia de la acción tutorial y la intervención psicopedagógica", "Que los tutores deleguen completamente en el orientador sus funciones tutoriales"], c: 1 },
+      { q: "La evaluación del liderazgo directivo debe basarse en:", o: ["Solo la opinión subjetiva del inspector de educación de referencia", "Indicadores de proceso y resultado que incluyan mejora del aprendizaje y clima del centro", "Exclusivamente los resultados académicos del alumnado como criterio único"], c: 1 },
+      { q: "La gestión del cambio en un centro educativo requiere:", o: ["Implementar las innovaciones de forma inmediata sin planificación previa", "Un diagnóstico de necesidades, planificación participativa e implementación gradual con evaluación", "Que solo el equipo directivo conozca los cambios que se van a realizar"], c: 1 },
+      { q: "El departamento de orientación tiene funciones en los ámbitos de:", o: ["Solo la evaluación psicopedagógica de alumnado con discapacidad", "Apoyo al proceso de enseñanza, orientación académico-profesional y acción tutorial", "Exclusivamente la gestión administrativa de becas y ayudas al estudio"], c: 1 },
+      { q: "La micropolítica escolar hace referencia a:", o: ["Las políticas educativas del gobierno a nivel macro sin relación con el centro", "Las dinámicas de poder, intereses y negociación entre los actores dentro del centro educativo", "La gestión de los recursos económicos del centro a pequeña escala"], c: 1 },
+      { q: "Un centro que aprende se caracteriza por:", o: ["Repetir las mismas prácticas año tras año sin cuestionarlas", "Una cultura de reflexión, innovación y mejora continua compartida por toda la comunidad educativa", "Enviar al profesorado a cursos de formación que no se aplican en la práctica"], c: 1 },
+      { q: "La función asesora del orientador respecto al profesorado incluye:", o: ["Dirigir las clases del profesorado indicándole qué metodología debe usar", "Apoyar en la adaptación curricular, la atención a la diversidad y las estrategias de intervención", "Evaluar y calificar al profesorado como parte de la inspección educativa"], c: 1 },
+      { q: "El modelo de organización que mejor favorece la innovación educativa es:", o: ["El burocrático por su estabilidad y previsibilidad organizativa", "El que combina estructura suficiente con flexibilidad, autonomía y cultura colaborativa", "El que carece de toda estructura permitiendo la improvisación absoluta"], c: 1 },
+      { q: "La sostenibilidad de las mejoras en un centro depende de:", o: ["Solo del apoyo económico de la administración sin otros factores", "Su institucionalización en los documentos y la cultura del centro más allá de las personas", "Que las implemente un único docente innovador sin necesidad de consenso"], c: 1 }
+    ]
+  }
+};
+const questionBanks_SFE = {
+  "SFE_UA1_T1": {
+    title: "Análisis sistémico y centros educativos",
+    ua: 1,
+    questions: [
+      { q: "La Teoría General de Sistemas de Bertalanffy aplicada a la educación implica que:", o: ["Cada elemento del sistema educativo funciona de forma aislada e independiente", "Los centros educativos son sistemas abiertos donde los elementos se interrelacionan con el entorno", "Solo se aplica a los sistemas informáticos de gestión del centro"], c: 1 },
+      { q: "El modelo ecológico de Bronfenbrenner considera la escuela como parte del:", o: ["Exosistema donde el alumno no participa directamente", "Microsistema donde el alumno interactúa directamente junto con la familia", "Cronosistema como dimensión exclusivamente temporal"], c: 1 },
+      { q: "Las competencias clave en el marco europeo buscan que el alumnado:", o: ["Memorice la mayor cantidad posible de información enciclopédica", "Desarrolle capacidades transferibles para el aprendizaje permanente a lo largo de la vida", "Supere con éxito las pruebas estandarizadas internacionales como único objetivo"], c: 1 },
+      { q: "Los cuatro pilares de la educación de Delors proponen una formación que:", o: ["Se centre exclusivamente en la adquisición de conocimientos académicos", "Integre el conocer, el hacer, el convivir y el ser como dimensiones complementarias", "Priorice la competitividad individual sobre la cooperación social"], c: 1 },
+      { q: "Un centro educativo como sistema abierto intercambia con su entorno:", o: ["Solo recursos económicos sin ninguna otra relación", "Información, recursos, personas y valores en una relación bidireccional continua", "Exclusivamente alumnado sin interacción con el contexto social circundante"], c: 1 },
+      { q: "El pensamiento sistémico en educación permite comprender que:", o: ["Los problemas educativos tienen causas únicas y lineales fácilmente identificables", "Los fenómenos educativos son complejos y multicausales con retroalimentaciones entre variables", "La educación funciona como un sistema mecánico predecible y controlable"], c: 1 },
+      { q: "La ratio docente-alumno afecta a la calidad educativa porque:", o: ["No tiene ninguna influencia demostrada sobre los resultados de aprendizaje", "Condiciona la atención individualizada, la gestión del aula y la interacción docente-alumno", "Solo importa en la educación infantil sin efecto en etapas posteriores"], c: 1 },
+      { q: "El burnout docente se manifiesta como:", o: ["Un aumento de la motivación y el compromiso profesional del profesor", "Agotamiento emocional, despersonalización y reducción de la realización personal", "Una enfermedad física sin componente psicológico ni emocional"], c: 1 },
+      { q: "La nueva autoridad docente propuesta por Omer se basa en:", o: ["La imposición del poder coercitivo del adulto sobre el menor", "La presencia, la persistencia, la transparencia y el apoyo de la red social", "La eliminación de toda autoridad del docente en el aula"], c: 1 },
+      { q: "La neuroplasticidad cerebral tiene implicaciones educativas porque:", o: ["Demuestra que el cerebro no puede modificarse después de la infancia", "Confirma que el cerebro se reorganiza continuamente en respuesta a la experiencia y el aprendizaje", "Solo es relevante para la rehabilitación neurológica sin aplicación en el aula"], c: 1 },
+      { q: "El aprendizaje basado en proyectos se fundamenta en la neurociencia porque:", o: ["El cerebro aprende mejor con información fragmentada y descontextualizada", "Activa múltiples áreas cerebrales al integrar emoción, contexto y acción en una experiencia significativa", "No tiene ninguna base neurocientífica y es solo una moda pedagógica"], c: 1 },
+      { q: "Las inteligencias múltiples de Gardner cuestionan:", o: ["La existencia de cualquier tipo de capacidad cognitiva medible", "La concepción unitaria de la inteligencia como un factor general único", "La posibilidad de que existan diferencias individuales en las capacidades"], c: 1 },
+      { q: "La gamificación educativa se apoya en mecanismos neurocientíficos como:", o: ["La inhibición del sistema de recompensa cerebral para aumentar el esfuerzo", "La activación del circuito de dopamina que refuerza la motivación y el compromiso", "La reducción de la actividad cerebral para facilitar la concentración pasiva"], c: 1 },
+      { q: "El concepto de equifinalidad en los sistemas educativos significa que:", o: ["Todos los centros deben seguir exactamente el mismo camino para obtener resultados", "Se pueden alcanzar los mismos objetivos educativos a través de caminos y métodos diferentes", "El resultado educativo está determinado exclusivamente por las condiciones iniciales"], c: 1 },
+      { q: "La homeostasis en un sistema educativo puede ser problemática cuando:", o: ["Permite al centro adaptarse flexiblemente a los cambios del entorno", "La resistencia al cambio impide las innovaciones necesarias para mejorar", "Facilita la evolución y la transformación continua del centro"], c: 1 },
+      { q: "Los factores protectores frente al burnout docente incluyen:", o: ["El aislamiento profesional y la falta de apoyo del equipo directivo", "La formación continua, el apoyo entre compañeros y las estrategias de autocuidado", "El aumento de la carga administrativa sin compensación ni reconocimiento"], c: 1 },
+      { q: "La sinergia en un equipo docente se produce cuando:", o: ["Cada profesor trabaja de forma individual sin coordinación con los demás", "La colaboración produce resultados superiores a la suma de contribuciones individuales", "Se reduce el número de docentes para ahorrar recursos al centro"], c: 1 },
+      { q: "La retroalimentación como propiedad de los sistemas abiertos implica en educación que:", o: ["La información solo fluye del docente al alumno sin retorno", "Los resultados del proceso educativo informan y reorientan las prácticas de enseñanza", "El sistema educativo no necesita ajustarse porque es perfecto por diseño"], c: 1 },
+      { q: "La entropía negativa en un centro educativo se consigue cuando:", o: ["El centro se aísla completamente de su entorno para evitar interferencias", "El centro incorpora energía e información del entorno para mantenerse organizado y mejorar", "El desorden y la desorganización aumentan progresivamente sin control"], c: 1 },
+      { q: "Los desafíos actuales del docente incluyen:", o: ["Solo la transmisión de contenidos sin ninguna otra responsabilidad", "La gestión de la diversidad, la competencia digital, la educación emocional y la coordinación", "Exclusivamente la corrección de exámenes como tarea fundamental"], c: 1 },
+      { q: "La relación entre neurociencia y educación debe ser:", o: ["De traslación directa de los hallazgos del laboratorio al aula sin filtro", "Cautelosa y mediada por la investigación educativa evitando neuromitos", "Inexistente porque la neurociencia no tiene nada que aportar a la educación"], c: 1 },
+      { q: "Un centro educativo que funciona como una organización que aprende:", o: ["Repite las mismas prácticas sin evaluarlas ni cuestionarlas", "Reflexiona colectivamente sobre su práctica, innova y se adapta continuamente", "Depende exclusivamente de directrices externas sin capacidad de autogestión"], c: 1 },
+      { q: "El papel del docente como agente de cambio social implica:", o: ["Limitarse a transmitir el currículo sin implicación en el contexto social", "Contribuir a la transformación social promoviendo valores democráticos, inclusión y pensamiento crítico", "Ser un transmisor neutral de información sin posicionamiento ético"], c: 1 },
+      { q: "La complejidad del sistema educativo actual exige del docente:", o: ["Formación exclusivamente disciplinar sin competencias transversales", "Competencias pedagógicas, digitales, emocionales e investigadoras de forma integrada", "Solo experiencia práctica sin necesidad de formación teórica ni reflexión"], c: 1 },
+      { q: "Las familias participan en el sistema educativo según la perspectiva sistémica porque:", o: ["Son un elemento externo al sistema sin influencia en el proceso educativo", "Son un subsistema fundamental que interactúa con la escuela condicionando el desarrollo del alumno", "Solo importan como proveedores económicos del material escolar del alumno"], c: 1 }
+    ]
+  },
+  "SFE_UA2_T1": {
+    title: "Función tutorial y PAT",
+    ua: 2,
+    questions: [
+      { q: "Los principios de la acción tutorial incluyen:", o: ["Solo la atención académica al alumnado con bajo rendimiento", "Prevención, desarrollo, intervención social y personalización del proceso educativo", "Exclusivamente la gestión burocrática de faltas de asistencia y partes disciplinarios"], c: 1 },
+      { q: "El Plan de Acción Tutorial se estructura en fases que incluyen:", o: ["Solo la implementación directa sin diagnóstico ni evaluación previos", "Análisis de necesidades, planificación, implementación, seguimiento y evaluación", "Exclusivamente la programación de reuniones con las familias al inicio del curso"], c: 1 },
+      { q: "El tutor actúa como mediador entre:", o: ["Solo entre el equipo directivo y las familias sin relación con el alumno", "El alumnado, las familias, el equipo docente y el departamento de orientación", "Los servicios sociales y la administración educativa exclusivamente"], c: 1 },
+      { q: "La tutoría grupal tiene como finalidad:", o: ["Solo resolver conflictos puntuales cuando ya se han producido", "Desarrollar competencias socioemocionales, cohesión grupal y habilidades de convivencia", "Ocupar las horas de tutoría sin objetivos pedagógicos definidos"], c: 1 },
+      { q: "La tutoría individual se centra en:", o: ["Únicamente las calificaciones académicas del alumno", "El conocimiento integral del alumno, su seguimiento personalizado y la detección de necesidades", "La corrección conductual como forma principal de intervención"], c: 1 },
+      { q: "La relación familia-tutor debe basarse en:", o: ["Una comunicación unidireccional del tutor a las familias sobre calificaciones", "Confianza mutua, comunicación bidireccional y corresponsabilidad educativa", "La subordinación de las familias a las decisiones del tutor sin diálogo"], c: 1 },
+      { q: "Las reuniones colectivas con familias tienen como objetivo:", o: ["Solo informar sobre las normas del centro al inicio de curso", "Informar, orientar y crear alianzas familia-escuela para el acompañamiento del alumnado", "Que las familias escuchen sin posibilidad de hacer preguntas ni aportaciones"], c: 1 },
+      { q: "La perspectiva del profesorado sobre su propia formación muestra que:", o: ["Consideran su formación inicial completamente suficiente sin necesidad de actualización", "Identifican carencias en gestión de conflictos, atención a la diversidad y competencia digital", "No valoran la formación permanente como herramienta de mejora profesional"], c: 1 },
+      { q: "Las metodologías expresivas en la acción tutorial:", o: ["Se limitan a actividades artísticas sin conexión con los objetivos tutoriales", "Utilizan la expresión corporal, plástica y dramática como herramientas de desarrollo personal", "Son exclusivas de la asignatura de educación artística sin aplicación tutorial"], c: 1 },
+      { q: "La integración de las familias en el proceso educativo se favorece cuando:", o: ["El centro establece horarios rígidos de atención incompatibles con la vida laboral", "Se crean canales de comunicación accesibles y se ofrecen espacios reales de participación", "Las familias solo son convocadas cuando hay problemas de conducta del alumno"], c: 1 },
+      { q: "El tutor como coordinador del equipo docente del grupo debe:", o: ["Actuar solo como mensajero entre el profesorado y las familias", "Facilitar la coherencia de la acción educativa, detectar problemas y promover medidas conjuntas", "Imponer al resto de profesores sus criterios pedagógicos sin debate"], c: 1 },
+      { q: "La evaluación del PAT debe incluir:", o: ["Solo el grado de satisfacción del equipo directivo con las actividades", "Indicadores de proceso y resultado, opinión de alumnado y familias, y propuestas de mejora", "Exclusivamente los resultados académicos del grupo como criterio único"], c: 1 },
+      { q: "Las áreas de la acción tutorial abarcan:", o: ["Solo la orientación académica en el último curso de cada etapa", "Enseñar a ser persona, enseñar a convivir, enseñar a pensar y enseñar a decidirse", "Exclusivamente la disciplina y el control conductual del grupo clase"], c: 1 },
+      { q: "La tutoría entre iguales se basa en:", o: ["Que los alumnos con mejor rendimiento sustituyan al profesor en la clase", "La ayuda mutua entre alumnos donde ambos se benefician del proceso", "La competición entre compañeros como motor del rendimiento académico"], c: 1 },
+      { q: "Las horas de tutoría lectiva deben planificarse para:", o: ["Que el tutor corrija exámenes mientras los alumnos estudian por su cuenta", "Desarrollar actividades programadas que trabajen los objetivos del PAT", "Que los alumnos tengan tiempo libre dentro del horario escolar"], c: 1 },
+      { q: "Los problemas más frecuentes que identifica el profesorado en su práctica son:", o: ["Solo la falta de recursos materiales sin otros factores", "La desmotivación del alumnado, la diversidad en el aula y la gestión de conflictos", "Exclusivamente los problemas de infraestructura del centro educativo"], c: 1 },
+      { q: "El PAT debe ser coherente con:", o: ["Solo las directrices de la editorial del libro de texto utilizado", "El PEC, el PAD y la programación general del centro educativo", "Las preferencias personales del tutor sin vinculación institucional"], c: 1 },
+      { q: "La detección temprana de situaciones de riesgo es una función tutorial porque:", o: ["El tutor es el último en percibir cambios en el comportamiento del alumno", "El contacto continuado del tutor con el grupo permite identificar indicadores de alerta", "Solo los psicólogos clínicos están capacitados para detectar problemas en el alumno"], c: 1 },
+      { q: "La función orientadora del tutor respecto a la toma de decisiones académicas incluye:", o: ["Decidir por el alumno qué itinerario debe seguir sin consultarle", "Informar, asesorar y acompañar al alumno y su familia en las decisiones sobre su futuro académico", "Limitar la información a las opciones que el tutor considera más adecuadas sin dar alternativas"], c: 1 },
+      { q: "El uso de dinámicas de grupo en la tutoría facilita:", o: ["Que el tutor pierda autoridad ante el grupo clase", "El conocimiento mutuo, la cohesión grupal y el desarrollo de habilidades sociales", "Que los alumnos hablen sin objetivo ni estructura durante la hora de tutoría"], c: 1 },
+      { q: "La formación del profesorado en acción tutorial debería incluir:", o: ["Solo técnicas de gestión disciplinaria y sanciones", "Habilidades de comunicación, gestión emocional, trabajo con familias y detección de necesidades", "Exclusivamente contenidos de la materia que imparten sin competencias transversales"], c: 1 },
+      { q: "Los recursos del tutor para el seguimiento del alumnado incluyen:", o: ["Solo las calificaciones de las evaluaciones trimestrales", "Observación sistemática, entrevistas, cuestionarios sociométricos y coordinación con el equipo docente", "Exclusivamente la información proporcionada por las familias en las reuniones"], c: 1 },
+      { q: "La acción tutorial trasciende la hora de tutoría porque:", o: ["Se limita estrictamente al horario asignado sin extensión a otros espacios", "Impregna toda la práctica docente del tutor y se extiende a las relaciones cotidianas con el alumnado", "Solo se realiza en las reuniones formales con las familias y el equipo docente"], c: 1 },
+      { q: "La cultura de la tutoría en un centro se fortalece cuando:", o: ["Cada tutor trabaja de forma aislada sin coordinación con los demás", "Existe una estructura de apoyo institucional, formación y reconocimiento de la función tutorial", "La tutoría se percibe como una carga burocrática sin valor educativo por el profesorado"], c: 1 },
+      { q: "Los indicadores de calidad de la acción tutorial incluyen:", o: ["Solo el número de reuniones celebradas con familias como dato cuantitativo", "La satisfacción del alumnado, la prevención efectiva de problemas y la mejora de la convivencia", "Exclusivamente las calificaciones medias del grupo como reflejo de la eficacia tutorial"], c: 1 }
+    ]
+  },
+  "SFE_UA3_T1": {
+    title: "Familia como contexto de desarrollo y estilos de crianza",
+    ua: 3,
+    questions: [
+      { q: "La familia desde la perspectiva psicológica se define principalmente como:", o: ["Una estructura legal regulada exclusivamente por el derecho civil", "Un sistema de relaciones afectivas donde se desarrolla la personalidad y la socialización primaria", "Una unidad económica de producción y consumo sin dimensión emocional"], c: 1 },
+      { q: "Las funciones de la familia según la perspectiva sociológica incluyen:", o: ["Solo la función reproductiva sin ninguna otra responsabilidad social", "Socialización, protección, regulación sexual, posicionamiento social y apoyo emocional", "Exclusivamente la provisión económica de bienes materiales al menor"], c: 1 },
+      { q: "Los tipos de familia posnucleares incluyen:", o: ["Solo la familia nuclear tradicional como modelo único reconocido", "Familias monoparentales, reconstituidas, homoparentales, adoptivas y de acogida entre otras", "Exclusivamente las familias extensas multigeneracionales"], c: 1 },
+      { q: "El estilo parental autoritario se caracteriza por:", o: ["Alto afecto combinado con alto control y comunicación democrática", "Alto control y exigencia con bajo afecto y comunicación unidireccional", "Bajo control y bajo afecto con desinterés por la conducta del hijo"], c: 1 },
+      { q: "El estilo parental democrático o autoritativo se asocia con:", o: ["Los peores resultados en adaptación social y rendimiento académico", "Mejor ajuste psicosocial, autoestima y rendimiento académico en los hijos", "Dependencia emocional extrema y falta de autonomía en los adolescentes"], c: 1 },
+      { q: "El estilo parental permisivo presenta como riesgo principal:", o: ["Un exceso de estructura que limita la exploración del adolescente", "Dificultades en la autorregulación y baja tolerancia a la frustración en los hijos", "Un nivel de exigencia excesivo que genera ansiedad en el menor"], c: 1 },
+      { q: "El estilo parental negligente se caracteriza por:", o: ["Alta implicación emocional con bajo nivel de normas y límites", "Baja implicación afectiva y bajo control, con desatención de las necesidades del menor", "Comunicación constante pero sin establecimiento de límites claros"], c: 1 },
+      { q: "Los factores de riesgo en la adolescencia incluyen:", o: ["Solo los factores genéticos sin influencia del contexto familiar", "Baja supervisión parental, conflicto familiar, grupo de iguales desadaptado y fracaso escolar", "Exclusivamente el consumo de sustancias como único factor relevante"], c: 1 },
+      { q: "Los factores de protección familiar frente a conductas de riesgo incluyen:", o: ["El control rígido y la vigilancia permanente sin espacio para la autonomía", "Comunicación abierta, cohesión familiar, supervisión adecuada y apoyo emocional", "La ausencia total de normas para evitar el conflicto con el adolescente"], c: 1 },
+      { q: "Las estrategias de afrontamiento de Lazarus y Folkman distinguen entre:", o: ["Solo estrategias agresivas y estrategias pasivas ante el estrés", "Afrontamiento centrado en el problema y afrontamiento centrado en la emoción", "Estrategias individuales y estrategias colectivas exclusivamente"], c: 1 },
+      { q: "La parentalidad positiva se define como:", o: ["La ausencia total de conflictos entre padres e hijos como ideal familiar", "Un ejercicio de la crianza basado en el interés superior del niño, el afecto y los límites no violentos", "La permisividad total como forma de respetar la libertad del menor"], c: 1 },
+      { q: "La transición a la adolescencia afecta al sistema familiar porque:", o: ["No produce ningún cambio significativo en las dinámicas familiares", "Requiere renegociar límites, roles y la relación de autoridad entre padres e hijos", "Solo afecta al adolescente individualmente sin repercusión en el sistema familiar"], c: 1 },
+      { q: "La perspectiva antropológica de la familia destaca:", o: ["Que la familia nuclear occidental es el modelo universal en todas las culturas", "La diversidad de estructuras familiares según el contexto cultural e histórico", "Que la familia es un constructo exclusivamente biológico sin componente cultural"], c: 1 },
+      { q: "La teoría del apego aplicada a la adolescencia muestra que:", o: ["El apego deja de ser relevante a partir de los 12 años aproximadamente", "Los vínculos de apego se transforman pero siguen influyendo en las relaciones y la regulación emocional", "Los adolescentes con apego seguro se independizan completamente de sus figuras parentales"], c: 1 },
+      { q: "La coparentalidad positiva tras una separación familiar implica:", o: ["Que uno de los progenitores se desentienda completamente de la crianza", "Colaboración entre ambos progenitores en la educación de los hijos pese a la ruptura de pareja", "Que los hijos elijan con qué progenitor quieren vivir sin intervención de los adultos"], c: 1 },
+      { q: "La familia como agente de socialización primaria transmite:", o: ["Solo conocimientos académicos equivalentes a los de la escuela", "Valores, normas sociales, hábitos, lenguaje y patrones de relación interpersonal", "Exclusivamente costumbres religiosas y tradiciones culturales ancestrales"], c: 1 },
+      { q: "El conflicto intergeneracional en la adolescencia es:", o: ["Siempre patológico y señal de disfunción familiar grave", "Normativo en cierta medida y puede ser una oportunidad de negociación y crecimiento", "Inexistente en familias con un estilo parental correcto"], c: 1 },
+      { q: "El afrontamiento centrado en la emoción es más frecuente cuando:", o: ["La persona percibe que puede modificar la situación estresante directamente", "La situación se percibe como incontrolable y se prioriza gestionar el malestar emocional", "El individuo tiene alta autoeficacia para resolver el problema de forma práctica"], c: 1 },
+      { q: "Las familias reconstituidas enfrentan desafíos específicos como:", o: ["Los mismos que cualquier familia nuclear sin particularidades", "La integración de subsistemas previos, la definición de roles y la lealtad dividida de los menores", "Solo problemas económicos derivados de las pensiones alimenticias"], c: 1 },
+      { q: "El estrés parental en la adolescencia se intensifica por:", o: ["La reducción de las responsabilidades parentales conforme el hijo crece", "La necesidad de equilibrar autonomía creciente con supervisión adecuada y gestionar conflictos", "La desaparición de todo vínculo emocional entre padres e hijos adolescentes"], c: 1 },
+      { q: "La resiliencia familiar se define como:", o: ["La capacidad de una familia de evitar todo tipo de adversidad", "La capacidad de resistir, adaptarse y recuperarse ante situaciones de crisis manteniendo la funcionalidad", "La ausencia de conflictos internos como indicador de salud familiar"], c: 1 },
+      { q: "El modelo circumplejo de Olson evalúa la funcionalidad familiar a través de:", o: ["Solo el nivel socioeconómico de la familia como criterio único", "Las dimensiones de cohesión, adaptabilidad y comunicación como ejes interrelacionados", "Exclusivamente el número de miembros de la unidad familiar conviviente"], c: 1 },
+      { q: "Los programas de competencia parental tienen como objetivo:", o: ["Sustituir a las familias disfuncionales por instituciones de acogida", "Fortalecer las habilidades de crianza promoviendo relaciones positivas entre padres e hijos", "Sancionar a las familias que no cumplen con las expectativas del centro educativo"], c: 1 },
+      { q: "La familia y la escuela son agentes de socialización complementarios porque:", o: ["Enseñan exactamente lo mismo sin diferencias entre ambos contextos", "Cada uno aporta experiencias y aprendizajes distintos que se integran en el desarrollo del menor", "La escuela sustituye completamente a la familia en la función socializadora"], c: 1 },
+      { q: "El impacto del divorcio en los hijos depende principalmente de:", o: ["El tipo de custodia establecido como factor único y determinante", "El nivel de conflicto interparental, la calidad de la coparentalidad y los recursos de apoyo disponibles", "La edad exacta del menor en el momento de la separación como criterio excluyente"], c: 1 }
+    ]
+  },
+  "SFE_UA4_T1": {
+    title: "Relación familia-escuela y perspectiva de género",
+    ua: 4,
+    questions: [
+      { q: "El modelo de implicación parental de Epstein identifica seis tipos que incluyen:", o: ["Solo la asistencia a reuniones escolares como forma única de participación", "Crianza, comunicación, voluntariado, aprendizaje en casa, toma de decisiones y colaboración comunitaria", "Exclusivamente la ayuda con los deberes como forma relevante de implicación"], c: 1 },
+      { q: "El modelo de Hoover-Dempsey y Sandler explica por qué las familias se implican basándose en:", o: ["Solo en el nivel socioeconómico como factor determinante", "La construcción del rol parental, la autoeficacia percibida y las invitaciones de la escuela", "Exclusivamente en la proximidad geográfica al centro educativo"], c: 1 },
+      { q: "Las ecologías de apoyo al aprendizaje hacen referencia a:", o: ["Solo los recursos materiales disponibles en el domicilio familiar", "Los diferentes contextos y redes que apoyan el desarrollo educativo del menor de forma interconectada", "Las condiciones climatológicas del entorno donde se ubica la escuela"], c: 1 },
+      { q: "La corresponsabilidad educativa entre familia y escuela implica:", o: ["Que la familia delegue completamente la educación en el centro escolar", "Que ambas instituciones compartan la responsabilidad formativa con roles diferenciados pero complementarios", "Que los padres realicen las funciones del docente en el hogar"], c: 1 },
+      { q: "La educación en valores desde la perspectiva familia-escuela requiere:", o: ["Que solo la familia sea responsable de la transmisión de valores morales", "Coherencia entre los valores promovidos en ambos contextos para evitar contradicciones", "Que la escuela imponga sus valores sobre los de las familias sin negociación"], c: 1 },
+      { q: "El sexismo ambivalente según Glick y Fiske combina:", o: ["Solo actitudes hostiles sin ningún componente aparentemente positivo", "Sexismo hostil con sexismo benevolente que idealiza a la mujer en roles tradicionales", "Actitudes igualitarias con discriminación positiva en todos los ámbitos"], c: 1 },
+      { q: "La coeducación se diferencia de la educación mixta en que:", o: ["Son conceptos sinónimos sin ninguna diferencia conceptual ni práctica", "La coeducación revisa activamente los contenidos y prácticas para eliminar sesgos de género", "La educación mixta es más avanzada que la coeducación en materia de igualdad"], c: 1 },
+      { q: "La evolución legislativa española en materia de igualdad de género en educación muestra:", o: ["Un estancamiento sin cambios significativos desde la transición democrática", "Una progresión desde la segregación por sexos hacia la coeducación a través de la escuela mixta", "Un retroceso constante desde la ley de educación de 1970 hasta la actualidad"], c: 1 },
+      { q: "El currículo oculto de género transmite:", o: ["Solo contenidos explícitos de igualdad presentes en los libros de texto", "Estereotipos y expectativas diferenciadas por género a través de interacciones y materiales no revisados", "Exclusivamente valores de igualdad de forma inconsciente y siempre positiva"], c: 1 },
+      { q: "Las barreras a la participación familiar en la escuela incluyen:", o: ["Solo la falta de interés de las familias como factor único", "Horarios incompatibles, barreras lingüísticas y culturales, y actitudes del profesorado", "Exclusivamente la distancia física entre el domicilio y el centro educativo"], c: 1 },
+      { q: "La perspectiva de género en educación busca:", o: ["Favorecer a las alumnas sobre los alumnos en todas las evaluaciones", "Identificar y eliminar las desigualdades de género presentes en el sistema educativo", "Ignorar las diferencias de género tratando a todo el alumnado de forma idéntica"], c: 1 },
+      { q: "Los modelos de colaboración familia-escuela más efectivos se caracterizan por:", o: ["La comunicación unidireccional del centro hacia las familias sobre resultados académicos", "La bidireccionalidad, el respeto mutuo y la creación de espacios genuinos de participación", "La subordinación total de las familias a las decisiones del centro sin diálogo posible"], c: 1 },
+      { q: "La socialización diferencial de género se produce cuando:", o: ["Niños y niñas reciben los mismos mensajes y expectativas sin distinción", "Se transmiten expectativas, roles y comportamientos diferentes según el sexo del menor", "Solo en sociedades no occidentales con tradiciones patriarcales explícitas"], c: 1 },
+      { q: "Las escuelas de familias tienen como objetivo:", o: ["Evaluar las competencias parentales para sancionar a las familias negligentes", "Ofrecer formación y orientación a las familias sobre temas educativos y de crianza", "Sustituir la formación académica de los alumnos con talleres para padres"], c: 1 },
+      { q: "El techo de cristal en educación se refiere a:", o: ["Las barreras físicas de accesibilidad en los centros educativos", "Las barreras invisibles que limitan el acceso de las mujeres a puestos de liderazgo educativo", "Los límites presupuestarios que impiden la reforma de los edificios escolares"], c: 1 },
+      { q: "La implicación parental tiene mayor impacto en el rendimiento cuando:", o: ["Los padres ayudan directamente con los deberes sustituyendo al alumno", "Se centra en crear un entorno estimulante, mostrar interés y mantener expectativas positivas", "Los padres asisten a todas las reuniones escolares como único indicador"], c: 1 },
+      { q: "Los estereotipos de género en los materiales educativos se manifiestan en:", o: ["La total ausencia de personajes masculinos en los libros de texto", "La representación diferenciada de hombres y mujeres en roles, profesiones y actitudes", "La igualdad completa de representación en todos los materiales actuales"], c: 1 },
+      { q: "La comunicación efectiva entre familia y escuela se favorece mediante:", o: ["Solo la agenda escolar como canal exclusivo de comunicación", "Canales diversos, accesibles y adaptados a la realidad de las familias con retroalimentación", "Comunicaciones exclusivamente escritas y formales en castellano sin alternativas"], c: 1 },
+      { q: "La Ley Orgánica 3/2007 para la igualdad efectiva de mujeres y hombres establece en educación:", o: ["Que no es necesaria ninguna medida específica en el ámbito educativo", "La integración del principio de igualdad en todos los niveles del sistema educativo", "La segregación por sexos como medida de protección de las alumnas"], c: 1 },
+      { q: "Las AMPAs contribuyen a la relación familia-escuela mediante:", o: ["Solo la organización de actividades extraescolares de ocio sin contenido educativo", "La representación colectiva de las familias, la participación en órganos de gobierno y la colaboración", "La fiscalización del profesorado como función principal de control parental"], c: 1 },
+      { q: "La perspectiva interseccional de género en educación reconoce que:", o: ["El género es el único eje de desigualdad relevante sin considerar otros factores", "Las desigualdades de género interactúan con clase social, etnia y diversidad funcional entre otras", "Las desigualdades educativas no tienen componente de género en las sociedades actuales"], c: 1 },
+      { q: "La prevención de la violencia de género desde la escuela requiere:", o: ["Solo intervenir cuando se detecta un caso concreto de violencia en el centro", "Educación afectivo-sexual, detección de actitudes machistas y desarrollo de relaciones igualitarias", "Separar al alumnado por sexos para evitar cualquier tipo de conflicto interpersonal"], c: 1 },
+      { q: "El concepto de capital cultural de Bourdieu aplicado a la relación familia-escuela explica:", o: ["Que todas las familias tienen la misma capacidad de apoyar al alumno académicamente", "Que el bagaje cultural familiar condiciona las oportunidades educativas del alumnado", "Que el capital económico es el único factor relevante en el éxito escolar"], c: 1 },
+      { q: "Un plan de igualdad en un centro educativo debe:", o: ["Centrarse solo en el profesorado sin incluir al alumnado ni a las familias", "Incluir diagnóstico, objetivos, acciones concretas, responsables, temporalización y evaluación", "Ser un documento declarativo sin medidas operativas ni seguimiento de resultados"], c: 1 },
+      { q: "La participación de los padres varones en la educación de sus hijos ha evolucionado hacia:", o: ["Una reducción progresiva de su implicación en las últimas décadas", "Una mayor corresponsabilidad aunque persisten desigualdades en la distribución de tareas educativas", "Una igualdad completa con las madres en todos los indicadores de participación escolar"], c: 1 }
+    ]
+  }
+};
 
-const UA_CONFIG = [
-  { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1","UA1_T2","UA1_T3"], accent: "#2B6CB0", bg: "#EBF4FF", dark: "#1A365D" },
-  { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1","UA2_T2","UA2_T3"], accent: "#276749", bg: "#F0FFF4", dark: "#1C4532" },
-  { num: 3, title: "Personalidad y diferencias individuales", topics: ["UA3_T1","UA3_T2","UA3_T3"], accent: "#9B2C2C", bg: "#FFF5F5", dark: "#63171B" },
-  { num: 4, title: "Atención a la diversidad", topics: ["UA4_T1","UA4_T2","UA4_T3"], accent: "#744210", bg: "#FFFFF0", dark: "#5F370E" }
-];
+const SUBJECTS = {
+  PGFPCOM01: {
+    name: "Aprendizaje y desarrollo de la personalidad",
+    code: "PGFPCOM01",
+    banks: questionBanks_ADP,
+    uas: [
+      { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1","UA1_T2","UA1_T3"], accent: "#2B6CB0", bg: "#EBF4FF", dark: "#1A365D" },
+      { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1","UA2_T2","UA2_T3"], accent: "#276749", bg: "#F0FFF4", dark: "#1C4532" },
+      { num: 3, title: "Personalidad y diferencias individuales", topics: ["UA3_T1","UA3_T2","UA3_T3"], accent: "#9B2C2C", bg: "#FFF5F5", dark: "#63171B" },
+      { num: 4, title: "Atención a la diversidad", topics: ["UA4_T1","UA4_T2","UA4_T3"], accent: "#744210", bg: "#FFFFF0", dark: "#5F370E" }
+    ]
+  },
+  PCE: {
+    name: "Procesos y contextos educativos",
+    code: "9821001102",
+    banks: questionBanks_PCE,
+    uas: [
+      { num: 1, title: "Legislación y currículo", topics: ["PCE_UA1_T1","PCE_UA1_T2"], accent: "#553C9A", bg: "#FAF5FF", dark: "#322659" },
+      { num: 2, title: "FP, enseñanzas especiales y documentos", topics: ["PCE_UA2_T1","PCE_UA2_T2"], accent: "#2C7A7B", bg: "#E6FFFA", dark: "#234E52" },
+      { num: 3, title: "Inteligencia emocional y habilidades sociales", topics: ["PCE_UA3_T1"], accent: "#C05621", bg: "#FFFAF0", dark: "#7B341E" },
+      { num: 4, title: "Orientación, organización y liderazgo", topics: ["PCE_UA4_T1"], accent: "#2D3748", bg: "#EDF2F7", dark: "#1A202C" }
+    ]
+  },
+  SFE: {
+    name: "Sociedad, familia y educación",
+    code: "VAL_PGFPCOM02",
+    banks: questionBanks_SFE,
+    uas: [
+      { num: 1, title: "Análisis sistémico y centros educativos", topics: ["SFE_UA1_T1"], accent: "#B83280", bg: "#FFF5F7", dark: "#702459" },
+      { num: 2, title: "Función tutorial y PAT", topics: ["SFE_UA2_T1"], accent: "#2B6CB0", bg: "#EBF8FF", dark: "#2A4365" },
+      { num: 3, title: "Familia y estilos de crianza", topics: ["SFE_UA3_T1"], accent: "#38A169", bg: "#F0FFF4", dark: "#22543D" },
+      { num: 4, title: "Familia-escuela y perspectiva de género", topics: ["SFE_UA4_T1"], accent: "#D69E2E", bg: "#FFFFF0", dark: "#744210" }
+    ]
+  }
+};
 
 function shuffle(arr) {
   const a = [...arr];
@@ -412,121 +755,131 @@ function shuffle(arr) {
   return a;
 }
 
-function generateTest(questions, count = 20) {
+function generateTest(questions, count) {
+  count = count || 20;
   const shuffled = shuffle(questions);
-  return shuffled.slice(0, Math.min(count, shuffled.length)).map(q => {
+  return shuffled.slice(0, Math.min(count, shuffled.length)).map(function(q) {
     const indices = [0, 1, 2];
-    const shuffledIdx = shuffle(indices);
-    return {
-      q: q.q,
-      o: shuffledIdx.map(i => q.o[i]),
-      c: shuffledIdx.indexOf(q.c)
-    };
+    const si = shuffle(indices);
+    return { q: q.q, o: si.map(function(i){ return q.o[i]; }), c: si.indexOf(q.c) };
   });
 }
 
 function QuizApp() {
+  const [subjectKey, setSubjectKey] = React.useState("PGFPCOM01");
   const [screen, setScreen] = React.useState("home");
   const [test, setTest] = React.useState([]);
   const [current, setCurrent] = React.useState(0);
   const [answers, setAnswers] = React.useState({});
   const [showResults, setShowResults] = React.useState(false);
-  const [testInfo, setTestInfo] = React.useState({ title: "", ua: 0 });
+  const [testInfo, setTestInfo] = React.useState({ title: "", ua: 0, subjectKey: "" });
 
-  const startTopicTest = (key, testNum) => {
-    const bank = questionBanks[key];
-    setTestInfo({ title: bank.title + " — Test " + testNum, ua: bank.ua });
+  var subject = SUBJECTS[subjectKey];
+
+  var startTopicTest = function(key, testNum) {
+    var bank = subject.banks[key];
+    setTestInfo({ title: bank.title + " — Test " + testNum, ua: bank.ua, subjectKey: subjectKey });
     setTest(generateTest(bank.questions, 20));
-    setCurrent(0);
-    setAnswers({});
-    setShowResults(false);
-    setScreen("quiz");
+    setCurrent(0); setAnswers({}); setShowResults(false); setScreen("quiz");
   };
 
-  const startGeneralTest = (num) => {
-    const allQ = Object.values(questionBanks).flatMap(b => b.questions);
-    setTestInfo({ title: "Test General " + num, ua: 0 });
+  var startGeneralTest = function(num) {
+    var allQ = Object.values(subject.banks).flatMap(function(b){ return b.questions; });
+    setTestInfo({ title: "Test General " + num, ua: 0, subjectKey: subjectKey });
     setTest(generateTest(allQ, 20));
-    setCurrent(0);
-    setAnswers({});
-    setShowResults(false);
-    setScreen("quiz");
+    setCurrent(0); setAnswers({}); setShowResults(false); setScreen("quiz");
   };
 
-  const selectAnswer = (idx) => {
-    if (showResults) return;
-    setAnswers({ ...answers, [current]: idx });
+  var selectAnswer = function(idx) { if (!showResults) setAnswers(Object.assign({}, answers, {[current]: idx})); };
+  var finish = function() { setShowResults(true); };
+  var score = function() { var c=0; test.forEach(function(q,i){ if(answers[i]===q.c) c++; }); return c; };
+  var nota = function() { return (score()/test.length*10).toFixed(1); };
+  var label = function() {
+    var n=parseFloat(nota());
+    if(n>=9) return ["Sobresaliente","#276749"];
+    if(n>=7) return ["Notable","#2B6CB0"];
+    if(n>=6) return ["Bien","#744210"];
+    if(n>=5) return ["Aprobado","#9B2C2C"];
+    return ["Suspenso","#C53030"];
   };
 
-  const finish = () => setShowResults(true);
-
-  const score = () => {
-    let correct = 0;
-    test.forEach((q, i) => { if (answers[i] === q.c) correct++; });
-    return correct;
+  var getAccent = function() {
+    if(testInfo.ua > 0) {
+      var s = SUBJECTS[testInfo.subjectKey];
+      var u = s.uas.find(function(ua){ return ua.num === testInfo.ua; });
+      return u ? u.accent : "#2D3748";
+    }
+    return "#2D3748";
   };
-
-  const nota = () => (score() / test.length * 10).toFixed(1);
-
-  const label = () => {
-    const n = parseFloat(nota());
-    if (n >= 9) return ["Sobresaliente", "#276749"];
-    if (n >= 7) return ["Notable", "#2B6CB0"];
-    if (n >= 6) return ["Bien", "#744210"];
-    if (n >= 5) return ["Aprobado", "#9B2C2C"];
-    return ["Suspenso", "#C53030"];
-  };
-
-  const accentColor = testInfo.ua > 0 ? UA_CONFIG[testInfo.ua - 1].accent : "#2D3748";
 
   if (screen === "home") {
+    var sKeys = Object.keys(SUBJECTS);
     return React.createElement("div", { style: { minHeight: "100vh", background: "#FAFAFA", fontFamily: "'Crimson Pro', Georgia, serif" } },
-      React.createElement("div", { style: { background: "#1A202C", padding: "32px 20px 28px", textAlign: "center" } },
-        React.createElement("div", { style: { fontSize: 11, letterSpacing: 3, color: "#A0AEC0", textTransform: "uppercase", marginBottom: 8, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Universidad Europea"),
-        React.createElement("h1", { style: { fontSize: 22, color: "#fff", fontWeight: 700, margin: 0, lineHeight: 1.3 } }, "Tests de Repaso"),
-        React.createElement("div", { style: { fontSize: 13, color: "#A0AEC0", marginTop: 6, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "PGFPCOM01 · Aprendizaje y desarrollo de la personalidad")
+      React.createElement("div", { style: { background: "#1A202C", padding: "28px 20px 20px", textAlign: "center" } },
+        React.createElement("div", { style: { fontSize: 11, letterSpacing: 3, color: "#A0AEC0", textTransform: "uppercase", marginBottom: 6, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Universidad Europea"),
+        React.createElement("h1", { style: { fontSize: 21, color: "#fff", fontWeight: 700, margin: "0 0 16px" } }, "Tests de Repaso"),
+        React.createElement("div", { style: { display: "flex", gap: 6, justifyContent: "center", flexWrap: "wrap" } },
+          sKeys.map(function(k) {
+            var s = SUBJECTS[k];
+            var active = k === subjectKey;
+            return React.createElement("button", {
+              key: k,
+              onClick: function(){ setSubjectKey(k); },
+              style: {
+                background: active ? "#fff" : "rgba(255,255,255,0.1)",
+                color: active ? "#1A202C" : "#A0AEC0",
+                border: "none", borderRadius: 20, padding: "6px 14px",
+                fontSize: 11, fontWeight: active ? 700 : 500, cursor: "pointer",
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                transition: "all 0.2s"
+              }
+            }, s.name.length > 30 ? s.name.substring(0, 28) + "..." : s.name);
+          })
+        )
       ),
-      React.createElement("div", { style: { maxWidth: 560, margin: "0 auto", padding: "20px 16px 60px" } },
-        UA_CONFIG.map(ua =>
-          React.createElement("div", { key: ua.num, style: { marginBottom: 20 } },
+      React.createElement("div", { style: { maxWidth: 560, margin: "0 auto", padding: "16px 16px 60px" } },
+        React.createElement("div", { style: { fontSize: 12, color: "#A0AEC0", textAlign: "center", marginBottom: 16, fontFamily: "'DM Sans', system-ui, sans-serif" } }, subject.name + " (" + subject.code + ")"),
+        subject.uas.map(function(ua) {
+          return React.createElement("div", { key: ua.num, style: { marginBottom: 18 } },
             React.createElement("div", { style: { background: ua.dark, color: "#fff", padding: "10px 16px", borderRadius: "10px 10px 0 0", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'DM Sans', system-ui, sans-serif" } },
               "Unidad " + ua.num + " — " + ua.title
             ),
             React.createElement("div", { style: { background: "#fff", borderRadius: "0 0 10px 10px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" } },
-              ua.topics.map(key => {
-                const bank = questionBanks[key];
-                const maxTests = Math.min(4, Math.floor(bank.questions.length / 15));
-                return React.createElement("div", { key, style: { padding: "12px 16px", borderBottom: "1px solid #EDF2F7" } },
+              ua.topics.map(function(key) {
+                var bank = subject.banks[key];
+                if(!bank) return null;
+                var maxTests = Math.min(4, Math.floor(bank.questions.length / 15));
+                return React.createElement("div", { key: key, style: { padding: "12px 16px", borderBottom: "1px solid #EDF2F7" } },
                   React.createElement("div", { style: { fontSize: 14, fontWeight: 600, color: "#2D3748", marginBottom: 8 } }, bank.title),
                   React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" } },
-                    Array.from({ length: maxTests }, (_, i) =>
-                      React.createElement("button", {
+                    Array.from({ length: maxTests }, function(_, i) {
+                      return React.createElement("button", {
                         key: i,
-                        onClick: () => startTopicTest(key, i + 1),
+                        onClick: function(){ startTopicTest(key, i + 1); },
                         style: { background: ua.bg, border: "1.5px solid " + ua.accent, color: ua.accent, borderRadius: 6, padding: "5px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif", transition: "all 0.15s" },
-                        onMouseOver: e => { e.target.style.background = ua.accent; e.target.style.color = "#fff"; },
-                        onMouseOut: e => { e.target.style.background = ua.bg; e.target.style.color = ua.accent; }
-                      }, "Test " + (i + 1))
-                    ),
+                        onMouseOver: function(e) { e.target.style.background = ua.accent; e.target.style.color = "#fff"; },
+                        onMouseOut: function(e) { e.target.style.background = ua.bg; e.target.style.color = ua.accent; }
+                      }, "Test " + (i + 1));
+                    }),
                     React.createElement("span", { style: { fontSize: 10, color: "#A0AEC0", marginLeft: 4, fontFamily: "'DM Sans', system-ui, sans-serif" } }, bank.questions.length + "p")
                   )
                 );
               })
             )
-          )
-        ),
-        React.createElement("div", { style: { marginTop: 28 } },
+          );
+        }),
+        React.createElement("div", { style: { marginTop: 24 } },
           React.createElement("div", { style: { background: "#1A202C", color: "#fff", padding: "10px 16px", borderRadius: "10px 10px 0 0", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Tests Generales — Todas las unidades"),
           React.createElement("div", { style: { background: "#fff", borderRadius: "0 0 10px 10px", padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", gap: 6, flexWrap: "wrap" } },
-            Array.from({ length: 10 }, (_, i) =>
-              React.createElement("button", {
+            Array.from({ length: 10 }, function(_, i) {
+              return React.createElement("button", {
                 key: i,
-                onClick: () => startGeneralTest(i + 1),
+                onClick: function(){ startGeneralTest(i + 1); },
                 style: { background: "#EDF2F7", border: "1.5px solid #4A5568", color: "#4A5568", borderRadius: 6, padding: "5px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif", transition: "all 0.15s" },
-                onMouseOver: e => { e.target.style.background = "#4A5568"; e.target.style.color = "#fff"; },
-                onMouseOut: e => { e.target.style.background = "#EDF2F7"; e.target.style.color = "#4A5568"; }
-              }, "General " + (i + 1))
-            )
+                onMouseOver: function(e) { e.target.style.background = "#4A5568"; e.target.style.color = "#fff"; },
+                onMouseOut: function(e) { e.target.style.background = "#EDF2F7"; e.target.style.color = "#4A5568"; }
+              }, "General " + (i + 1));
+            })
           )
         )
       )
@@ -534,16 +887,16 @@ function QuizApp() {
   }
 
   if (screen === "quiz") {
-    const q = test[current];
-    const answered = answers[current] !== undefined;
+    var q = test[current];
+    var accentColor = getAccent();
 
     return React.createElement("div", { style: { minHeight: "100vh", background: "#FAFAFA", fontFamily: "'Crimson Pro', Georgia, serif" } },
-      React.createElement("div", { style: { background: accentColor, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" } },
+      React.createElement("div", { style: { background: accentColor, padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" } },
         React.createElement("button", {
-          onClick: () => setScreen("home"),
+          onClick: function(){ setScreen("home"); },
           style: { background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", borderRadius: 6, padding: "5px 12px", fontSize: 12, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
         }, "← Salir"),
-        React.createElement("div", { style: { color: "#fff", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif" } }, testInfo.title)
+        React.createElement("div", { style: { color: "#fff", fontSize: 11, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "right", maxWidth: "70%" } }, testInfo.title)
       ),
       showResults ? React.createElement("div", { style: { maxWidth: 540, margin: "0 auto", padding: "24px 16px 60px" } },
         React.createElement("div", { style: { background: "#fff", borderRadius: 12, padding: "28px 20px", textAlign: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginBottom: 20 } },
@@ -552,43 +905,39 @@ function QuizApp() {
           React.createElement("div", { style: { fontSize: 14, color: "#718096", marginTop: 8, fontFamily: "'DM Sans', system-ui, sans-serif" } }, score() + " de " + test.length + " correctas")
         ),
         React.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: "#4A5568", marginBottom: 12, textTransform: "uppercase", letterSpacing: 1, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Revisión de respuestas"),
-        test.map((tq, i) => {
-          const userAns = answers[i];
-          const isCorrect = userAns === tq.c;
+        test.map(function(tq, i) {
+          var userAns = answers[i];
+          var isCorrect = userAns === tq.c;
           return React.createElement("div", { key: i, style: { background: "#fff", borderRadius: 10, padding: "14px 16px", marginBottom: 8, borderLeft: "4px solid " + (isCorrect ? "#48BB78" : userAns !== undefined ? "#FC8181" : "#CBD5E0"), boxShadow: "0 1px 3px rgba(0,0,0,0.04)" } },
-            React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#2D3748", marginBottom: 8 } }, (i + 1) + ". " + tq.q),
-            tq.o.map((opt, oi) =>
-              React.createElement("div", { key: oi, style: { fontSize: 13, padding: "4px 8px", marginBottom: 3, borderRadius: 4, color: oi === tq.c ? "#276749" : oi === userAns ? "#C53030" : "#718096", fontWeight: oi === tq.c || oi === userAns ? 600 : 400, background: oi === tq.c ? "#F0FFF4" : oi === userAns && oi !== tq.c ? "#FFF5F5" : "transparent" } },
+            React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#2D3748", marginBottom: 8 } }, (i+1) + ". " + tq.q),
+            tq.o.map(function(opt, oi) {
+              return React.createElement("div", { key: oi, style: { fontSize: 13, padding: "4px 8px", marginBottom: 3, borderRadius: 4, color: oi === tq.c ? "#276749" : oi === userAns ? "#C53030" : "#718096", fontWeight: oi === tq.c || oi === userAns ? 600 : 400, background: oi === tq.c ? "#F0FFF4" : oi === userAns && oi !== tq.c ? "#FFF5F5" : "transparent" } },
                 (oi === tq.c ? "✓ " : oi === userAns && oi !== tq.c ? "✗ " : "  ") + opt
-              )
-            )
+              );
+            })
           );
         }),
         React.createElement("div", { style: { display: "flex", gap: 10, marginTop: 20 } },
           React.createElement("button", {
-            onClick: () => setScreen("home"),
+            onClick: function(){ setScreen("home"); },
             style: { flex: 1, padding: "12px", borderRadius: 8, border: "2px solid " + accentColor, background: "#fff", color: accentColor, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-          }, "Volver al inicio"),
-          React.createElement("button", {
-            onClick: () => { setTest(generateTest(testInfo.ua > 0 ? questionBanks[UA_CONFIG[testInfo.ua-1].topics[0]].questions : Object.values(questionBanks).flatMap(b=>b.questions), 20)); setCurrent(0); setAnswers({}); setShowResults(false); },
-            style: { flex: 1, padding: "12px", borderRadius: 8, border: "none", background: accentColor, color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-          }, "Repetir test")
+          }, "Volver al inicio")
         )
       ) :
       React.createElement("div", { style: { maxWidth: 540, margin: "0 auto", padding: "20px 16px 60px" } },
-        React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 } },
+        React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 } },
           React.createElement("span", { style: { fontSize: 12, color: "#A0AEC0", fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Pregunta " + (current + 1) + " de " + test.length),
           React.createElement("span", { style: { fontSize: 12, color: "#A0AEC0", fontFamily: "'DM Sans', system-ui, sans-serif" } }, Object.keys(answers).length + " respondidas")
         ),
-        React.createElement("div", { style: { height: 3, background: "#EDF2F7", borderRadius: 2, marginBottom: 20, overflow: "hidden" } },
+        React.createElement("div", { style: { height: 3, background: "#EDF2F7", borderRadius: 2, marginBottom: 18, overflow: "hidden" } },
           React.createElement("div", { style: { height: "100%", width: ((current + 1) / test.length * 100) + "%", background: accentColor, borderRadius: 2, transition: "width 0.3s" } })
         ),
         React.createElement("div", { style: { background: "#fff", borderRadius: 12, padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginBottom: 16 } },
           React.createElement("p", { style: { fontSize: 15, color: "#1A202C", lineHeight: 1.6, fontWeight: 500, marginBottom: 16 } }, q.q),
-          q.o.map((opt, oi) =>
-            React.createElement("button", {
+          q.o.map(function(opt, oi) {
+            return React.createElement("button", {
               key: oi,
-              onClick: () => selectAnswer(oi),
+              onClick: function(){ selectAnswer(oi); },
               style: {
                 display: "block", width: "100%", textAlign: "left", padding: "12px 14px", marginBottom: 8,
                 borderRadius: 8, fontSize: 14, lineHeight: 1.5, cursor: "pointer", transition: "all 0.15s",
@@ -598,18 +947,18 @@ function QuizApp() {
                 fontWeight: answers[current] === oi ? 600 : 400,
                 fontFamily: "'Crimson Pro', Georgia, serif"
               }
-            }, String.fromCharCode(65 + oi) + ") " + opt)
-          )
+            }, String.fromCharCode(65 + oi) + ") " + opt);
+          })
         ),
         React.createElement("div", { style: { display: "flex", gap: 10 } },
           React.createElement("button", {
-            onClick: () => setCurrent(Math.max(0, current - 1)),
+            onClick: function(){ setCurrent(Math.max(0, current - 1)); },
             disabled: current === 0,
             style: { flex: 1, padding: "10px", borderRadius: 8, border: "1.5px solid #CBD5E0", background: "#fff", color: current === 0 ? "#CBD5E0" : "#4A5568", fontSize: 13, fontWeight: 600, cursor: current === 0 ? "default" : "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
           }, "← Anterior"),
           current < test.length - 1 ?
             React.createElement("button", {
-              onClick: () => setCurrent(current + 1),
+              onClick: function(){ setCurrent(current + 1); },
               style: { flex: 1, padding: "10px", borderRadius: 8, border: "none", background: accentColor, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
             }, "Siguiente →") :
             React.createElement("button", {
