@@ -5,22 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tests de Repaso — Máster Profesorado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Crimson Pro', Georgia, serif; -webkit-font-smoothing: antialiased; }
-  button { font-family: inherit; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #CBD5E0; border-radius: 3px; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; background: #f5f5f7; color: #1d1d1f; }
+  button { font-family: inherit; -webkit-tap-highlight-color: transparent; }
+  ::-webkit-scrollbar { width: 0; }
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
+const UE_LOGO = "data:image/png;base64,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";
 const questionBanks_ADP = {
   "UA1_T1": {
     title: "Pubertad: desarrollo físico y sexual",
@@ -713,172 +712,200 @@ const questionBanks_SFE = {
 const SUBJECTS = {
   PGFPCOM01: {
     name: "Aprendizaje y desarrollo de la personalidad",
+    short: "Aprendizaje",
     code: "PGFPCOM01",
     banks: questionBanks_ADP,
     uas: [
-      { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1","UA1_T2","UA1_T3"], accent: "#2B6CB0", bg: "#EBF4FF", dark: "#1A365D" },
-      { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1","UA2_T2","UA2_T3"], accent: "#276749", bg: "#F0FFF4", dark: "#1C4532" },
-      { num: 3, title: "Personalidad y diferencias individuales", topics: ["UA3_T1","UA3_T2","UA3_T3"], accent: "#9B2C2C", bg: "#FFF5F5", dark: "#63171B" },
-      { num: 4, title: "Atención a la diversidad", topics: ["UA4_T1","UA4_T2","UA4_T3"], accent: "#744210", bg: "#FFFFF0", dark: "#5F370E" }
+      { num: 1, title: "Desarrollo del adolescente", topics: ["UA1_T1","UA1_T2","UA1_T3"], accent: "#0071e3" },
+      { num: 2, title: "Teorías y procesos de aprendizaje", topics: ["UA2_T1","UA2_T2","UA2_T3"], accent: "#34c759" },
+      { num: 3, title: "Personalidad y diferencias individuales", topics: ["UA3_T1","UA3_T2","UA3_T3"], accent: "#ff6b6b" },
+      { num: 4, title: "Atención a la diversidad", topics: ["UA4_T1","UA4_T2","UA4_T3"], accent: "#ff9f0a" }
     ]
   },
   PCE: {
     name: "Procesos y contextos educativos",
+    short: "Procesos",
     code: "9821001102",
     banks: questionBanks_PCE,
     uas: [
-      { num: 1, title: "Legislación y currículo", topics: ["PCE_UA1_T1","PCE_UA1_T2"], accent: "#553C9A", bg: "#FAF5FF", dark: "#322659" },
-      { num: 2, title: "FP, enseñanzas especiales y documentos", topics: ["PCE_UA2_T1","PCE_UA2_T2"], accent: "#2C7A7B", bg: "#E6FFFA", dark: "#234E52" },
-      { num: 3, title: "Inteligencia emocional y habilidades sociales", topics: ["PCE_UA3_T1"], accent: "#C05621", bg: "#FFFAF0", dark: "#7B341E" },
-      { num: 4, title: "Orientación, organización y liderazgo", topics: ["PCE_UA4_T1"], accent: "#2D3748", bg: "#EDF2F7", dark: "#1A202C" }
+      { num: 1, title: "Legislación y currículo", topics: ["PCE_UA1_T1","PCE_UA1_T2"], accent: "#af52de" },
+      { num: 2, title: "FP, enseñanzas y documentos", topics: ["PCE_UA2_T1","PCE_UA2_T2"], accent: "#5ac8fa" },
+      { num: 3, title: "Inteligencia emocional", topics: ["PCE_UA3_T1"], accent: "#ff6b6b" },
+      { num: 4, title: "Orientación y liderazgo", topics: ["PCE_UA4_T1"], accent: "#636366" }
     ]
   },
   SFE: {
     name: "Sociedad, familia y educación",
+    short: "Sociedad",
     code: "VAL_PGFPCOM02",
     banks: questionBanks_SFE,
     uas: [
-      { num: 1, title: "Análisis sistémico y centros educativos", topics: ["SFE_UA1_T1"], accent: "#B83280", bg: "#FFF5F7", dark: "#702459" },
-      { num: 2, title: "Función tutorial y PAT", topics: ["SFE_UA2_T1"], accent: "#2B6CB0", bg: "#EBF8FF", dark: "#2A4365" },
-      { num: 3, title: "Familia y estilos de crianza", topics: ["SFE_UA3_T1"], accent: "#38A169", bg: "#F0FFF4", dark: "#22543D" },
-      { num: 4, title: "Familia-escuela y perspectiva de género", topics: ["SFE_UA4_T1"], accent: "#D69E2E", bg: "#FFFFF0", dark: "#744210" }
+      { num: 1, title: "Análisis sistémico", topics: ["SFE_UA1_T1"], accent: "#ff2d55" },
+      { num: 2, title: "Función tutorial y PAT", topics: ["SFE_UA2_T1"], accent: "#0071e3" },
+      { num: 3, title: "Familia y crianza", topics: ["SFE_UA3_T1"], accent: "#34c759" },
+      { num: 4, title: "Familia-escuela y género", topics: ["SFE_UA4_T1"], accent: "#ff9f0a" }
     ]
   }
 };
 
 function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
   }
   return a;
 }
 
 function generateTest(questions, count) {
   count = count || 20;
-  const shuffled = shuffle(questions);
+  var shuffled = shuffle(questions);
   return shuffled.slice(0, Math.min(count, shuffled.length)).map(function(q) {
-    const indices = [0, 1, 2];
-    const si = shuffle(indices);
+    var si = shuffle([0, 1, 2]);
     return { q: q.q, o: si.map(function(i){ return q.o[i]; }), c: si.indexOf(q.c) };
   });
 }
 
 function QuizApp() {
-  const [subjectKey, setSubjectKey] = React.useState("PGFPCOM01");
-  const [screen, setScreen] = React.useState("home");
-  const [test, setTest] = React.useState([]);
-  const [current, setCurrent] = React.useState(0);
-  const [answers, setAnswers] = React.useState({});
-  const [showResults, setShowResults] = React.useState(false);
-  const [testInfo, setTestInfo] = React.useState({ title: "", ua: 0, subjectKey: "" });
+  var _s = React.useState("PGFPCOM01"), subjectKey = _s[0], setSubjectKey = _s[1];
+  var _sc = React.useState("home"), screen = _sc[0], setScreen = _sc[1];
+  var _t = React.useState([]), test = _t[0], setTest = _t[1];
+  var _c = React.useState(0), current = _c[0], setCurrent = _c[1];
+  var _a = React.useState({}), answers = _a[0], setAnswers = _a[1];
+  var _r = React.useState(false), showResults = _r[0], setShowResults = _r[1];
+  var _i = React.useState({ title: "", ua: 0, subjectKey: "" }), testInfo = _i[0], setTestInfo = _i[1];
 
   var subject = SUBJECTS[subjectKey];
+  var h = React.createElement;
 
-  var startTopicTest = function(key, testNum) {
+  var startTopicTest = function(key, num) {
     var bank = subject.banks[key];
-    setTestInfo({ title: bank.title + " — Test " + testNum, ua: bank.ua, subjectKey: subjectKey });
+    setTestInfo({ title: bank.title + " · Test " + num, ua: bank.ua, subjectKey: subjectKey });
     setTest(generateTest(bank.questions, 20));
     setCurrent(0); setAnswers({}); setShowResults(false); setScreen("quiz");
   };
 
   var startGeneralTest = function(num) {
-    var allQ = Object.values(subject.banks).flatMap(function(b){ return b.questions; });
+    var allQ = []; Object.keys(subject.banks).forEach(function(k){ allQ = allQ.concat(subject.banks[k].questions); });
     setTestInfo({ title: "Test General " + num, ua: 0, subjectKey: subjectKey });
     setTest(generateTest(allQ, 20));
     setCurrent(0); setAnswers({}); setShowResults(false); setScreen("quiz");
   };
 
-  var selectAnswer = function(idx) { if (!showResults) setAnswers(Object.assign({}, answers, {[current]: idx})); };
-  var finish = function() { setShowResults(true); };
+  var selectAnswer = function(idx) { if (!showResults) { var n = {}; Object.keys(answers).forEach(function(k){n[k]=answers[k];}); n[current]=idx; setAnswers(n); } };
+  var finish = function() { setShowResults(true); window.scrollTo(0,0); };
   var score = function() { var c=0; test.forEach(function(q,i){ if(answers[i]===q.c) c++; }); return c; };
   var nota = function() { return (score()/test.length*10).toFixed(1); };
   var label = function() {
     var n=parseFloat(nota());
-    if(n>=9) return ["Sobresaliente","#276749"];
-    if(n>=7) return ["Notable","#2B6CB0"];
-    if(n>=6) return ["Bien","#744210"];
-    if(n>=5) return ["Aprobado","#9B2C2C"];
-    return ["Suspenso","#C53030"];
+    if(n>=9) return ["Sobresaliente","#34c759"];
+    if(n>=7) return ["Notable","#0071e3"];
+    if(n>=6) return ["Bien","#ff9f0a"];
+    if(n>=5) return ["Aprobado","#ff6b6b"];
+    return ["Suspenso","#ff3b30"];
   };
 
   var getAccent = function() {
-    if(testInfo.ua > 0) {
-      var s = SUBJECTS[testInfo.subjectKey];
-      var u = s.uas.find(function(ua){ return ua.num === testInfo.ua; });
-      return u ? u.accent : "#2D3748";
+    if(testInfo.ua > 0 && SUBJECTS[testInfo.subjectKey]) {
+      var u = SUBJECTS[testInfo.subjectKey].uas.find(function(ua){ return ua.num === testInfo.ua; });
+      return u ? u.accent : "#0071e3";
     }
-    return "#2D3748";
+    return "#0071e3";
   };
 
+  // ─── HOME ───
   if (screen === "home") {
-    var sKeys = Object.keys(SUBJECTS);
-    return React.createElement("div", { style: { minHeight: "100vh", background: "#FAFAFA", fontFamily: "'Crimson Pro', Georgia, serif" } },
-      React.createElement("div", { style: { background: "#1A202C", padding: "28px 20px 20px", textAlign: "center" } },
-        React.createElement("div", { style: { fontSize: 11, letterSpacing: 3, color: "#A0AEC0", textTransform: "uppercase", marginBottom: 6, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Universidad Europea"),
-        React.createElement("h1", { style: { fontSize: 21, color: "#fff", fontWeight: 700, margin: "0 0 16px" } }, "Tests de Repaso"),
-        React.createElement("div", { style: { display: "flex", gap: 6, justifyContent: "center", flexWrap: "wrap" } },
-          sKeys.map(function(k) {
+    return h("div", { style: { minHeight: "100vh", background: "#f5f5f7" } },
+
+      // Header
+      h("div", { style: { background: "#000", padding: "28px 20px 24px", textAlign: "center" } },
+        h("img", { src: UE_LOGO, alt: "Universidad Europea", style: { height: 36, marginBottom: 18, opacity: 0.95 } }),
+        h("h1", { style: { fontSize: 28, fontWeight: 700, color: "#fff", letterSpacing: "-0.5px", marginBottom: 4 } }, "Tests de Repaso"),
+        h("p", { style: { fontSize: 13, color: "rgba(255,255,255,0.5)", fontWeight: 400, marginBottom: 20 } }, "Máster en Formación del Profesorado"),
+
+        // Subject pills
+        h("div", { style: { display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" } },
+          Object.keys(SUBJECTS).map(function(k) {
             var s = SUBJECTS[k];
             var active = k === subjectKey;
-            return React.createElement("button", {
+            return h("button", {
               key: k,
               onClick: function(){ setSubjectKey(k); },
               style: {
-                background: active ? "#fff" : "rgba(255,255,255,0.1)",
-                color: active ? "#1A202C" : "#A0AEC0",
-                border: "none", borderRadius: 20, padding: "6px 14px",
-                fontSize: 11, fontWeight: active ? 700 : 500, cursor: "pointer",
-                fontFamily: "'DM Sans', system-ui, sans-serif",
-                transition: "all 0.2s"
+                background: active ? "#fff" : "rgba(255,255,255,0.08)",
+                color: active ? "#000" : "rgba(255,255,255,0.6)",
+                border: "none", borderRadius: 100, padding: "8px 18px",
+                fontSize: 13, fontWeight: active ? 600 : 400, cursor: "pointer",
+                transition: "all 0.25s ease"
               }
-            }, s.name.length > 30 ? s.name.substring(0, 28) + "..." : s.name);
+            }, s.short);
           })
         )
       ),
-      React.createElement("div", { style: { maxWidth: 560, margin: "0 auto", padding: "16px 16px 60px" } },
-        React.createElement("div", { style: { fontSize: 12, color: "#A0AEC0", textAlign: "center", marginBottom: 16, fontFamily: "'DM Sans', system-ui, sans-serif" } }, subject.name + " (" + subject.code + ")"),
+
+      // Content
+      h("div", { style: { maxWidth: 520, margin: "0 auto", padding: "24px 16px 80px" } },
+
+        // Subject label
+        h("p", { style: { fontSize: 11, color: "#86868b", textAlign: "center", marginBottom: 24, fontWeight: 500, letterSpacing: "0.5px", textTransform: "uppercase" } }, subject.name),
+
+        // Units
         subject.uas.map(function(ua) {
-          return React.createElement("div", { key: ua.num, style: { marginBottom: 18 } },
-            React.createElement("div", { style: { background: ua.dark, color: "#fff", padding: "10px 16px", borderRadius: "10px 10px 0 0", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'DM Sans', system-ui, sans-serif" } },
-              "Unidad " + ua.num + " — " + ua.title
+          return h("div", { key: ua.num, style: { marginBottom: 16 } },
+
+            // Unit header
+            h("p", { style: { fontSize: 11, fontWeight: 600, color: "#86868b", letterSpacing: "0.5px", textTransform: "uppercase", padding: "0 4px 8px" } },
+              "Unidad " + ua.num + " · " + ua.title
             ),
-            React.createElement("div", { style: { background: "#fff", borderRadius: "0 0 10px 10px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" } },
-              ua.topics.map(function(key) {
+
+            // Topic cards
+            h("div", { style: { background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 0 0 0.5px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04)" } },
+              ua.topics.map(function(key, idx) {
                 var bank = subject.banks[key];
-                if(!bank) return null;
+                if (!bank) return null;
                 var maxTests = Math.min(4, Math.floor(bank.questions.length / 15));
-                return React.createElement("div", { key: key, style: { padding: "12px 16px", borderBottom: "1px solid #EDF2F7" } },
-                  React.createElement("div", { style: { fontSize: 14, fontWeight: 600, color: "#2D3748", marginBottom: 8 } }, bank.title),
-                  React.createElement("div", { style: { display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" } },
+                return h("div", { key: key, style: { padding: "14px 16px", borderTop: idx > 0 ? "0.5px solid rgba(0,0,0,0.06)" : "none" } },
+                  h("p", { style: { fontSize: 15, fontWeight: 500, color: "#1d1d1f", marginBottom: 10, lineHeight: 1.3 } }, bank.title),
+                  h("div", { style: { display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" } },
                     Array.from({ length: maxTests }, function(_, i) {
-                      return React.createElement("button", {
+                      return h("button", {
                         key: i,
                         onClick: function(){ startTopicTest(key, i + 1); },
-                        style: { background: ua.bg, border: "1.5px solid " + ua.accent, color: ua.accent, borderRadius: 6, padding: "5px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif", transition: "all 0.15s" },
+                        style: {
+                          background: "#f5f5f7", border: "none", color: ua.accent,
+                          borderRadius: 100, padding: "6px 16px",
+                          fontSize: 13, fontWeight: 600, cursor: "pointer",
+                          transition: "all 0.2s ease"
+                        },
                         onMouseOver: function(e) { e.target.style.background = ua.accent; e.target.style.color = "#fff"; },
-                        onMouseOut: function(e) { e.target.style.background = ua.bg; e.target.style.color = ua.accent; }
+                        onMouseOut: function(e) { e.target.style.background = "#f5f5f7"; e.target.style.color = ua.accent; }
                       }, "Test " + (i + 1));
                     }),
-                    React.createElement("span", { style: { fontSize: 10, color: "#A0AEC0", marginLeft: 4, fontFamily: "'DM Sans', system-ui, sans-serif" } }, bank.questions.length + "p")
+                    h("span", { style: { fontSize: 11, color: "#86868b" } }, bank.questions.length + " preguntas")
                   )
                 );
               })
             )
           );
         }),
-        React.createElement("div", { style: { marginTop: 24 } },
-          React.createElement("div", { style: { background: "#1A202C", color: "#fff", padding: "10px 16px", borderRadius: "10px 10px 0 0", fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Tests Generales — Todas las unidades"),
-          React.createElement("div", { style: { background: "#fff", borderRadius: "0 0 10px 10px", padding: "14px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", display: "flex", gap: 6, flexWrap: "wrap" } },
+
+        // General tests
+        h("div", { style: { marginTop: 32 } },
+          h("p", { style: { fontSize: 11, fontWeight: 600, color: "#86868b", letterSpacing: "0.5px", textTransform: "uppercase", padding: "0 4px 8px" } }, "Tests generales"),
+          h("div", { style: { background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 0 0 0.5px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04)", display: "flex", gap: 8, flexWrap: "wrap" } },
             Array.from({ length: 10 }, function(_, i) {
-              return React.createElement("button", {
+              return h("button", {
                 key: i,
                 onClick: function(){ startGeneralTest(i + 1); },
-                style: { background: "#EDF2F7", border: "1.5px solid #4A5568", color: "#4A5568", borderRadius: 6, padding: "5px 14px", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif", transition: "all 0.15s" },
-                onMouseOver: function(e) { e.target.style.background = "#4A5568"; e.target.style.color = "#fff"; },
-                onMouseOut: function(e) { e.target.style.background = "#EDF2F7"; e.target.style.color = "#4A5568"; }
-              }, "General " + (i + 1));
+                style: {
+                  background: "#f5f5f7", border: "none", color: "#1d1d1f",
+                  borderRadius: 100, padding: "6px 16px",
+                  fontSize: 13, fontWeight: 500, cursor: "pointer",
+                  transition: "all 0.2s ease"
+                },
+                onMouseOver: function(e) { e.target.style.background = "#1d1d1f"; e.target.style.color = "#fff"; },
+                onMouseOut: function(e) { e.target.style.background = "#f5f5f7"; e.target.style.color = "#1d1d1f"; }
+              }, "" + (i + 1));
             })
           )
         )
@@ -886,85 +913,127 @@ function QuizApp() {
     );
   }
 
+  // ─── QUIZ ───
   if (screen === "quiz") {
     var q = test[current];
-    var accentColor = getAccent();
+    var ac = getAccent();
 
-    return React.createElement("div", { style: { minHeight: "100vh", background: "#FAFAFA", fontFamily: "'Crimson Pro', Georgia, serif" } },
-      React.createElement("div", { style: { background: accentColor, padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" } },
-        React.createElement("button", {
-          onClick: function(){ setScreen("home"); },
-          style: { background: "rgba(255,255,255,0.15)", border: "none", color: "#fff", borderRadius: 6, padding: "5px 12px", fontSize: 12, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-        }, "← Salir"),
-        React.createElement("div", { style: { color: "#fff", fontSize: 11, fontWeight: 600, fontFamily: "'DM Sans', system-ui, sans-serif", textAlign: "right", maxWidth: "70%" } }, testInfo.title)
-      ),
-      showResults ? React.createElement("div", { style: { maxWidth: 540, margin: "0 auto", padding: "24px 16px 60px" } },
-        React.createElement("div", { style: { background: "#fff", borderRadius: 12, padding: "28px 20px", textAlign: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginBottom: 20 } },
-          React.createElement("div", { style: { fontSize: 40, fontWeight: 700, color: label()[1] } }, nota()),
-          React.createElement("div", { style: { fontSize: 16, fontWeight: 600, color: label()[1], marginTop: 4 } }, label()[0]),
-          React.createElement("div", { style: { fontSize: 14, color: "#718096", marginTop: 8, fontFamily: "'DM Sans', system-ui, sans-serif" } }, score() + " de " + test.length + " correctas")
-        ),
-        React.createElement("div", { style: { fontSize: 13, fontWeight: 700, color: "#4A5568", marginBottom: 12, textTransform: "uppercase", letterSpacing: 1, fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Revisión de respuestas"),
-        test.map(function(tq, i) {
-          var userAns = answers[i];
-          var isCorrect = userAns === tq.c;
-          return React.createElement("div", { key: i, style: { background: "#fff", borderRadius: 10, padding: "14px 16px", marginBottom: 8, borderLeft: "4px solid " + (isCorrect ? "#48BB78" : userAns !== undefined ? "#FC8181" : "#CBD5E0"), boxShadow: "0 1px 3px rgba(0,0,0,0.04)" } },
-            React.createElement("div", { style: { fontSize: 13, fontWeight: 600, color: "#2D3748", marginBottom: 8 } }, (i+1) + ". " + tq.q),
-            tq.o.map(function(opt, oi) {
-              return React.createElement("div", { key: oi, style: { fontSize: 13, padding: "4px 8px", marginBottom: 3, borderRadius: 4, color: oi === tq.c ? "#276749" : oi === userAns ? "#C53030" : "#718096", fontWeight: oi === tq.c || oi === userAns ? 600 : 400, background: oi === tq.c ? "#F0FFF4" : oi === userAns && oi !== tq.c ? "#FFF5F5" : "transparent" } },
-                (oi === tq.c ? "✓ " : oi === userAns && oi !== tq.c ? "✗ " : "  ") + opt
-              );
-            })
-          );
-        }),
-        React.createElement("div", { style: { display: "flex", gap: 10, marginTop: 20 } },
-          React.createElement("button", {
+    if (showResults) {
+      return h("div", { style: { minHeight: "100vh", background: "#f5f5f7" } },
+        // Top bar
+        h("div", { style: { background: "#fff", padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "0.5px solid rgba(0,0,0,0.06)" } },
+          h("button", {
             onClick: function(){ setScreen("home"); },
-            style: { flex: 1, padding: "12px", borderRadius: 8, border: "2px solid " + accentColor, background: "#fff", color: accentColor, fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
+            style: { background: "none", border: "none", color: "#0071e3", fontSize: 15, fontWeight: 500, cursor: "pointer", padding: 0 }
+          }, "← Volver"),
+          h("span", { style: { fontSize: 13, color: "#86868b", fontWeight: 500 } }, "Resultados")
+        ),
+
+        h("div", { style: { maxWidth: 520, margin: "0 auto", padding: "32px 16px 80px" } },
+          // Score card
+          h("div", { style: { background: "#fff", borderRadius: 20, padding: "40px 24px", textAlign: "center", boxShadow: "0 0 0 0.5px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)", marginBottom: 32 } },
+            h("div", { style: { fontSize: 56, fontWeight: 700, color: label()[1], letterSpacing: "-2px", lineHeight: 1 } }, nota()),
+            h("div", { style: { fontSize: 17, fontWeight: 600, color: label()[1], marginTop: 8 } }, label()[0]),
+            h("div", { style: { fontSize: 15, color: "#86868b", marginTop: 12 } }, score() + " de " + test.length + " correctas")
+          ),
+
+          // Review
+          h("p", { style: { fontSize: 11, fontWeight: 600, color: "#86868b", letterSpacing: "0.5px", textTransform: "uppercase", padding: "0 4px 12px" } }, "Revisión"),
+
+          test.map(function(tq, i) {
+            var userAns = answers[i];
+            var isCorrect = userAns === tq.c;
+            return h("div", { key: i, style: { background: "#fff", borderRadius: 14, padding: "16px", marginBottom: 8, boxShadow: "0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.03)" } },
+              h("div", { style: { display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 10 } },
+                h("span", { style: { width: 24, height: 24, borderRadius: 12, background: isCorrect ? "#34c759" : userAns !== undefined ? "#ff3b30" : "#d1d1d6", color: "#fff", fontSize: 12, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 } }, "" + (i+1)),
+                h("p", { style: { fontSize: 14, fontWeight: 500, color: "#1d1d1f", lineHeight: 1.5 } }, tq.q)
+              ),
+              tq.o.map(function(opt, oi) {
+                var isCor = oi === tq.c;
+                var isWrong = oi === userAns && oi !== tq.c;
+                return h("div", { key: oi, style: { fontSize: 13, padding: "6px 10px", marginBottom: 2, borderRadius: 8, color: isCor ? "#248a3d" : isWrong ? "#d70015" : "#86868b", fontWeight: isCor || isWrong ? 600 : 400, background: isCor ? "rgba(52,199,89,0.08)" : isWrong ? "rgba(255,59,48,0.06)" : "transparent", lineHeight: 1.5 } },
+                  (isCor ? "✓ " : isWrong ? "✗ " : "  ") + opt
+                );
+              })
+            );
+          }),
+
+          h("button", {
+            onClick: function(){ setScreen("home"); },
+            style: { width: "100%", padding: "16px", marginTop: 24, borderRadius: 14, border: "none", background: "#1d1d1f", color: "#fff", fontSize: 16, fontWeight: 600, cursor: "pointer" }
           }, "Volver al inicio")
         )
-      ) :
-      React.createElement("div", { style: { maxWidth: 540, margin: "0 auto", padding: "20px 16px 60px" } },
-        React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 } },
-          React.createElement("span", { style: { fontSize: 12, color: "#A0AEC0", fontFamily: "'DM Sans', system-ui, sans-serif" } }, "Pregunta " + (current + 1) + " de " + test.length),
-          React.createElement("span", { style: { fontSize: 12, color: "#A0AEC0", fontFamily: "'DM Sans', system-ui, sans-serif" } }, Object.keys(answers).length + " respondidas")
+      );
+    }
+
+    // Active quiz
+    return h("div", { style: { minHeight: "100vh", background: "#f5f5f7" } },
+      // Top bar
+      h("div", { style: { background: "#fff", padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "0.5px solid rgba(0,0,0,0.06)", position: "sticky", top: 0, zIndex: 10 } },
+        h("button", {
+          onClick: function(){ setScreen("home"); },
+          style: { background: "none", border: "none", color: "#0071e3", fontSize: 15, fontWeight: 500, cursor: "pointer", padding: 0 }
+        }, "← Salir"),
+        h("span", { style: { fontSize: 12, color: "#86868b", fontWeight: 500, textAlign: "right", maxWidth: "60%" } }, testInfo.title)
+      ),
+
+      // Progress bar
+      h("div", { style: { height: 2, background: "rgba(0,0,0,0.04)" } },
+        h("div", { style: { height: "100%", width: ((current + 1) / test.length * 100) + "%", background: ac, transition: "width 0.3s ease" } })
+      ),
+
+      h("div", { style: { maxWidth: 520, margin: "0 auto", padding: "24px 16px 80px" } },
+        // Counter
+        h("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: 20 } },
+          h("span", { style: { fontSize: 13, color: "#86868b" } }, (current + 1) + " / " + test.length),
+          h("span", { style: { fontSize: 13, color: "#86868b" } }, Object.keys(answers).length + " respondidas")
         ),
-        React.createElement("div", { style: { height: 3, background: "#EDF2F7", borderRadius: 2, marginBottom: 18, overflow: "hidden" } },
-          React.createElement("div", { style: { height: "100%", width: ((current + 1) / test.length * 100) + "%", background: accentColor, borderRadius: 2, transition: "width 0.3s" } })
-        ),
-        React.createElement("div", { style: { background: "#fff", borderRadius: 12, padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", marginBottom: 16 } },
-          React.createElement("p", { style: { fontSize: 15, color: "#1A202C", lineHeight: 1.6, fontWeight: 500, marginBottom: 16 } }, q.q),
+
+        // Question card
+        h("div", { style: { background: "#fff", borderRadius: 20, padding: "24px 20px", boxShadow: "0 0 0 0.5px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06)", marginBottom: 20 } },
+          h("p", { style: { fontSize: 17, color: "#1d1d1f", lineHeight: 1.6, fontWeight: 500, marginBottom: 20 } }, q.q),
+
           q.o.map(function(opt, oi) {
-            return React.createElement("button", {
+            var selected = answers[current] === oi;
+            return h("button", {
               key: oi,
               onClick: function(){ selectAnswer(oi); },
               style: {
-                display: "block", width: "100%", textAlign: "left", padding: "12px 14px", marginBottom: 8,
-                borderRadius: 8, fontSize: 14, lineHeight: 1.5, cursor: "pointer", transition: "all 0.15s",
-                border: answers[current] === oi ? "2px solid " + accentColor : "2px solid #E2E8F0",
-                background: answers[current] === oi ? (accentColor + "10") : "#FAFAFA",
-                color: answers[current] === oi ? accentColor : "#4A5568",
-                fontWeight: answers[current] === oi ? 600 : 400,
-                fontFamily: "'Crimson Pro', Georgia, serif"
+                display: "block", width: "100%", textAlign: "left",
+                padding: "14px 16px", marginBottom: 10,
+                borderRadius: 14, fontSize: 15, lineHeight: 1.5, cursor: "pointer",
+                transition: "all 0.2s ease",
+                border: selected ? "2px solid " + ac : "2px solid rgba(0,0,0,0.06)",
+                background: selected ? ac + "0a" : "#fafafa",
+                color: selected ? ac : "#1d1d1f",
+                fontWeight: selected ? 600 : 400
               }
-            }, String.fromCharCode(65 + oi) + ") " + opt);
+            }, String.fromCharCode(65 + oi) + ")  " + opt);
           })
         ),
-        React.createElement("div", { style: { display: "flex", gap: 10 } },
-          React.createElement("button", {
+
+        // Navigation
+        h("div", { style: { display: "flex", gap: 10 } },
+          h("button", {
             onClick: function(){ setCurrent(Math.max(0, current - 1)); },
             disabled: current === 0,
-            style: { flex: 1, padding: "10px", borderRadius: 8, border: "1.5px solid #CBD5E0", background: "#fff", color: current === 0 ? "#CBD5E0" : "#4A5568", fontSize: 13, fontWeight: 600, cursor: current === 0 ? "default" : "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-          }, "← Anterior"),
+            style: {
+              flex: 1, padding: "14px", borderRadius: 14,
+              border: "none", background: current === 0 ? "#e5e5ea" : "#fff",
+              color: current === 0 ? "#c7c7cc" : "#1d1d1f",
+              fontSize: 15, fontWeight: 600, cursor: current === 0 ? "default" : "pointer",
+              boxShadow: current === 0 ? "none" : "0 0 0 0.5px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.04)"
+            }
+          }, "Anterior"),
           current < test.length - 1 ?
-            React.createElement("button", {
+            h("button", {
               onClick: function(){ setCurrent(current + 1); },
-              style: { flex: 1, padding: "10px", borderRadius: 8, border: "none", background: accentColor, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-            }, "Siguiente →") :
-            React.createElement("button", {
+              style: { flex: 1, padding: "14px", borderRadius: 14, border: "none", background: "#1d1d1f", color: "#fff", fontSize: 15, fontWeight: 600, cursor: "pointer" }
+            }, "Siguiente") :
+            h("button", {
               onClick: finish,
-              style: { flex: 1, padding: "10px", borderRadius: 8, border: "none", background: "#276749", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "'DM Sans', system-ui, sans-serif" }
-            }, "Finalizar test")
+              style: { flex: 1, padding: "14px", borderRadius: 14, border: "none", background: "#34c759", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer" }
+            }, "Finalizar")
         )
       )
     );
